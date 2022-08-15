@@ -10,23 +10,30 @@ const handler = async (req, res)=> {
     if(req.method === "DELETE") {
         let success = false;
         try {
-            const id = req.query.id;
-            let user = await User.findById(id);
+            const userId = req.user.id;
+            const blogId = req.params.id;
+
+            let user = await User.findById(userId);
             if(!user) {
                 success = false;
                 return res.status(404).json({success, error: "User not found!"});
             }
 
-            const allUserBlogs = await Blog.find({user: id});
+            let blog = await Blog.findById(blogId);
+            if(!blog) {
+                success = false;
+                return res.status(404).json({success, error: "Blog not found!"});
+            }
 
-            allUserBlogs.forEach((blog)=> {
-                let blog = await Blog.findByIdAndDelete(blog._id.toString(),{new: true});
-            });
+            user = await User.findByIdAndUpdate(id, {$pull: {blogs: blogId}}, {new: true});
 
-            user = await User.findByIdAndDelete(id, {new: true});
+            blog = await Blog.findByIdAndDelete(blogId, {new: true});
+
+            const blogs = await Blog.find()
+                .sort("-createdAt");
 
             success = true;
-            return res.status(201).json({success});
+            return res.status(201).json({success, blogs});
         } catch (error) {
             success = false;
             return res.status(500).json({success, error: error.message});
@@ -34,4 +41,4 @@ const handler = async (req, res)=> {
     }
 }
  
-export default fetchUser(grantAccess("deleteAny", "profile", handler));
+export default fetchUser(grantAccess("deleteOwn", "blogs", handler));

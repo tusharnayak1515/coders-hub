@@ -7,26 +7,21 @@ import Blog from "../../../models/Blog";
 
 const handler = async (req, res)=> {
     connectToMongo();
-    if(req.method === "DELETE") {
+    if(req.method === "GET") {
         let success = false;
         try {
-            const id = req.query.id;
+            const id = req.user.id;
             let user = await User.findById(id);
             if(!user) {
                 success = false;
                 return res.status(404).json({success, error: "User not found!"});
             }
 
-            const allUserBlogs = await Blog.find({user: id});
-
-            allUserBlogs.forEach((blog)=> {
-                let blog = await Blog.findByIdAndDelete(blog._id.toString(),{new: true});
-            });
-
-            user = await User.findByIdAndDelete(id, {new: true});
+            const blogs = await Blog.find()
+                .sort("-createdAt");
 
             success = true;
-            return res.status(201).json({success});
+            return res.status(201).json({success, blogs});
         } catch (error) {
             success = false;
             return res.status(500).json({success, error: error.message});
@@ -34,4 +29,4 @@ const handler = async (req, res)=> {
     }
 }
  
-export default fetchUser(grantAccess("deleteAny", "profile", handler));
+export default fetchUser(grantAccess("readAny", "blogs", handler));
