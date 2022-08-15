@@ -11,7 +11,7 @@ const handler = async (req, res)=> {
         let success = false;
         try {
             const userId = req.user.id;
-            const blogId = req.params.id;
+            const blogId = req.query.id;
 
             let user = await User.findById(userId);
             if(!user) {
@@ -25,7 +25,7 @@ const handler = async (req, res)=> {
                 return res.status(404).json({success, error: "Blog not found!"});
             }
 
-            user = await User.findByIdAndUpdate(id, {$pull: {blogs: blogId}}, {new: true});
+            user = await User.findByIdAndUpdate(userId, {$pull: {blogs: blogId}}, {new: true});
 
             blog = await Blog.findByIdAndDelete(blogId, {new: true});
 

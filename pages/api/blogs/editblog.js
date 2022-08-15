@@ -21,7 +21,7 @@ const handler = async (req, res)=> {
         try {
             const userId = req.user.id;
             const {id, title, description=null, content=null} = req.body;
-            const {error} = schema.validate(req.body);
+            const {error} = schema.validate({title});
             if(error) {
                 success = false;
                 return res.status(422).json({success, error: error.details[0].message});
