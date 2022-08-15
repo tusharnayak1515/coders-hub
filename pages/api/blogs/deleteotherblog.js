@@ -47,4 +47,4 @@ const handler = async (req, res)=> {
     }
 }
  
-export default fetchUser(grantAccess("updateAny", "blogs", handler));
+export default fetchUser(grantAccess("deleteAny", "blogs", handler));
