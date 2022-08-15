@@ -8,7 +8,8 @@ const roles = (function () {
     .deleteOwn("blogs")
     .readAny("blogs")
     .readOwn("profile")
-    .updateOwn("profile");
+    .updateOwn("profile")
+    .deleteOwn("profile");
 
   ac.grant("admin")
     .extend("user")
