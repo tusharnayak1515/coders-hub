@@ -7,6 +7,7 @@ import User from "../../../models/User";
 import Blog from "../../../models/Blog";
 
 const schema = joi.object({
+    id: joi.string().length(24).required(),
     name: joi.string().min(3).max(25).required().messages({
         'name.min': '{#label} should contain at least {#min} characters!',
         'name.max': '{#label} should contain at most {#max} characters!',
@@ -23,15 +24,14 @@ const handler = async (req, res)=> {
     if(req.method === "PUT") {
         let success = false;
         try {
-            const userId = req.user.id;
-            const {name,email} = req.body;
+            const {id,name,email} = req.body;
             const {error} = schema.validate(req.body);
             if(error) {
                 success = false;
                 return res.status(422).json({success, error: error.details[0].message});
             }
 
-            let user = await User.findById(userId);
+            let user = await User.findById(id);
             if(!user) {
                 success = false;
                 return res.status(404).json({success, error: "User not found!"});
@@ -39,13 +39,13 @@ const handler = async (req, res)=> {
             
             user = await User.findOne({email: email});
             if(user) {
-                if(user._id.toString() !== userId) {
+                if(user._id.toString() !== id) {
                     success = false;
                     return res.status(409).json({success, error: "This email is already linked to another account!"});
                 }
             }
 
-            user = await User.findByIdAndUpdate(userId, {name: name, email: email}, {new: true})
+            user = await User.findByIdAndUpdate(id, {name: name, email: email}, {new: true})
                 .select("-password")
                 .populate("blogs");
 
@@ -58,4 +58,4 @@ const handler = async (req, res)=> {
     }
 }
  
-export default fetchUser(grantAccess("updateOwn", "profile", handler));
+export default fetchUser(grantAccess("updateAny", "profile", handler));
