@@ -21,7 +21,7 @@ const handler = async (req, res)=> {
                 .sort({name: 1});
 
             success = true;
-            return res.status(201).json({success, users});
+            return res.status(200).json({success, users});
         } catch (error) {
             success = false;
             return res.status(500).json({success, error: error.message});

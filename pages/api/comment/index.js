@@ -30,7 +30,7 @@ const handler = async (req, res)=> {
                 .limit(20);
 
             success = true;
-            return res.status(201).json({success, comments});
+            return res.status(200).json({success, comments});
         } catch (error) {
             success = false;
             return res.status(500).json({success, error: error.message});

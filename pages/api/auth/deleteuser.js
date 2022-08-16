@@ -28,7 +28,7 @@ const handler = async (req, res)=> {
             deleteCookie("jb_user_token",{req, res});
 
             success = true;
-            return res.status(201).json({success});
+            return res.status(200).json({success});
         } catch (error) {
             success = false;
             return res.status(500).json({success, error: error.message});

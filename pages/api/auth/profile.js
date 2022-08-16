@@ -22,7 +22,7 @@ const handler = async (req, res)=> {
                 .populate("blogs");
 
             success = true;
-            return res.status(201).json({success, user});
+            return res.status(200).json({success, user});
         } catch (error) {
             success = false;
             return res.status(500).json({success, error: error.message});

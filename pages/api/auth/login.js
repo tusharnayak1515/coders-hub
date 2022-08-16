@@ -56,7 +56,7 @@ export default async function handler(req, res) {
             setCookie("jb_user_token", authToken, {req, res, maxAge: 60 * 60 * 24});
 
             success = true;
-            return res.status(201).json({success});
+            return res.status(200).json({success});
         } catch (error) {
             success = false;
             return res.status(500).json({success, error: error.message});

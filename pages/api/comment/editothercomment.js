@@ -13,12 +13,12 @@ const schema = joi.object({
         'title.max': '{#label} should contain at most {#max} characters!',
         'title.required': '{#label} cannot be empty!',
     }),
-    blogId: joi.string().length(24).required().messages({
-        'blogId.length': '{#label} must be of {#min} characters!',
-        'blogId.required': '{#label} cannot be empty!',
+    id: joi.string().length(24).required().messages({
+        'id.length': '{#label} must be of {#min} characters!',
+        'id.required': '{#label} cannot be empty!',
     }),
-    content: joi.required().messages({
-        'content.required': '{#label} cannot be empty!'
+    comment: joi.required().messages({
+        'comment.required': '{#label} cannot be empty!'
     })
 });
 
@@ -28,7 +28,7 @@ const handler = async (req, res)=> {
         let success = false;
         try {
             const adminId = req.user.id;
-            const {id, title, content, blogId} = req.body;
+            const {id, title, comment} = req.body;
             const {error} = schema.validate(req.body);
             if(error) {
                 success = false;
@@ -41,26 +41,28 @@ const handler = async (req, res)=> {
                 return res.status(404).json({success, error: "Admin not found!"});
             }
 
+            let comment1 = await Comment.findById(id);
+            if(!comment1) {
+                success = false;
+                return res.status(404).json({success, error: "Comment not found!"});
+            }
+
+            const blogId = comment1.blog.toString();
+
             let blog = await Blog.findById(blogId);
             if(!blog) {
                 success = false;
                 return res.status(404).json({success, error: "Blog not found!"});
             }
 
-            let comment = await Comment.findById(id);
-            if(!comment) {
-                success = false;
-                return res.status(404).json({success, error: "Comment not found!"});
-            }
-
-            comment = await Comment.findByIdAndUpdate(id, {title, content}, {new: true});
+            comment1 = await Comment.findByIdAndUpdate(id, {title, comment}, {new: true});
 
             const comments = await Comment.find({blog: blogId})
                 .sort({likes: -1})
                 .limit(20);
 
             success = true;
-            return res.status(201).json({success, comments});
+            return res.status(200).json({success, comments});
         } catch (error) {
             success = false;
             return res.status(500).json({success, error: error.message});

@@ -26,7 +26,7 @@ const handler = async (req, res)=> {
             user = await User.findByIdAndDelete(id, {new: true});
 
             success = true;
-            return res.status(201).json({success});
+            return res.status(200).json({success});
         } catch (error) {
             success = false;
             return res.status(500).json({success, error: error.message});

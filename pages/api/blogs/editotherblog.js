@@ -50,7 +50,7 @@ const handler = async (req, res)=> {
                 .sort("-createdAt");
 
             success = true;
-            return res.status(201).json({success, blogs});
+            return res.status(200).json({success, blogs});
         } catch (error) {
             success = false;
             return res.status(500).json({success, error: error.message});

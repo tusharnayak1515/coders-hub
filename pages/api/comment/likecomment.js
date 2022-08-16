@@ -47,6 +47,18 @@ const handler = async (req, res)=> {
                 return res.status(404).json({success, error: "Blog not found!"});
             }
 
+            let count = 0;
+            comment.likes.forEach((user1)=> {
+                if(user1.toString() === userId) {
+                    count += 1;
+                }
+            });
+            
+            if(count === 1) {
+                success = false;
+                return res.status(400).json({success, error: "You are already liking this comment!"});
+            }
+
             comment = await Comment.findByIdAndUpdate(id, {$push: {likes: user}}, {new: true});
 
             const comments = await Comment.find({blog: blogId})
@@ -54,7 +66,7 @@ const handler = async (req, res)=> {
                 .limit(20);
 
             success = true;
-            return res.status(201).json({success, comments});
+            return res.status(200).json({success, comments});
         } catch (error) {
             success = false;
             return res.status(500).json({success, error: error.message});

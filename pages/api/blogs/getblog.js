@@ -25,7 +25,7 @@ const handler = async (req, res)=> {
             }
 
             success = true;
-            return res.status(201).json({success, blog});
+            return res.status(200).json({success, blog});
         } catch (error) {
             success = false;
             return res.status(500).json({success, error: error.message});
