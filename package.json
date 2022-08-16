@@ -9,7 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^1.8.4",
     "accesscontrol": "^2.2.1",
+    "axios": "^0.27.2",
     "bcryptjs": "^2.4.3",
     "cookies-next": "^2.1.1",
     "joi": "^17.6.0",
@@ -17,8 +19,16 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.5.2",
     "next": "12.2.5",
+    "next-redux-wrapper": "^7.0.5",
+    "nprogress": "^0.2.0",
+    "prismjs": "^1.28.0",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "react-icons": "^4.4.0",
+    "react-redux": "^8.0.2",
+    "react-toastify": "^9.0.8",
+    "redux": "^4.2.0",
+    "redux-thunk": "^2.4.1"
   },
   "devDependencies": {
     "eslint": "8.22.0",

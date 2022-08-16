@@ -25,8 +25,11 @@ const handler = async (req, res)=> {
 
             user = await User.findByIdAndDelete(id, {new: true});
 
+            const users = await User.find({_id: {$ne: adminId}})
+                .sort({name: 1});
+
             success = true;
-            return res.status(200).json({success});
+            return res.status(200).json({success, users});
         } catch (error) {
             success = false;
             return res.status(500).json({success, error: error.message});

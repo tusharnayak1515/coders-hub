@@ -25,7 +25,7 @@ const handler = async (req, res)=> {
         let success = false;
         try {
             const userId = req.user.id;
-            const {title, content=null, blogId} = req.body;
+            const {title, comment=null, blogId} = req.body;
             const {error} = schema.validate({title, blogId});
             if(error) {
                 success = false;
@@ -46,12 +46,10 @@ const handler = async (req, res)=> {
 
             const newComment = await Comment.create({
                 title,
-                content: content,
+                comment: comment,
                 user: userId,
                 blog: blogId
             });
-
-            blog = await Blog.findByIdAndUpdate(blogId, {$push: {comments: newComment}}, {new: true});
 
             const comments = await Comment.find({blog: blogId})
                 .sort({likes: -1})

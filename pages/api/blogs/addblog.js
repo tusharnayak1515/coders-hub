@@ -52,7 +52,7 @@ const handler = async (req, res)=> {
                 .sort("-createdAt");
 
             success = true;
-            return res.status(201).json({success, blogs});
+            return res.status(201).json({success, blogs, user});
         } catch (error) {
             success = false;
             return res.status(500).json({success, error: error.message});

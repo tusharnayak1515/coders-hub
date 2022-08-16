@@ -25,7 +25,9 @@ const handler = async (req, res)=> {
                 return res.status(404).json({success, error: "Blog not found!"});
             }
 
-            user = await User.findByIdAndUpdate(userId, {$pull: {blogs: blogId}}, {new: true});
+            user = await User.findByIdAndUpdate(userId, {$pull: {blogs: blogId}}, {new: true})
+                .select("-password")
+                .populate("blogs");
 
             blog = await Blog.findByIdAndDelete(blogId, {new: true});
 
@@ -33,7 +35,7 @@ const handler = async (req, res)=> {
                 .sort("-createdAt");
 
             success = true;
-            return res.status(200).json({success, blogs});
+            return res.status(200).json({success, blogs, user});
         } catch (error) {
             success = false;
             return res.status(500).json({success, error: error.message});

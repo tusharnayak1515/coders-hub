@@ -33,8 +33,6 @@ const handler = async (req, res)=> {
                 return res.status(404).json({success, error: "Blog not found!"});
             }
 
-            blog = await Blog.findByIdAndUpdate(blogId, {$pull: {comments: commentId}}, {new:true});
-
             comment = await Comment.findByIdAndDelete(commentId, {new: true});
 
             const comments = await Comment.find({blog: blogId})

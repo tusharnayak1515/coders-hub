@@ -49,8 +49,11 @@ const handler = async (req, res)=> {
                 .select("-password")
                 .populate("blogs");
 
+            const users = await User.find({_id: {$ne: adminId}})
+                .sort({name: 1});
+
             success = true;
-            return res.status(200).json({success, user});
+            return res.status(200).json({success, users, user});
         } catch (error) {
             success = false;
             return res.status(500).json({success, error: error.message});
