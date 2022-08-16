@@ -13,6 +13,7 @@ const roles = (function () {
 
   ac.grant("admin")
     .extend("user")
+    .readAny("profile")
     .updateAny("profile")
     .deleteAny("profile")
     .updateAny("blogs")

@@ -1,28 +1,27 @@
 import connectToMongo from "../../../db";
 import fetchUser from "../../../middlewares/fetchUser";
+import grantAccess from "../../../middlewares/grantAccess";
 
 import User from "../../../models/User";
 import Blog from "../../../models/Blog";
-import grantAccess from "../../../middlewares/grantAccess";
 
 const handler = async (req, res)=> {
     connectToMongo();
     if(req.method === "GET") {
         let success = false;
         try {
-            const userId = req.user.id;
-            let user = await User.findById(userId);
-            if(!user) {
+            const adminId = req.user.id;
+            let admin = await User.findById(adminId);
+            if(!admin) {
                 success = false;
-                return res.status(404).json({success, error: "User not found!"});
+                return res.status(404).json({success, error: "Admin not found!"});
             }
 
-            user = await User.findById(userId)
-                .select("-password")
-                .populate("blogs");
+            const users = await User.find({_id: {$ne: adminId}})
+                .sort({name: 1});
 
             success = true;
-            return res.status(201).json({success, user});
+            return res.status(201).json({success, users});
         } catch (error) {
             success = false;
             return res.status(500).json({success, error: error.message});
@@ -30,4 +29,4 @@ const handler = async (req, res)=> {
     }
 }
  
-export default fetchUser(grantAccess("readOwn", "profile", handler));
+export default fetchUser(grantAccess("readAny", "profile", handler));

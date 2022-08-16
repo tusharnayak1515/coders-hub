@@ -7,7 +7,7 @@ const grantAccess = (action, resource, handler)=> {
       const permission = roles.can(req.user.role)[action](resource);
       if (!permission.granted) {
        return res.status(401).json({
-        error: "You don't have enough permission to perform this action"
+        error: "You don't have permission to perform this action!"
        });
       }
       return handler(req,res);
