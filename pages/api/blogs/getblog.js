@@ -1,34 +1,31 @@
 import connectToMongo from "../../../db";
 import fetchUser from "../../../middlewares/fetchUser";
-import grantAccess from "../../../middlewares/grantAccess";
-import { deleteCookie } from "cookies-next";
 
 import User from "../../../models/User";
 import Blog from "../../../models/Blog";
+import grantAccess from "../../../middlewares/grantAccess";
 
 const handler = async (req, res)=> {
     connectToMongo();
-    if(req.method === "DELETE") {
+    if(req.method === "GET") {
         let success = false;
         try {
             const userId = req.user.id;
+            const blogId = req.query.id;
             let user = await User.findById(userId);
             if(!user) {
                 success = false;
                 return res.status(404).json({success, error: "User not found!"});
             }
 
-            const allUserBlogs = await Blog.find({user: userId});
-
-            allUserBlogs.forEach((blog)=> {
-                let blog = await Blog.findByIdAndDelete(blog._id.toString(),{new: true});
-            });
-
-            user = await User.findByIdAndDelete(userId, {new: true});
-            deleteCookie("jb_user_token",{req, res});
+            let blog = await Blog.findById(blogId);
+            if(!blog) {
+                success = false;
+                return res.status(404).json({success, error: "Blog not found!"});
+            }
 
             success = true;
-            return res.status(201).json({success});
+            return res.status(201).json({success, blog});
         } catch (error) {
             success = false;
             return res.status(500).json({success, error: error.message});
@@ -36,4 +33,4 @@ const handler = async (req, res)=> {
     }
 }
  
-export default fetchUser(grantAccess("deleteOwn", "profile", handler));
+export default fetchUser(grantAccess("readAny", "blogs", handler));

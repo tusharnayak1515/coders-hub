@@ -11,6 +11,11 @@ const schema = joi.object({
         'title.min': '{#label} should contain at least {#min} characters!',
         'title.max': '{#label} should contain at most {#max} characters!',
         'title.required': '{#label} cannot be empty!',
+    }),
+    category: joi.string().min(3).max(15).required().messages({
+        'category.min': '{#label} should contain at least {#min} characters!',
+        'category.max': '{#label} should contain at most {#max} characters!',
+        'category.required': '{#label} cannot be empty!',
     })
 });
 
@@ -20,8 +25,8 @@ const handler = async (req, res)=> {
         let success = false;
         try {
             const id = req.user.id;
-            const {title, description, content} = req.body;
-            const {error} = schema.validate({title});
+            const {title, description=null, content=null, category} = req.body;
+            const {error} = schema.validate({title, category});
             if(error) {
                 success = false;
                 return res.status(422).json({success, error: error.details[0].message});
@@ -37,6 +42,7 @@ const handler = async (req, res)=> {
                 title,
                 description: description,
                 content: content,
+                category,
                 user: id
             });
 

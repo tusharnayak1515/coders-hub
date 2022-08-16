@@ -8,7 +8,7 @@ const fetchUser = (handler)=> {
         const token = getCookie("jb_user_token",{req, res}) || req.headers.jb_user_token;
         if(!token) {
             success = false;
-            return res.json({success, error: "You need to be logged in to access this route!", status: 401});
+            return res.status(401).json({success, error: "You need to be logged in to access this route!"});
         }
         try {
             const data = jwt.verify(token, secret);

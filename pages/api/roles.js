@@ -7,6 +7,12 @@ const roles = (function () {
     .updateOwn("blogs")
     .deleteOwn("blogs")
     .readAny("blogs")
+    .createOwn("comments")
+    .updateOwn("comments")
+    .deleteOwn("comments")
+    .readAny("comments")
+    .createOwn("likes")
+    .updateOwn("likes")
     .readOwn("profile")
     .updateOwn("profile")
     .deleteOwn("profile");
@@ -17,7 +23,9 @@ const roles = (function () {
     .updateAny("profile")
     .deleteAny("profile")
     .updateAny("blogs")
-    .deleteAny("blogs");
+    .deleteAny("blogs")
+    .updateAny("comments")
+    .deleteAny("comments");
 
   return ac;
 })();
