@@ -1,8 +1,9 @@
+import blogReducer from "./blogReducer";
+import commentReducer from "./commentReducer";
+import userReducer from "./userReducer";
+
 const { HYDRATE } = require("next-redux-wrapper");
 const { combineReducers } = require("redux");
-const blogReducer = require("./blogReducer");
-const commentReducer = require("./commentReducer");
-const userReducer = require("./userReducer");
 
 const rootReducer = combineReducers({
     userReducer: userReducer,
@@ -12,7 +13,6 @@ const rootReducer = combineReducers({
 
 const masterReducer = (state,action)=> {
     if(action.type === HYDRATE) {
-
         const nextState = {
             ...state,
             userReducer: {
