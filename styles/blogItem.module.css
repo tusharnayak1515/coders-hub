@@ -1,0 +1,28 @@
+.blogItem {
+    height: 12vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* border-top: 0.05rem solid lightgrey; */
+    border-bottom: 0.05rem solid lightgrey;
+}
+
+.blogItem .details {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: brown; */
+}
+
+.blogItem .details h2 {
+    cursor: pointer;
+    margin-right: 1rem;
+}
+
+.blogItem .details h2:hover {
+    text-decoration: underline;
+}
+
+.blogItem .details p, .blogItem .time p {
+    color: grey;
+}

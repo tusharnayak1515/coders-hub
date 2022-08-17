@@ -44,9 +44,11 @@ const handler = async (req, res)=> {
                 return res.status(404).json({success, error: "Blog not found!"});
             }
 
-            blog = await Blog.findByIdAndUpdate(id, {title,description,content, category}, {new: true});
+            blog = await Blog.findByIdAndUpdate(id, {title,description,content, category}, {new: true})
+                .populate("user");
 
             const blogs = await Blog.find()
+                .populate("user")
                 .sort("-createdAt");
 
             success = true;

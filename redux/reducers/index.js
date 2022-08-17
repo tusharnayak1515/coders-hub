@@ -17,18 +17,18 @@ const masterReducer = (state,action)=> {
             ...state,
             userReducer: {
                 user: state.userReducer.user,
-                profile: action.payload.default.userReducer.profile ? action.payload.default.userReducer.profile : state.userReducer.profile,
-                users: action.payload.default.userReducer.users ? action.payload.default.userReducer.users : state.userReducer.users,
-                otherUser: action.payload.default.userReducer.otherUser ? action.payload.default.userReducer.otherUser : state.userReducer.otherUser,
+                profile: action.payload.userReducer.profile ? action.payload.userReducer.profile : state.userReducer.profile,
+                users: action.payload.userReducer.users ? action.payload.userReducer.users : state.userReducer.users,
+                otherUser: action.payload.userReducer.otherUser ? action.payload.userReducer.otherUser : state.userReducer.otherUser,
                 isLoading: state.userReducer.isLoading,
             },
             blogReducer: {
-                blogs: action.payload.default.blogReducer.blogs ? action.payload.default.blogReducer.blogs : state.blogReducer.blogs,
-                blog: action.payload.default.blogReducer.blog ? action.payload.default.blogReducer.blog : state.blogReducer.blog,
+                blogs: action.payload.blogReducer.blogs ? action.payload.blogReducer.blogs : state.blogReducer.blogs,
+                blog: action.payload.blogReducer.blog ? action.payload.blogReducer.blog : state.blogReducer.blog,
                 isLoading: state.blogReducer.isLoading,
             },
             commentReducer: {
-                comments: action.payload.default.commentReducer.comments ? action.payload.default.commentReducer.comments : state.commentReducer.comments,
+                comments: action.payload.commentReducer.comments ? action.payload.commentReducer.comments : state.commentReducer.comments,
                 isLoading: state.commentReducer.isLoading,
             },
         }

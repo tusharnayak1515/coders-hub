@@ -38,6 +38,7 @@ const handler = async (req, res)=> {
             blog = await Blog.findByIdAndDelete(blogId, {new: true});
 
             const blogs = await Blog.find()
+                .populate("user")
                 .sort("-createdAt");
 
             success = true;

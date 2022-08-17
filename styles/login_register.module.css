@@ -1,0 +1,169 @@
+.mycontainer {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    /* align-items: center; */
+    /* background-color: orchid; */
+}
+
+.mycontainer .leftSide, .mycontainer .rightSide {
+    height: 100%;
+    width: 50%;
+}
+
+.mycontainer .leftSide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: orange; */
+}
+
+.mycontainer .leftSide .formDiv {
+    min-height: 50%;
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    /* background-color: blueviolet; */
+}
+
+.mycontainer .leftSide .formDiv .heading {
+    margin-bottom: 1rem;
+}
+
+.mycontainer .leftSide .formDiv .intro {
+    margin-bottom: 2rem;
+}
+
+.mycontainer .leftSide .formDiv .flexDiv {
+    width: 100%;
+    padding: 1rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* background-color: orchid; */
+}
+
+.mycontainer .leftSide .formDiv .flexDiv label {
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.mycontainer .leftSide .formDiv .flexDiv input, .mycontainer .leftSide .formDiv .btnDiv button {
+    border-radius: 0.5rem;
+}
+
+.mycontainer .leftSide .formDiv .flexDiv input {
+    outline: none;
+    width: 60%;
+    padding: 0.5rem 1rem;
+    font-size: 1.1rem;
+    border: 0.1rem solid grey;
+}
+
+.mycontainer .leftSide .formDiv .flexDiv input.input_active {
+    border: 0.1rem solid rgb(175, 1, 175);
+}
+
+.mycontainer .leftSide .formDiv .btnDiv {
+    width: 100%;
+    margin: 1.5rem 0;
+    padding: 1rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 0.05rem solid rgb(189, 189, 189);
+    /* background-color: yellowgreen; */
+}
+
+.mycontainer .leftSide .formDiv .btnDiv .rememberDiv {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* background-color: aqua; */
+}
+
+.mycontainer .leftSide .formDiv .btnDiv .rememberDiv input, .mycontainer .leftSide .formDiv .btnDiv .rememberDiv label {
+    cursor: pointer;
+}
+
+.mycontainer .leftSide .formDiv .btnDiv .rememberDiv input {
+    margin-right: 0.5rem;
+    height: 1rem;
+    width: 1rem;
+}
+
+.mycontainer .leftSide .formDiv .btnDiv button {
+    /* align-self: center; */
+    width: 20%;
+    /* margin-top: 2rem; */
+    color: white;
+    font-size: 1.2rem;
+    padding: 0.5rem 1rem;
+    border: 0.1rem solid purple;
+    cursor: pointer;
+    background-color: rgb(145, 0, 145);
+}
+
+.mycontainer .leftSide .formDiv .btnDiv button:hover {
+    background-color: rgb(178, 2, 178);
+}
+
+.mycontainer .leftSide .formDiv .other {
+    align-self: center;
+    /* background-color: red; */
+}
+
+.mycontainer .leftSide .formDiv .otherText {
+    margin-left: 0.5rem;
+    font-weight: bold;
+    color: purple;
+    cursor: pointer;
+    /* background-color: yellow; */
+}
+
+.mycontainer .rightSide {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    background: linear-gradient(to right, rgb(80, 0, 80), purple);
+}
+
+.mycontainer .rightSide .bannerDiv {
+    height: 57vh;
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-radius: 1rem;
+    background-color: white;
+    /* background-color: pink; */
+}
+
+.mycontainer .rightSide .bannerDiv span img {
+    height: 50vh !important;
+    width: 100% !important;
+}
+
+.mycontainer .rightSide .info {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    /* background-color: gold; */
+}
+
+.mycontainer .rightSide .info h2 {
+    margin-bottom: 1rem;
+    color: white;
+}
+
+.mycontainer .rightSide .info p {
+    color: white;
+    width: 80%;
+    text-align: center;
+    /* background-color: brown; */
+}

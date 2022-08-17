@@ -49,6 +49,7 @@ const handler = async (req, res)=> {
             user = await User.findByIdAndUpdate(id, {$push: {blogs: newblog}}, {new: true});
 
             const blogs = await Blog.find()
+                .populate("user")
                 .sort("-createdAt");
 
             success = true;

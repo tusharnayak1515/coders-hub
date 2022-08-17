@@ -1,0 +1,84 @@
+.navbar {
+    height: 13vh;
+    width: 100%;
+    padding: 0 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: purple;
+}
+
+.navbar .logoDiv {
+    width: 25vw;
+    /* background-color: palegreen; */
+}
+
+.navbar .logoDiv .logo {
+    color: white;
+}
+
+.navbar .searchDiv {
+    position: relative;
+    align-self: center;
+    width: 25vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-radius: 0.5rem;
+    /* background-color: brown; */
+}
+
+.navbar .searchDiv input {
+    outline: none;
+    width: 100%;
+    font-size: 1.2rem;
+    padding: 0.5rem 1rem;
+    border: 0.1rem solid red;
+    border-radius: 0.5rem;
+}
+
+.navbar .searchDiv .searchIcon {
+    position: absolute;
+    top: 0.2rem;
+    right: 1rem;
+    color: grey;
+    cursor: pointer;
+}
+
+.navbar .searchDiv .searchIcon:hover {
+    color: purple;
+}
+
+.navbar .menuDiv {
+    width: 25vw;
+    padding: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: hotpink; */
+}
+
+.navbar .menuDiv h3, .navbar .menuDiv .icons {
+    margin: 0 1rem;
+    padding: 0;
+    color: white;
+    cursor: pointer;
+    /* background-color: orange; */
+}
+
+.navbar .menuDiv .icons {
+    color: white;
+    font-size: 2rem;
+    /* cursor: pointer; */
+    /* background-color: orchid; */
+}
+
+.navbar .menuDiv .profileIcon {
+    font-size: 1.5rem;
+}
+
+.navbar .menuDiv h3:hover, .navbar .menuDiv .icons:hover {
+    color: pink;
+    transition: all 0.2s ease-in-out;
+}

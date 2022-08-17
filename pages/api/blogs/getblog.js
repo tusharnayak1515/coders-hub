@@ -24,6 +24,9 @@ const handler = async (req, res)=> {
                 return res.status(404).json({success, error: "Blog not found!"});
             }
 
+            blog = await Blog.findById(blogId)
+                .populate("user");
+
             success = true;
             return res.status(200).json({success, blog});
         } catch (error) {

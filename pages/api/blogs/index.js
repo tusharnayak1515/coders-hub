@@ -18,6 +18,7 @@ const handler = async (req, res)=> {
             }
 
             const blogs = await Blog.find()
+                .populate("user")
                 .sort("-createdAt");
 
             success = true;
