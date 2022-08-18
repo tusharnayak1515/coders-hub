@@ -11,10 +11,10 @@ const BlogItem = ({blog}) => {
   return (
     <div className={styles.blogItem}>
         <div className={styles.details}>
-            <h2>{blog.title}</h2>
-            <p>by {blog.user.name}</p>
+            <h3>{blog.title}</h3>
         </div>
         <div className={styles.time}>
+            <p>by {blog.user.name}</p>
             <p>posted {timeAgo.format(blog.createdAt)}</p>
         </div>
     </div>

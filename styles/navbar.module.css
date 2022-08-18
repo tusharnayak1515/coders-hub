@@ -34,8 +34,12 @@
     width: 100%;
     font-size: 1.2rem;
     padding: 0.5rem 1rem;
-    border: 0.1rem solid red;
+    border: 0.1rem solid pink;
     border-radius: 0.5rem;
+}
+
+.navbar .searchDiv input:focus {
+    border: 0.1rem solid rgb(255, 0, 255);
 }
 
 .navbar .searchDiv .searchIcon {

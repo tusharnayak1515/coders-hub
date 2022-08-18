@@ -1,10 +1,12 @@
 .blogItem {
     height: 12vh;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: flex-start;
     /* border-top: 0.05rem solid lightgrey; */
     border-bottom: 0.05rem solid lightgrey;
+    /* background-color: yellowgreen; */
 }
 
 .blogItem .details {
@@ -14,15 +16,27 @@
     /* background-color: brown; */
 }
 
-.blogItem .details h2 {
+.blogItem .details h3 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
     cursor: pointer;
-    margin-right: 1rem;
+    /* background-color: orange; */
 }
 
-.blogItem .details h2:hover {
+.blogItem .details h3:hover {
     text-decoration: underline;
 }
 
-.blogItem .details p, .blogItem .time p {
+.blogItem .time {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* background-color: orange; */
+}
+
+.blogItem .time p {
     color: grey;
 }

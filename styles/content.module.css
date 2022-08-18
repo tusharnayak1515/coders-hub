@@ -1,0 +1,27 @@
+.content {
+    width: 100%;
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    /* background-color: aquamarine; */
+}
+
+.content input, .content textarea {
+    margin-bottom: 1rem;
+}
+
+.content textarea {
+    height: 50vh !important;
+}
+
+.content .addContentIcon {
+    align-self: flex-end;
+    color: grey;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.content .addContentIcon:hover {
+    color: rgb(189, 0, 189);
+}

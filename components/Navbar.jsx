@@ -1,5 +1,4 @@
 import React from 'react';
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { shallowEqual, useSelector } from 'react-redux';
 import { FaUserAlt } from 'react-icons/fa';
@@ -32,10 +31,10 @@ const Navbar = () => {
         </div>
 
         <div className={styles.menuDiv}>
-            <Link href="/"><RiHome2Fill className={styles.icons} /></Link>
+            <RiHome2Fill className={styles.icons} onClick={()=> router.push("/")} />
             <IoMdAdd className={styles.icons} onClick={onBlogAdd} />
-            {profile && profile.role === "admin" && <Link href="/users"><ImUsers className={styles.icons} /></Link>}
-            <Link href="/profile"><FaUserAlt className={`${styles.icons} ${styles.profileIcon}`} /></Link>
+            {profile && profile.role === "admin" && <ImUsers className={styles.icons} onClick={()=> router.push("/users")} />}
+            <FaUserAlt className={`${styles.icons} ${styles.profileIcon}`} onClick={()=> router.push("/profile")} />
             <BiLogOut className={styles.icons} />
         </div>
     </div>

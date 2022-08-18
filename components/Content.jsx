@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { FaPlus } from 'react-icons/fa';
 
 import styles from "../styles/content.module.css";
 
@@ -28,7 +29,7 @@ const Content = ({myContent, setMyContent, updateCount}) => {
         value={thisContent.subtitle}
         onChange={contentChangeHandler}
       />
-      <input
+      <textarea
         type="text"
         name="code"
         id="code"
@@ -36,7 +37,7 @@ const Content = ({myContent, setMyContent, updateCount}) => {
         value={thisContent.code}
         onChange={contentChangeHandler}
       />
-      <button onClick={confirmContent}>Confirm</button>
+      {!myContent.includes(thisContent) && <FaPlus className={styles.addContentIcon} onClick={confirmContent} />}
     </div>
   );
 };

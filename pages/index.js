@@ -55,8 +55,8 @@ const Home = () => {
 
         <h1 className={styles.title}>Trending Blogs</h1>
 
-        {/* {user && <Blogs />} */}
-        <Blogs />
+        {user && <Blogs />}
+        {/* <Blogs /> */}
 
       </main>
     </div>

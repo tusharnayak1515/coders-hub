@@ -1,0 +1,61 @@
+.blogForm {
+    min-height: calc(100vh - 13vh);
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    background-color: white;
+    /* background-color: violet; */
+}
+
+.blogForm .pair {
+    width: 80%;
+    margin: 1rem auto;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    /* background-color: limegreen; */
+}
+
+.blogForm .pair label {
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+.blogForm .pair input, .blogForm .pair textarea {
+    width: 100%;
+    color: white;
+    padding: 1rem;
+    font-size: 1.2rem;
+    border: 0.1rem solid violet;
+    border-radius: 0.5rem;
+    background-color: purple;
+}
+
+.blogForm .pair input::placeholder, .blogForm .pair textarea::placeholder {
+    color: white;
+}
+
+.blogForm .pair textarea {
+    resize: none;
+    height: 30vh;
+}
+
+.blogForm .pair button {
+    align-self: flex-end;
+    padding: 0.5rem 1rem;
+    color: white;
+    font-size: 1.3rem;
+    border: 0.1rem solid pink;
+    border-radius: 0.5rem;
+    background-color: purple;
+    cursor: pointer;
+}
+
+.blogForm .pair button:hover {
+    color: purple;
+    border: 0.1rem solid purple;
+    background-color: white;
+    transition: all 0.2s ease-in-out;
+}

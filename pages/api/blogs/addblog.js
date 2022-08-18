@@ -7,7 +7,7 @@ import User from "../../../models/User";
 import Blog from "../../../models/Blog";
 
 const schema = joi.object({
-    title: joi.string().min(3).max(50).required().messages({
+    title: joi.string().min(3).max(100).required().messages({
         'title.min': '{#label} should contain at least {#min} characters!',
         'title.max': '{#label} should contain at most {#max} characters!',
         'title.required': '{#label} cannot be empty!',
