@@ -18,7 +18,6 @@ const Register = () => {
     email: "",
     password: "",
   });
-  const [isClicked, setIsClicked] = useState({name: false, email: false, password: false });
 
   const onChangeHandler = (e) => {
     e.preventDefault();
@@ -83,18 +82,6 @@ const Register = () => {
     router.replace("/login");
   };
 
-  const onInputClick = (e)=> {
-    e.preventDefault();
-    const { name } = e.target;
-    setIsClicked({...isClicked, [name]: true});
-  }
-
-  const onBlurClick = (e)=> {
-    e.preventDefault();
-    const { name } = e.target;
-    setIsClicked({...isClicked, [name]: false});
-  }
-
   useEffect(() => {
     if (user) {
       router.replace("/");
@@ -127,11 +114,8 @@ const Register = () => {
               placeholder="Enter name"
               name="name"
               id="name"
-              className={isClicked.name ? styles.input_active : ""}
               value={userDetails.name}
               onChange={onChangeHandler}
-              onFocus={onInputClick}
-              onBlur={onBlurClick}
             />
           </div>
           <div className={styles.flexDiv}>
@@ -141,11 +125,8 @@ const Register = () => {
               placeholder="Enter email"
               name="email"
               id="email"
-              className={isClicked.email ? styles.input_active : ""}
               value={userDetails.email}
               onChange={onChangeHandler}
-              onFocus={onInputClick}
-              onBlur={onBlurClick}
             />
           </div>
           <div className={styles.flexDiv}>
@@ -155,11 +136,8 @@ const Register = () => {
               placeholder="Enter password"
               name="password"
               id="password"
-              className={isClicked.password ? styles.input_active : ""}
               value={userDetails.password}
               onChange={onChangeHandler}
-              onFocus={onInputClick}
-              onBlur={onBlurClick}
             />
           </div>
 

@@ -1,9 +1,6 @@
 .blogForm {
     min-height: calc(100vh - 13vh);
     width: 100%;
-    overflow-x: hidden;
-    overflow-y: scroll;
-    background-color: white;
     /* background-color: violet; */
 }
 
@@ -19,6 +16,7 @@
 }
 
 .blogForm .pair label {
+    color: white;
     margin-bottom: 1rem;
     font-size: 1.3rem;
 }
@@ -34,7 +32,7 @@
 }
 
 .blogForm .pair input::placeholder, .blogForm .pair textarea::placeholder {
-    color: white;
+    color: lightgrey;
 }
 
 .blogForm .pair textarea {
@@ -47,7 +45,7 @@
     padding: 0.5rem 1rem;
     color: white;
     font-size: 1.3rem;
-    border: 0.1rem solid pink;
+    border: 0.1rem solid violet;
     border-radius: 0.5rem;
     background-color: purple;
     cursor: pointer;
@@ -55,7 +53,6 @@
 
 .blogForm .pair button:hover {
     color: purple;
-    border: 0.1rem solid purple;
     background-color: white;
     transition: all 0.2s ease-in-out;
 }

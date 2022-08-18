@@ -62,7 +62,7 @@
     border: 0.1rem solid grey;
 }
 
-.mycontainer .leftSide .formDiv .flexDiv input.input_active {
+.mycontainer .leftSide .formDiv .flexDiv input:focus {
     border: 0.1rem solid rgb(175, 1, 175);
 }
 

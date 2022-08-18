@@ -4,7 +4,7 @@ import { FaPlus } from 'react-icons/fa';
 import styles from "../styles/content.module.css";
 
 const Content = ({myContent, setMyContent, updateCount}) => {
-  const [thisContent, setThisContent] = useState({ subtitle: "", code: "" });
+  const [thisContent, setThisContent] = useState({ subtitle: "", language: "", code: "" });
 
   const contentChangeHandler = (e) => {
     e.preventDefault();
@@ -27,6 +27,14 @@ const Content = ({myContent, setMyContent, updateCount}) => {
         id="subtitle"
         placeholder="Subtitle"
         value={thisContent.subtitle}
+        onChange={contentChangeHandler}
+      />
+      <input
+        type="text"
+        name="language"
+        id="language"
+        placeholder="Language"
+        value={thisContent.language}
         onChange={contentChangeHandler}
       />
       <textarea

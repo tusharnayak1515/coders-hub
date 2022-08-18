@@ -38,6 +38,7 @@ const BlogForm = () => {
       blogDetails.category.length >= 3 &&
       blogDetails.category.length <= 15
     ) {
+        // console.log(blogDetails);
         dispatch(actionCreators.addBlog(blogDetails));
         router.replace("/");
     }

@@ -5,7 +5,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: purple;
+    border-bottom: 0.1rem solid white;
+    background-color: rgb(62, 0, 62);
 }
 
 .navbar .logoDiv {

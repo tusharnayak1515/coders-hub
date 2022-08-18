@@ -25,7 +25,7 @@ const handler = async (req, res)=> {
         let success = false;
         try {
             const id = req.user.id;
-            const {title, description=null, content=null, category} = req.body;
+            const {title, description, content, category} = req.body;
             const {error} = schema.validate({title, category});
             if(error) {
                 success = false;
@@ -40,8 +40,8 @@ const handler = async (req, res)=> {
 
             const newblog = await Blog.create({
                 title,
-                description: description,
-                content: content,
+                description,
+                content,
                 category,
                 user: id
             });

@@ -13,7 +13,6 @@ const Login = () => {
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.userReducer, shallowEqual);
   const [userDetails, setUserDetails] = useState({ email: "", password: "" });
-  const [isClicked, setIsClicked] = useState({ email: false, password: false });
 
   const onChangeHandler = (e) => {
     e.preventDefault();
@@ -59,18 +58,6 @@ const Login = () => {
     router.replace("/register");
   };
 
-  const onInputClick = (e)=> {
-    e.preventDefault();
-    const { name } = e.target;
-    setIsClicked({...isClicked, [name]: true});
-  }
-
-  const onBlurClick = (e)=> {
-    e.preventDefault();
-    const { name } = e.target;
-    setIsClicked({...isClicked, [name]: false});
-  }
-
   useEffect(() => {
     if (user) {
       router.replace("/");
@@ -102,11 +89,8 @@ const Login = () => {
               placeholder="Enter email"
               name="email"
               id="email"
-              className={isClicked.email ? styles.input_active : ""}
               value={userDetails.email}
               onChange={onChangeHandler}
-              onFocus={onInputClick}
-              onBlur={onBlurClick}
             />
           </div>
           <div className={styles.flexDiv}>
@@ -116,11 +100,8 @@ const Login = () => {
               placeholder="Enter password"
               name="password"
               id="password"
-              className={isClicked.password ? styles.input_active : ""}
               value={userDetails.password}
               onChange={onChangeHandler}
-              onFocus={onInputClick}
-              onBlur={onBlurClick}
             />
           </div>
 
