@@ -26,9 +26,9 @@
     color: white;
     padding: 1rem;
     font-size: 1.2rem;
-    border: 0.1rem solid violet;
+    border: 0.1rem solid #af8afa;
     border-radius: 0.5rem;
-    background-color: purple;
+    background-color: #3b3b3b;
 }
 
 .blogForm .pair input::placeholder, .blogForm .pair textarea::placeholder {
@@ -45,14 +45,19 @@
     padding: 0.5rem 1rem;
     color: white;
     font-size: 1.3rem;
-    border: 0.1rem solid violet;
+    border: 0.1rem solid #b486ec;
     border-radius: 0.5rem;
-    background-color: purple;
+    background-color: #af8afa;
     cursor: pointer;
 }
 
 .blogForm .pair button:hover {
-    color: purple;
+    color: #af8afa;
     background-color: white;
     transition: all 0.2s ease-in-out;
+}
+
+.blogForm .pair .wrap {
+    width: 100%;
+    /* background-color: antiquewhite; */
 }

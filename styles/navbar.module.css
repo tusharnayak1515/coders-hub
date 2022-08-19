@@ -3,10 +3,10 @@
     width: 100%;
     padding: 0 3rem;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
-    border-bottom: 0.1rem solid white;
-    background-color: rgb(62, 0, 62);
+    border-bottom: 0.1rem solid #af8afa;
+    background-color: #212121;
 }
 
 .navbar .logoDiv {
@@ -35,24 +35,21 @@
     width: 100%;
     font-size: 1.2rem;
     padding: 0.5rem 1rem;
-    border: 0.1rem solid pink;
+    border: 0.1rem solid #af8afa;
     border-radius: 0.5rem;
-}
-
-.navbar .searchDiv input:focus {
-    border: 0.1rem solid rgb(255, 0, 255);
+    background-color: #3b3b3b;
 }
 
 .navbar .searchDiv .searchIcon {
     position: absolute;
     top: 0.2rem;
     right: 1rem;
-    color: grey;
+    color: #af8afa;
     cursor: pointer;
 }
 
 .navbar .searchDiv .searchIcon:hover {
-    color: purple;
+    color: #d8b8ff;
 }
 
 .navbar .menuDiv {
@@ -73,9 +70,7 @@
 }
 
 .navbar .menuDiv .icons {
-    color: white;
     font-size: 2rem;
-    /* cursor: pointer; */
     /* background-color: orchid; */
 }
 
@@ -84,6 +79,6 @@
 }
 
 .navbar .menuDiv h3:hover, .navbar .menuDiv .icons:hover {
-    color: pink;
+    color: #af8afa;
     transition: all 0.2s ease-in-out;
 }

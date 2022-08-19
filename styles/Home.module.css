@@ -19,7 +19,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border-bottom: 0.1rem solid lightgrey;
+  border-bottom: 0.1rem solid #af8afa;
   /* background-color: orange; */
 }
 

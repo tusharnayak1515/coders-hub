@@ -1,23 +1,71 @@
-import React, { useState } from "react";
-import { FaPlus } from 'react-icons/fa';
+import React, { useEffect, useState } from "react";
+import { FaPlus } from "react-icons/fa";
 
 import styles from "../styles/content.module.css";
 
-const Content = ({myContent, setMyContent, updateCount}) => {
-  const [thisContent, setThisContent] = useState({ subtitle: "", language: "", code: "" });
+const Content = ({edit, content, myContent, setMyContent, updateCount }) => {
+  const [thisContent, setThisContent] = useState({
+    _id: (content && content._id) ? content._id : undefined,
+    subtitle: (content && content.subtitle) ? content.subtitle : "",
+    language: (content && content.language) ? content.language : "",
+    code: (content && content.code) ? content.code : "",
+  });
 
   const contentChangeHandler = (e) => {
     e.preventDefault();
     const { name, value } = e.target;
-    setThisContent({...thisContent, [name]: value});
+    setThisContent({ ...thisContent, [name]: value });
   };
 
-  const confirmContent = (e)=> {
-    console.log("thisContent: ",thisContent);
+  const confirmContent = (e) => {
+    // console.log("thisContent: ", thisContent);
     e.preventDefault();
     updateCount(e);
-    setMyContent([...myContent, thisContent]);
-  }
+    if(!content) {
+      // console.log("yes: ",content);
+      setMyContent([...myContent, thisContent]);
+      if(edit) {
+        setThisContent({_id: undefined, subtitle: "", language: "", code: ""});
+      }
+    }
+    else {
+      let contentarr = [];
+      contentarr = myContent.map((c)=> {
+        if(c._id === thisContent._id) {
+          return thisContent;
+        }
+        return c;
+      })
+      // console.log("....");
+      // setMyContent((mycontent)=> {
+      //   mycontent.map((c1, ind)=> {
+      //     console.log("c1: ", c1);
+      //     console.log("this: ", thisContent);
+      //     console.log("equality: ", ind === index);
+      //     if(c1 === thisContent) {
+      //       return thisContent;
+      //     }
+      //     else {
+      //       return c1;
+      //     }
+      //   })
+      // });
+      // console.log(contentarr);
+      setMyContent(contentarr);
+    }
+  };
+
+  // useEffect(()=> {
+  //   console.log("content: ",content);
+  //   console.log("thisContent: ",thisContent);
+  //   console.log("myContent.length: ",myContent.length);
+  //   console.log("myContent: ",myContent);
+  //   console.log(myContent.includes(thisContent));
+  // }, [myContent]);
+
+  // console.log("thisContent: ",thisContent);
+  // console.log("myContent: ",[...myContent]);
+  // console.log("present: ",myContent.includes(thisContent));
 
   return (
     <div className={styles.content}>
@@ -45,7 +93,12 @@ const Content = ({myContent, setMyContent, updateCount}) => {
         value={thisContent.code}
         onChange={contentChangeHandler}
       />
-      {!myContent.includes(thisContent) && <FaPlus className={styles.addContentIcon} onClick={confirmContent} />}
+      {(!content && myContent.includes(thisContent) === false) && (
+        <FaPlus className={styles.addContentIcon} onClick={confirmContent} />
+      )}
+      {(content && myContent.includes(thisContent) === false) && (
+        <FaPlus className={styles.addContentIcon} onClick={confirmContent} />
+      )}
     </div>
   );
 };

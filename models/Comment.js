@@ -12,6 +12,10 @@ const CommentSchema = new Schema({
             type: String,
             default: null
         },
+        language: {
+            type: String,
+            default: null
+        },
         code: {
             type: String,
             default: null
