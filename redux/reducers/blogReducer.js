@@ -124,6 +124,14 @@ const blogReducer = (state=initState, action)=> {
             isLoading: false
         }
     }
+    else if(action.type === "logout") {
+        return {
+            ...state,
+            blogs: null,
+            blog: null,
+            isLoading: false
+        }
+    }
     else {
         return state;
     }

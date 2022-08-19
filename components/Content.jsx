@@ -18,11 +18,9 @@ const Content = ({edit, content, myContent, setMyContent, updateCount }) => {
   };
 
   const confirmContent = (e) => {
-    // console.log("thisContent: ", thisContent);
     e.preventDefault();
     updateCount(e);
     if(!content) {
-      // console.log("yes: ",content);
       setMyContent([...myContent, thisContent]);
       if(edit) {
         setThisContent({_id: undefined, subtitle: "", language: "", code: ""});
@@ -36,21 +34,6 @@ const Content = ({edit, content, myContent, setMyContent, updateCount }) => {
         }
         return c;
       })
-      // console.log("....");
-      // setMyContent((mycontent)=> {
-      //   mycontent.map((c1, ind)=> {
-      //     console.log("c1: ", c1);
-      //     console.log("this: ", thisContent);
-      //     console.log("equality: ", ind === index);
-      //     if(c1 === thisContent) {
-      //       return thisContent;
-      //     }
-      //     else {
-      //       return c1;
-      //     }
-      //   })
-      // });
-      // console.log(contentarr);
       setMyContent(contentarr);
     }
   };
@@ -62,10 +45,6 @@ const Content = ({edit, content, myContent, setMyContent, updateCount }) => {
   //   console.log("myContent: ",myContent);
   //   console.log(myContent.includes(thisContent));
   // }, [myContent]);
-
-  // console.log("thisContent: ",thisContent);
-  // console.log("myContent: ",[...myContent]);
-  // console.log("present: ",myContent.includes(thisContent));
 
   return (
     <div className={styles.content}>

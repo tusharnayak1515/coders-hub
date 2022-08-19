@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { toast } from "react-toastify";
 import { actionCreators } from "../redux";
 import Content from "./Content";
@@ -10,6 +10,7 @@ import styles from "../styles/blogForm.module.css";
 const BlogForm = ({ blog }) => {
   const router = useRouter();
   const dispatch = useDispatch();
+  const {profile} = useSelector(state=> state.userReducer,shallowEqual);
   const [count, setCount] = useState(
     blog && blog.content ? blog.content.length : 1
   );
@@ -82,7 +83,12 @@ const BlogForm = ({ blog }) => {
       blogDetails.category.length <= 15
     ) {
       // console.log(blogDetails);
-      dispatch(actionCreators.editBlog(blogDetails));
+      if(profile?.role === "admin") {
+        dispatch(actionCreators.editOtherBlog(blogDetails));
+      }
+      else {
+        dispatch(actionCreators.editBlog(blogDetails));
+      }
       router.replace(`/blogs/${blog._id}`);
     } else {
       if (blogDetails.title.length < 3 || blogDetails.title.length > 100) {
@@ -178,12 +184,6 @@ const BlogForm = ({ blog }) => {
             />
           );
         })}
-        {blog && <Content
-          edit={true}
-          updateCount={updateCount}
-          myContent={myContent}
-          setMyContent={setMyContent}
-        />}
         {blog && blogDetails.content.map((c, index) => {
           return (
             <Content
@@ -196,18 +196,12 @@ const BlogForm = ({ blog }) => {
             />
           );
         })}
-        {/* {blog && <Content
+        {blog && <Content
+          edit={true}
           updateCount={updateCount}
           myContent={myContent}
           setMyContent={setMyContent}
-        />} */}
-        {/* {blogDetails.content.length !== 0 && (
-          <Content
-            updateCount={updateCount}
-            myContent={myContent}
-            setMyContent={setMyContent}
-          />
-        )} */}
+        />}
       </div>
 
       <div className={styles.pair}>

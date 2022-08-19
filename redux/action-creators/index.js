@@ -1,5 +1,5 @@
 import axios from "axios";
-import { getCookie } from "cookies-next";
+import { deleteCookie, getCookie } from "cookies-next";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -554,6 +554,24 @@ export const getUser = ({id, token})=> async (dispatch)=> {
             progress: undefined,
         });
     }
+}
+
+export const logout = ()=> async (dispatch)=> {
+    deleteCookie("jb_user_token");
+    localStorage.removeItem("jb_user_profile");
+    localStorage.removeItem("jb_blogs");
+    dispatch({
+        type: "logout"
+    });
+    toast.success("Logged out successfully!", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+    });
 }
 
 // *********************************** BLOG SECTION *********************************** \\

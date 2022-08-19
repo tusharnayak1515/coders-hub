@@ -1,22 +1,29 @@
 import React from 'react';
 import { useRouter } from 'next/router';
-import { shallowEqual, useSelector } from 'react-redux';
+import { shallowEqual, useSelector, useDispatch } from 'react-redux';
 import { FaUserAlt } from 'react-icons/fa';
 import { MdSearch } from 'react-icons/md';
 import { IoMdAdd } from 'react-icons/io';
 import { BiLogOut } from 'react-icons/bi';
 import { RiHome2Fill } from 'react-icons/ri';
 import { ImUsers } from 'react-icons/im';
+import { actionCreators } from '../redux';
 
 import styles from '../styles/navbar.module.css';
 
 const Navbar = () => {
   const router = useRouter();
+  const dispatch = useDispatch();
   const {profile} = useSelector(state=> state.userReducer,shallowEqual);
 
   const onBlogAdd = (e)=> {
     e.preventDefault();
     router.push("/addblog");
+  }
+
+  const onLogout = (e)=> {
+    e.preventDefault();
+    dispatch(actionCreators.logout());
   }
 
   return (
@@ -35,7 +42,7 @@ const Navbar = () => {
             <IoMdAdd className={styles.icons} onClick={onBlogAdd} />
             {profile && profile.role === "admin" && <ImUsers className={styles.icons} onClick={()=> router.push("/users")} />}
             <FaUserAlt className={`${styles.icons} ${styles.profileIcon}`} onClick={()=> router.push("/profile")} />
-            <BiLogOut className={styles.icons} />
+            <BiLogOut className={styles.icons} onClick={onLogout} />
         </div>
     </div>
   )

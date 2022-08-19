@@ -15,11 +15,11 @@ import styles from "../../styles/blogPage.module.css";
 TimeAgo.addLocale(en);
 
 const BlogPage = () => {
-  const timeAgo = new TimeAgo("en-US");
   const router = useRouter();
   const dispatch = useDispatch();
-  const { user } = useSelector((state) => state.userReducer, shallowEqual);
+  const { user, profile } = useSelector((state) => state.userReducer, shallowEqual);
   const { blog } = useSelector((state) => state.blogReducer, shallowEqual);
+  const timeAgo = user && new TimeAgo("en-US");
 
   const onEditClick = (e) => {
     e.preventDefault();
@@ -38,8 +38,6 @@ const BlogPage = () => {
     Prism.highlightAll();
   }, []);
 
-  console.log(blog);
-
   return (
     <div className={styles.blog_page}>
       <Head>
@@ -53,7 +51,7 @@ const BlogPage = () => {
       <div className={styles.blog_container}>
         <div className={styles.blog_title}>
           <h1>{blog?.title}</h1>
-          <FaEdit className={styles.blog_editIcon} onClick={onEditClick} />
+          {(blog?.user?._id === profile?._id || profile?.role === "admin") &&<FaEdit className={styles.blog_editIcon} onClick={onEditClick} />}
         </div>
         <h3 className={styles.blog_description}>{blog?.description}</h3>
         <h3 className={styles.blog_category}>
@@ -84,10 +82,10 @@ const BlogPage = () => {
         </div>
         <div className={styles.blog_time}>
           <p>by {blog?.user.name}</p>
-          {blog.createdAt === blog.updatedAt ? (
-            <p>posted {timeAgo.format(blog.createdAt)}</p>
+          {blog?.createdAt === blog?.updatedAt ? (
+            <p>posted {timeAgo?.format(blog?.createdAt)}</p>
           ) : (
-            <p>updated {timeAgo.format(blog.updatedAt)}</p>
+            <p>updated {timeAgo?.format(blog?.updatedAt)}</p>
           )}
         </div>
       </div>

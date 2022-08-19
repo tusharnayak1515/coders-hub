@@ -215,6 +215,16 @@ const userReducer = (state=initState, action)=> {
             isLoading: false
         }
     }
+    else if(action.type === "logout") {
+        return {
+            ...state,
+            user: null,
+            profile: null,
+            users: null,
+            otherUser: null,
+            isLoading: false
+        }
+    }
     else {
         return state;
     }
