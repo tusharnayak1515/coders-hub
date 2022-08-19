@@ -25,6 +25,11 @@ const handler = async (req, res)=> {
                 return res.status(404).json({success, error: "Blog not found!"});
             }
 
+            if(user._id.toString() !== blog.user.toString()) {
+                success = false;
+                return res.status(404).json({success, error: "You do not have permission to perform this action!"});
+            }
+
             user = await User.findByIdAndUpdate(userId, {$pull: {blogs: blogId}}, {new: true})
                 .select("-password")
                 .populate("blogs");

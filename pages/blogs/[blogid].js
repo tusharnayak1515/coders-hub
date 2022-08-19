@@ -9,6 +9,7 @@ import TimeAgo from "javascript-time-ago";
 import en from "javascript-time-ago/locale/en";
 import Prism from "prismjs";
 import { FaEdit, FaTrash } from "react-icons/fa";
+import { toast } from "react-toastify";
 
 import styles from "../../styles/blogPage.module.css";
 
@@ -17,24 +18,49 @@ TimeAgo.addLocale(en);
 const BlogPage = () => {
   const router = useRouter();
   const dispatch = useDispatch();
-  const { user, profile } = useSelector(state => state.userReducer,shallowEqual);
+  const { user, profile } = useSelector(
+    (state) => state.userReducer,
+    shallowEqual
+  );
   const { blog } = useSelector((state) => state.blogReducer, shallowEqual);
   const timeAgo = user && new TimeAgo("en-US");
 
   const onEditClick = (e) => {
     e.preventDefault();
-    router.push(`/editblog/${blog._id}`);
+    if (blog?.user._id === profile?._id || profile?.role === "admin") {
+      router.push(`/editblog/${blog._id}`);
+    } else {
+      toast.warn("You do not have permission to perform this action!", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
   };
 
   const onDeleteClick = (e) => {
     e.preventDefault();
-    if(profile?.role === "admin") {
+    if (blog?.user._id !== profile._id && profile?.role === "admin") {
       dispatch(actionCreators.deleteOtherBlog(blog?._id));
-    }
-    else {
+      router.replace("/");
+    } else if (blog?.user._id === profile._id) {
       dispatch(actionCreators.deleteBlog(blog?._id));
+      router.replace("/");
+    } else {
+      toast.warn("You do not have permission to perform this action!", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     }
-    router.replace("/");
   };
 
   useEffect(() => {
@@ -63,12 +89,17 @@ const BlogPage = () => {
         <div className={styles.blog_title}>
           <h1>{blog?.title}</h1>
           <div className={styles.blog_iconDiv}>
-            {(blog?.user?._id === profile?._id || profile?.role === "admin") && (
+            {(blog?.user?._id === profile?._id ||
+              profile?.role === "admin") && (
               <FaEdit className={styles.blog_editIcon} onClick={onEditClick} />
             )}
 
-            {(blog?.user?._id === profile?._id || profile?.role === "admin") && (
-              <FaTrash className={styles.blog_deleteIcon} onClick={onDeleteClick} />
+            {(blog?.user?._id === profile?._id ||
+              profile?.role === "admin") && (
+              <FaTrash
+                className={styles.blog_deleteIcon}
+                onClick={onDeleteClick}
+              />
             )}
           </div>
         </div>
@@ -87,9 +118,7 @@ const BlogPage = () => {
                   {c.code && c.code !== "" && (
                     <pre className="line-numbers">
                       <code
-                        className={`language-${c.language
-                          .trim()
-                          .toLowerCase()}`}
+                        className={`language-${c.language?.trim().toLowerCase()}`}
                       >
                         {c.code}
                       </code>

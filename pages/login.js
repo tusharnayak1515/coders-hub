@@ -4,6 +4,7 @@ import Head from "next/head";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { actionCreators } from "../redux";
+import { toast } from "react-toastify";
 import bannerImg from "../public/static/images/banner.svg";
 
 import styles from "../styles/login_register.module.css";

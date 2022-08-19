@@ -12,13 +12,17 @@ import styles from "../../styles/editblog.module.css";
 const EditBlog = () => {
   const router = useRouter();
   const dispatch = useDispatch();
-  const { user } = useSelector((state) => state.userReducer, shallowEqual);
+  const { user, profile } = useSelector((state) => state.userReducer, shallowEqual);
   const { blog } = useSelector((state) => state.blogReducer, shallowEqual);
 
   useEffect(() => {
     if (!user) {
       router.replace("/login");
-    } else {
+    }
+    else if(user && (profile?._id !== blog?.user._id && profile?.role !== "admin")) {
+      router.replace(`/blogs/${blog?._id}`);
+    }
+    else {
       dispatch(actionCreators.getBlog({ id: router.query.bid }));
     }
   }, [user, router, dispatch]);

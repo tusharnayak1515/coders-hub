@@ -44,6 +44,11 @@ const handler = async (req, res)=> {
                 return res.status(404).json({success, error: "Blog not found!"});
             }
 
+            if(user._id.toString() !== blog.user.toString()) {
+                success = false;
+                return res.status(404).json({success, error: "You do not have permission to perform this action!"});
+            }
+
             blog = await Blog.findByIdAndUpdate(id, {title,description,content,category}, {new: true})
                 .populate("user");
 
