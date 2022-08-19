@@ -29,6 +29,7 @@ const masterReducer = (state,action)=> {
             },
             commentReducer: {
                 comments: action.payload.commentReducer.comments ? action.payload.commentReducer.comments : state.commentReducer.comments,
+                comment: action.payload.commentReducer.comment ? action.payload.commentReducer.comment : state.commentReducer.comment,
                 isLoading: state.commentReducer.isLoading,
             },
         }

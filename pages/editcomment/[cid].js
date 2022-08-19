@@ -5,9 +5,10 @@ import * as cookie from "cookie";
 import { wrapper } from '../../redux/store';
 import { actionCreators } from '../../redux';
 
-import styles from "../../styles/commentPage.module.css";
+import styles from "../../styles/editComment.module.css";
+import CommentForm from '../../components/CommentForm';
 
-const CommentPage = () => {
+const EditComment = () => {
   const router = useRouter();
   const dispatch = useDispatch();
   const {user} = useSelector(state=> state.userReducer,shallowEqual);
@@ -23,13 +24,13 @@ const CommentPage = () => {
   }, [user, router, dispatch]);
 
   return (
-    <div className={styles.commentsPage}>
-        CommentPage
+    <div className={styles.editComment}>
+        <CommentForm comment={comment} />
     </div>
   )
 }
 
-export default CommentPage;
+export default EditComment;
 
 export const getServerSideProps = wrapper.getServerSideProps(
     (store) => async (context) => {

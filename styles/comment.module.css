@@ -1,0 +1,144 @@
+.comment_div {
+    width: 100%;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border-bottom: 0.1rem solid #af8afa;
+    /* background-color: brown; */
+}
+
+.comment_div .comment_user_div {
+    width: 100%;
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* background-color: yellowgreen; */
+}
+
+.comment_div .comment_user_div .flex_div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: orange; */
+}
+
+.comment_div .comment_user_div .flex_div .dp_div {
+    height: 2.5rem;
+    width: 2.5rem;
+    margin-right: 1rem;
+    border: 0.1rem solid #af8afa;
+    border-radius: 50%;
+}
+
+.comment_div .comment_user_div .dp_div img {
+    height: 100%;
+    width: 100%;
+    border: none;
+    border-radius: 50%;
+}
+
+.comment_div .comment_user_div .comment_user_name {
+    color: white;
+}
+
+/* .comment_div .comment_user_div .operations {
+    background-color: palegreen;
+} */
+
+.comment_div .comment_user_div .operations .operation_icons {
+    font-size: 1.5rem;
+    color: white;
+    cursor: pointer;
+}
+
+.comment_div .comment_user_div .operations .operations_edit_icon {
+    margin-right: 1rem;
+}
+
+.comment_div .comment_user_div .operations .operations_edit_icon:hover {
+    color: #af8afa;
+    transition: all 0.2s ease-in-out;
+}
+
+.comment_div .comment_user_div .operations .operations_delete_icon:hover {
+    color: red;
+    transition: all 0.2s ease-in-out;
+}
+
+.comment_div .comment_details_div {
+    width: 100%;
+    /* background-color: blue; */
+}
+
+.comment_div .comment_details_div h4 {
+    width: 100%;
+    color: white;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.comment_div .comment_details_div .comment_title {
+    margin-bottom: 2rem;
+    color: white;
+}
+
+.comment_div .comment_details_div .solution_div {
+    margin-bottom: 1.5rem;
+    /* background-color: orange; */
+}
+
+.comment_div .comment_details_div .solution_div .comment_subtitle {
+    margin-bottom: 1rem;
+}
+
+.comment_div .comment_details_div .solution_div pre {
+    height: 50vh;
+    width: 100%;
+    border: none;
+    border-radius: 0.5rem;
+    /* background-color: orange; */
+}
+
+.comment_div .likes_div {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    /* background-color: green; */
+}
+
+.comment_div .likes_div .like_icons {
+    color: #af8afa;
+    font-size: 2.5rem;
+    cursor: pointer;
+}
+
+.comment_div .likes_div .icon_div {
+    width: 100%;
+    margin-bottom: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* background-color: darkblue; */
+}
+
+.comment_div .likes_div .likes_count {
+    color: white;
+}
+
+.comment_div .likes_div .icon_div .comment_time {
+    color: white;
+}
+
+/* .comment_div .likes_div .liked_icon {
+    color: #af8afa;
+} */
+
+/* .comment_div .likes_div .not_liked_icon {
+    color: #af8afa;
+} */

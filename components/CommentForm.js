@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { actionCreators } from "../redux";
 import Comment_Content from "./Comment_Content";
+import { toast } from "react-toastify";
 
 import styles from "../styles/commentForm.module.css";
 
@@ -65,7 +66,7 @@ const CommentForm = ({comment}) => {
           progress: undefined,
         });
       }
-      router.replace(`/comments/${comment._id}`);
+      router.replace(`/blogs/${comment.blog}`);
     } else {
         toast.warn("Title must be minimum 3 and maximum 100 characters long!", {
             position: "top-right",

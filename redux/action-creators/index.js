@@ -1103,7 +1103,7 @@ export const getComment = ({id, token})=> async (dispatch)=> {
     const url = process.env.NODE_ENV === "production" ? "" : "http://localhost:3000";
 
     try {
-        const res = await axios.get(`${url}/api/blogs/getcomment?id=${id}`, {headers: {jb_user_token: token}});
+        const res = await axios.get(`${url}/api/comment/getcomment?id=${id}`, {headers: {jb_user_token: token}});
 
         if(res.data.success) {
             dispatch({

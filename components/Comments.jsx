@@ -2,6 +2,7 @@ import React from 'react';
 import { useRouter } from 'next/router';
 import { useSelector, shallowEqual } from 'react-redux';
 import { MdAdd } from 'react-icons/md';
+import Comment from './Comment';
 
 import styles from "../styles/comments.module.css";
 
@@ -22,7 +23,7 @@ const Comments = () => {
             <MdAdd className={styles.comments_addIcon} onClick={onAddClick} />
         </div>
         {comments && comments?.length === 0 ? <h3 className={styles.noComments}>No comments!</h3> : comments?.map((com)=> {
-          return <p key={com._id}>{com.title}</p>
+          return <Comment key={com._id} comment={com} />
         })}
     </div>
   )

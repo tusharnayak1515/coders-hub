@@ -41,6 +41,7 @@ const handler = async (req, res)=> {
             comment = await Comment.findByIdAndDelete(commentId, {new: true});
 
             const comments = await Comment.find({blog: blogId})
+                .populate("user")
                 .sort({likes: -1})
                 .limit(20);
 
