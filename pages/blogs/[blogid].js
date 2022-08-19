@@ -8,7 +8,7 @@ import { actionCreators } from "../../redux";
 import TimeAgo from "javascript-time-ago";
 import en from "javascript-time-ago/locale/en";
 import Prism from "prismjs";
-import { FaEdit } from "react-icons/fa";
+import { FaEdit, FaTrash } from "react-icons/fa";
 
 import styles from "../../styles/blogPage.module.css";
 
@@ -17,13 +17,24 @@ TimeAgo.addLocale(en);
 const BlogPage = () => {
   const router = useRouter();
   const dispatch = useDispatch();
-  const { user, profile } = useSelector((state) => state.userReducer, shallowEqual);
+  const { user, profile } = useSelector(state => state.userReducer,shallowEqual);
   const { blog } = useSelector((state) => state.blogReducer, shallowEqual);
   const timeAgo = user && new TimeAgo("en-US");
 
   const onEditClick = (e) => {
     e.preventDefault();
     router.push(`/editblog/${blog._id}`);
+  };
+
+  const onDeleteClick = (e) => {
+    e.preventDefault();
+    if(profile?.role === "admin") {
+      dispatch(actionCreators.deleteOtherBlog(blog?._id));
+    }
+    else {
+      dispatch(actionCreators.deleteBlog(blog?._id));
+    }
+    router.replace("/");
   };
 
   useEffect(() => {
@@ -51,11 +62,19 @@ const BlogPage = () => {
       <div className={styles.blog_container}>
         <div className={styles.blog_title}>
           <h1>{blog?.title}</h1>
-          {(blog?.user?._id === profile?._id || profile?.role === "admin") &&<FaEdit className={styles.blog_editIcon} onClick={onEditClick} />}
+          <div className={styles.blog_iconDiv}>
+            {(blog?.user?._id === profile?._id || profile?.role === "admin") && (
+              <FaEdit className={styles.blog_editIcon} onClick={onEditClick} />
+            )}
+
+            {(blog?.user?._id === profile?._id || profile?.role === "admin") && (
+              <FaTrash className={styles.blog_deleteIcon} onClick={onDeleteClick} />
+            )}
+          </div>
         </div>
         <h3 className={styles.blog_description}>{blog?.description}</h3>
         <h3 className={styles.blog_category}>
-          Category: <span>{blog?.category}</span>
+          Category: <span className={styles.text}>{blog?.category}</span>
         </h3>
         <div className={styles.blog_content}>
           {blog &&
