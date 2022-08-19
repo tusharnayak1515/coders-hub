@@ -83,13 +83,25 @@ const BlogForm = ({ blog }) => {
       blogDetails.category.length <= 15
     ) {
       // console.log(blogDetails);
-      if(profile?.role === "admin") {
+      if(blog?.user._id !== profile?._id && profile?.role === "admin") {
         dispatch(actionCreators.editOtherBlog(blogDetails));
+        router.replace(`/blogs/${blog._id}`);
+      }
+      else if(blog?.user._id === profile?._id) {
+        dispatch(actionCreators.editBlog(blogDetails));
+        router.replace(`/blogs/${blog._id}`);
       }
       else {
-        dispatch(actionCreators.editBlog(blogDetails));
+        toast.warn("You do not have permission to perform this task!", {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
       }
-      router.replace(`/blogs/${blog._id}`);
     } else {
       if (blogDetails.title.length < 3 || blogDetails.title.length > 100) {
         toast.warn("Title must be minimum 3 and maximum 100 characters long!", {

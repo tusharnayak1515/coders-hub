@@ -1094,6 +1094,62 @@ export const getAllComments = ({id, token})=> async (dispatch)=> {
     }
 }
 
+
+export const getComment = ({id, token})=> async (dispatch)=> {
+    dispatch({
+        type: "comments-loading"
+    });
+
+    const url = process.env.NODE_ENV === "production" ? "" : "http://localhost:3000";
+
+    try {
+        const res = await axios.get(`${url}/api/blogs/getcomment?id=${id}`, {headers: {jb_user_token: token}});
+
+        if(res.data.success) {
+            dispatch({
+                type: "get-comment",
+                payload: {
+                    comment: res.data.comment
+                }
+            });
+        }
+
+        if(res.data.error) {
+            dispatch({
+                type: "get-comment",
+                payload: {
+                    error: res.data.error
+                }
+            });
+            toast.error(res.data.error, {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+        }
+    } catch (error) {
+        dispatch({
+            type: "get-comment",
+            payload: {
+                error: error
+            }
+        });
+        toast.error(error, {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+        });
+    }
+}
+
 export const addComment = ({title,comment,blogId})=> async (dispatch)=> {
     dispatch({
         type: "comments-loading"
@@ -1170,7 +1226,8 @@ export const editComment = ({id,title,comment})=> async (dispatch)=> {
             dispatch({
                 type: "edit-comment",
                 payload: {
-                    comments: res.data.comments
+                    comments: res.data.comments,
+                    comment: res.data.comment
                 }
             });
             toast.success("Comment Updated Successfully!", {
@@ -1233,7 +1290,8 @@ export const editOtherComment = ({id,title,comment})=> async (dispatch)=> {
             dispatch({
                 type: "edit-other-comment",
                 payload: {
-                    comments: res.data.comments
+                    comments: res.data.comments,
+                    comment: res.data.comment
                 }
             });
             toast.success("Comment Updated Successfully!", {

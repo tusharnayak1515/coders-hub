@@ -8,7 +8,7 @@ import Blog from "../../../models/Blog";
 import Comment from "../../../models/Comment";
 
 const schema = joi.object({
-    title: joi.string().min(3).max(50).required().messages({
+    title: joi.string().min(3).max(100).required().messages({
         'title.min': '{#label} should contain at least {#min} characters!',
         'title.max': '{#label} should contain at most {#max} characters!',
         'title.required': '{#label} cannot be empty!',
@@ -25,7 +25,7 @@ const handler = async (req, res)=> {
         let success = false;
         try {
             const userId = req.user.id;
-            const {title, comment=null, blogId} = req.body;
+            const {title, comment, blogId} = req.body;
             const {error} = schema.validate({title, blogId});
             if(error) {
                 success = false;

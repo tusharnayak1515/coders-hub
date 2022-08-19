@@ -1,0 +1,63 @@
+.commentForm {
+    min-height: calc(100vh - 13vh);
+    width: 100%;
+    /* background-color: violet; */
+}
+
+.commentForm .comment_pair {
+    width: 80%;
+    margin: 1rem auto;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    /* background-color: limegreen; */
+}
+
+.commentForm .comment_pair label {
+    color: white;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+.commentForm .comment_pair input, .commentForm .comment_pair textarea {
+    width: 100%;
+    color: white;
+    padding: 1rem;
+    font-size: 1.2rem;
+    border: 0.1rem solid #af8afa;
+    border-radius: 0.5rem;
+    background-color: #3b3b3b;
+}
+
+.commentForm .comment_pair input::placeholder, .commentForm .comment_pair textarea::placeholder {
+    color: lightgrey;
+}
+
+.commentForm .comment_pair textarea {
+    resize: none;
+    height: 30vh;
+}
+
+.commentForm .comment_pair button {
+    align-self: flex-end;
+    padding: 0.5rem 1rem;
+    color: white;
+    font-size: 1.3rem;
+    border: 0.1rem solid #b486ec;
+    border-radius: 0.5rem;
+    background-color: #af8afa;
+    cursor: pointer;
+}
+
+.commentForm .comment_pair button:hover {
+    color: #af8afa;
+    background-color: white;
+    transition: all 0.2s ease-in-out;
+}
+
+.commentForm .comment_pair .wrap {
+    width: 100%;
+    /* background-color: antiquewhite; */
+}

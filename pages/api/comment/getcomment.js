@@ -8,7 +8,7 @@ import Comment from "../../../models/Comment";
 
 const handler = async (req, res)=> {
     connectToMongo();
-    if(req.method === "DELETE") {
+    if(req.method === "GET") {
         let success = false;
         try {
             const userId = req.user.id;
@@ -33,19 +33,8 @@ const handler = async (req, res)=> {
                 return res.status(404).json({success, error: "Blog not found!"});
             }
 
-            if(user._id.toString() !== comment.user.toString()) {
-                success = false;
-                return res.status(404).json({success, error: "You do not have permission to perform this action!"});
-            }
-
-            comment = await Comment.findByIdAndDelete(commentId, {new: true});
-
-            const comments = await Comment.find({blog: blogId})
-                .sort({likes: -1})
-                .limit(20);
-
             success = true;
-            return res.status(200).json({success, comments});
+            return res.status(200).json({success, comment});
         } catch (error) {
             success = false;
             return res.status(500).json({success, error: error.message});
@@ -53,4 +42,4 @@ const handler = async (req, res)=> {
     }
 }
  
-export default fetchUser(grantAccess("deleteOwn", "comments", handler));
+export default fetchUser(grantAccess("readAny", "comments", handler));

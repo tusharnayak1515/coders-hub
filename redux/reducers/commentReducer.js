@@ -1,5 +1,6 @@
 const initState = {
     comments: null,
+    comment: null,
     isLoading: false
 }
 
@@ -21,6 +22,20 @@ const commentReducer = (state=initState, action)=> {
         return {
             ...state,
             comments: comments,
+            isLoading: false
+        }
+    }
+    else if(action.type === "get-comment") {
+        const {error,comment} = action.payload;
+        if(error) {
+            return {
+                ...state,
+                isLoading: false
+            }
+        }
+        return {
+            ...state,
+            comment: comment,
             isLoading: false
         }
     }
@@ -126,6 +141,7 @@ const commentReducer = (state=initState, action)=> {
         return {
             ...state,
             comments: null,
+            comment: null,
             isLoading: false
         }
     }

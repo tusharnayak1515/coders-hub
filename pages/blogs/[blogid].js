@@ -12,17 +12,16 @@ import { FaEdit, FaTrash } from "react-icons/fa";
 import { toast } from "react-toastify";
 
 import styles from "../../styles/blogPage.module.css";
+import Comments from "../../components/Comments";
 
 TimeAgo.addLocale(en);
 
 const BlogPage = () => {
   const router = useRouter();
   const dispatch = useDispatch();
-  const { user, profile } = useSelector(
-    (state) => state.userReducer,
-    shallowEqual
-  );
+  const { user, profile } = useSelector(state => state.userReducer,shallowEqual);
   const { blog } = useSelector((state) => state.blogReducer, shallowEqual);
+  const { comments } = useSelector((state) => state.commentReducer, shallowEqual);
   const timeAgo = user && new TimeAgo("en-US");
 
   const onEditClick = (e) => {
@@ -68,6 +67,7 @@ const BlogPage = () => {
       router.replace("/login");
     } else {
       dispatch(actionCreators.getBlog({ id: router.query.blogid }));
+      dispatch(actionCreators.getAllComments({ id: router.query.blogid }));
     }
   }, [user, router, dispatch]);
 
@@ -137,6 +137,10 @@ const BlogPage = () => {
           )}
         </div>
       </div>
+
+      <div className={styles.comments_container}>
+        <Comments />
+      </div>
     </div>
   );
 };
@@ -151,6 +155,12 @@ export const getServerSideProps = wrapper.getServerSideProps(
     if (cookieObj.jb_user_token) {
       await store.dispatch(
         actionCreators.getBlog({
+          id: params.blogid,
+          token: cookieObj.jb_user_token,
+        })
+      );
+      await store.dispatch(
+        actionCreators.getAllComments({
           id: params.blogid,
           token: cookieObj.jb_user_token,
         })

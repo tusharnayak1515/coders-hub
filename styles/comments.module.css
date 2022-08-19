@@ -1,0 +1,36 @@
+.comments {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    /* justify-content: space-around; */
+    /* background-color: orange; */
+}
+
+.comments .head_div {
+    width: 100%;
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* background-color: orange; */
+}
+
+/* .comments .head_div .comments_head {
+    
+} */
+
+.comments .head_div .comments_addIcon {
+    color: #af8afa;
+    font-size: 3rem;
+    cursor: pointer;
+}
+
+.comments .head_div .comments_addIcon:hover {
+    color: #c7aaff;
+    transition: all 0.2s ease-in-out;
+}
+
+.comments .head_div .comments_head, .comments .noComments {
+    color: white;
+}

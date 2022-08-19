@@ -8,7 +8,7 @@ import Blog from "../../../models/Blog";
 import Comment from "../../../models/Comment";
 
 const schema = joi.object({
-    title: joi.string().min(3).max(50).required().messages({
+    title: joi.string().min(3).max(100).required().messages({
         'title.min': '{#label} should contain at least {#min} characters!',
         'title.max': '{#label} should contain at most {#max} characters!',
         'title.required': '{#label} cannot be empty!',
@@ -62,7 +62,7 @@ const handler = async (req, res)=> {
                 .limit(20);
 
             success = true;
-            return res.status(200).json({success, comments});
+            return res.status(200).json({success, comments, comment: comment1});
         } catch (error) {
             success = false;
             return res.status(500).json({success, error: error.message});
