@@ -43,14 +43,18 @@
 .blog_page .blog_container .blog_title .blog_iconDiv {
     width: 8%;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     /* background-color: yellowgreen; */
 }
 
 .blog_page .blog_container .blog_title .blog_iconDiv .blog_editIcon, .blog_page .blog_container .blog_title .blog_iconDiv .blog_deleteIcon {
-    font-size: 2rem;
+    font-size: 1.5rem;
     cursor: pointer;
+}
+
+.blog_page .blog_container .blog_title .blog_iconDiv .blog_editIcon {
+    margin-right: 1rem;
 }
 
 .blog_page .blog_container .blog_title .blog_iconDiv .blog_editIcon:hover {

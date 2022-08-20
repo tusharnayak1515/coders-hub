@@ -1,0 +1,24 @@
+.searchBlogs {
+    min-height: 87vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* background-color: orange; */
+}
+
+.searchBlogs .result_head {
+    width: 75%;
+    margin: 2rem 0;
+    color: white;
+    /* background-color: pink; */
+}
+
+.searchBlogs .results_div {
+    width: 75%;
+    /* background-color: limegreen; */
+}
+
+.searchBlogs .results_div .no_result {
+    color: white;
+}

@@ -58,7 +58,7 @@ const handler = async (req, res)=> {
             comment1 = await Comment.findByIdAndUpdate(id, {title, comment}, {new: true});
 
             const comments = await Comment.find({blog: blogId})
-                .populate("user")
+                .populate("user","_id name profilepic role")
                 .sort({likes: -1})
                 .limit(20);
 

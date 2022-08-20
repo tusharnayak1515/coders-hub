@@ -1,42 +1,35 @@
 import { useEffect, useState } from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
+import dynamic from "next/dynamic";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import * as cookie from "cookie";
 import { wrapper } from "../redux/store";
 import { actionCreators } from "../redux";
-import Blogs from "../components/Blogs";
+const Blogs = dynamic(() => import("../components/Blogs"), {
+  ssr: false,
+});
 
 import styles from "../styles/Home.module.css";
 
-const Home = () => {
+export default function Home({categories}) {
   const router = useRouter();
   const dispatch = useDispatch();
-  const { user, profile } = useSelector(state => state.userReducer,shallowEqual);
-  const categories = [
-    "All",
-    "JavaScript",
-    "React.js",
-    "Node.js",
-    "Next.js",
-    "Python",
-    "Django",
-    "Flask",
-    "Java",
-    "Spring Boot",
-    "C++",
-    "C",
-    "MongoDB",
-    "MySQL",
-  ];
+  const { user } = useSelector(state => state.userReducer,shallowEqual);
+  const [domLoaded, setDomLoaded] = useState(false);
 
   useEffect(() => {
     if (!user) {
       router.replace("/login");
     } else {
       dispatch(actionCreators.profile());
+      dispatch(actionCreators.getAllBlogs());
     }
   }, [user, router, dispatch]);
+
+  useEffect(()=> {
+    setDomLoaded(true);
+  }, []);
 
   return (
     <div className={styles.container}>
@@ -55,14 +48,13 @@ const Home = () => {
 
         <h1 className={styles.title}>Trending Blogs</h1>
 
-        {user && <Blogs />}
+        {/* {user && <Blogs />} */}
+        <Blogs />
 
       </main>
     </div>
   );
 };
-
-export default Home;
 
 export const getServerSideProps = wrapper.getServerSideProps(
   (store) => async (context) => {
@@ -70,6 +62,29 @@ export const getServerSideProps = wrapper.getServerSideProps(
     const cookieObj = cookie.parse(mycookie);
     if (cookieObj.jb_user_token) {
       await store.dispatch(actionCreators.profile(cookieObj.jb_user_token));
+      await store.dispatch(actionCreators.getAllBlogs(cookieObj.jb_user_token));
+    }
+    const categories = [
+      "All",
+      "JavaScript",
+      "React.js",
+      "Node.js",
+      "Next.js",
+      "Python",
+      "Django",
+      "Flask",
+      "Java",
+      "Spring Boot",
+      "C++",
+      "C",
+      "MongoDB",
+      "MySQL",
+    ];
+
+    return {
+      props: {
+        categories: categories
+      }
     }
   }
 );

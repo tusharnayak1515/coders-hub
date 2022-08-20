@@ -5,9 +5,16 @@ import en from 'javascript-time-ago/locale/en';
 
 import styles from "../styles/blogItem.module.css";
 
-TimeAgo.addDefaultLocale(en);
+TimeAgo.addLocale(en);
+// if(typeof window !== "undefined") {
+//   TimeAgo.addLocale(en);
+// }
 
 const BlogItem = ({blog}) => {
+  // let timeAgo = null;
+  // if(typeof window !== "undefined") {
+  //   timeAgo = new TimeAgo('en-US');
+  // }
   const timeAgo = new TimeAgo('en-US');
   return (
     <div className={styles.blogItem}>
@@ -16,7 +23,7 @@ const BlogItem = ({blog}) => {
         </div>
         <div className={styles.time}>
             <p>by {blog.user.name}</p>
-            <p>posted {timeAgo.format(blog.createdAt)}</p>
+            <p>posted { timeAgo && timeAgo.format(blog.createdAt)}</p>
         </div>
     </div>
   )

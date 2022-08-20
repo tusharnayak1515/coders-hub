@@ -16,21 +16,22 @@ const masterReducer = (state,action)=> {
         const nextState = {
             ...state,
             userReducer: {
-                user: state.userReducer.user,
+                user: state.userReducer.user ? state.userReducer.user : action.payload.userReducer.user,
                 profile: action.payload.userReducer.profile ? action.payload.userReducer.profile : state.userReducer.profile,
-                users: action.payload.userReducer.users ? action.payload.userReducer.users : state.userReducer.users,
+                users: [...new Set(action.payload.userReducer.users, state.userReducer.users)],
                 otherUser: action.payload.userReducer.otherUser ? action.payload.userReducer.otherUser : state.userReducer.otherUser,
-                isLoading: state.userReducer.isLoading,
+                isLoading: action.payload.userReducer.isLoading,
             },
             blogReducer: {
-                blogs: action.payload.blogReducer.blogs ? action.payload.blogReducer.blogs : state.blogReducer.blogs,
+                blogs: [...new Set(action.payload.blogReducer.blogs, state.blogReducer.blogs)],
+                searchedBlogs: [...new Set(action.payload.blogReducer.searchedBlogs, state.blogReducer.searchedBlogs)],
                 blog: action.payload.blogReducer.blog ? action.payload.blogReducer.blog : state.blogReducer.blog,
-                isLoading: state.blogReducer.isLoading,
+                isLoading: action.payload.blogReducer.isLoading,
             },
             commentReducer: {
-                comments: action.payload.commentReducer.comments ? action.payload.commentReducer.comments : state.commentReducer.comments,
+                comments: [...new Set(action.payload.commentReducer.comments, state.commentReducer.comments)],
                 comment: action.payload.commentReducer.comment ? action.payload.commentReducer.comment : state.commentReducer.comment,
-                isLoading: state.commentReducer.isLoading,
+                isLoading: action.payload.commentReducer.isLoading,
             },
         }
         return nextState;

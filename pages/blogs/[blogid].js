@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
+import dynamic from "next/dynamic";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import * as cookie from "cookie";
 import { wrapper } from "../../redux/store";
@@ -10,9 +11,14 @@ import en from "javascript-time-ago/locale/en";
 import Prism from "prismjs";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import { toast } from "react-toastify";
+const Comments = dynamic(() => import("../../components/Comments"), {
+  ssr: false,
+});
+const Contents = dynamic(() => import("../../components/Contents"), {
+  ssr: false,
+});
 
 import styles from "../../styles/blogPage.module.css";
-import Comments from "../../components/Comments";
 
 TimeAgo.addLocale(en);
 
@@ -22,7 +28,7 @@ const BlogPage = () => {
   const { user, profile } = useSelector(state => state.userReducer,shallowEqual);
   const { blog } = useSelector((state) => state.blogReducer, shallowEqual);
   const { comments } = useSelector((state) => state.commentReducer, shallowEqual);
-  const timeAgo = user && new TimeAgo("en-US");
+  const timeAgo = new TimeAgo("en-US");
 
   const onEditClick = (e) => {
     e.preventDefault();
@@ -109,31 +115,18 @@ const BlogPage = () => {
         </h3>
         <div className={styles.blog_content}>
           {blog &&
-            blog?.content.map((c, index) => {
+            blog?.content.map((c) => {
               return (
-                <div key={index} className={styles.c_item}>
-                  {c.subtitle && c.subtitle !== "" && (
-                    <h3 className={styles.blog_subtitle}>{c.subtitle}</h3>
-                  )}
-                  {c.code && c.code !== "" && (
-                    <pre className="line-numbers">
-                      <code
-                        className={`language-${c.language?.trim().toLowerCase()}`}
-                      >
-                        {c.code}
-                      </code>
-                    </pre>
-                  )}
-                </div>
+                <Contents key={c._id} content={c} />
               );
             })}
         </div>
         <div className={styles.blog_time}>
           <p>by {blog?.user.name}</p>
           {blog?.createdAt === blog?.updatedAt ? (
-            <p>posted {timeAgo?.format(blog?.createdAt)}</p>
+            <p>posted {timeAgo.format(blog?.createdAt)}</p>
           ) : (
-            <p>updated {timeAgo?.format(blog?.updatedAt)}</p>
+            <p>updated {timeAgo.format(blog?.updatedAt)}</p>
           )}
         </div>
       </div>
@@ -164,6 +157,9 @@ export const getServerSideProps = wrapper.getServerSideProps(
           id: params.blogid,
           token: cookieObj.jb_user_token,
         })
+      );
+      await store.dispatch(
+        actionCreators.profile(cookieObj.jb_user_token)
       );
     }
   }

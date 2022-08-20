@@ -84,7 +84,7 @@ const Comment = ({ comment }) => {
           <div className={styles.dp_div}>
             <img
               src={comment.user.profilepic}
-              alt={`${comment.user.name}`}
+              alt={comment.user.name}
               layout="fill"
             />
           </div>

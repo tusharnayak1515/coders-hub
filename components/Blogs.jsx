@@ -1,22 +1,15 @@
-import React, { useEffect } from 'react';
-import { shallowEqual, useDispatch, useSelector } from 'react-redux';
-import * as cookie from "cookie";
-import { wrapper } from "../redux/store";
-import { actionCreators } from "../redux";
-import BlogItem from './BlogItem';
+import React from 'react';
+import dynamic from 'next/dynamic';
+import { shallowEqual, useSelector } from 'react-redux';
+const BlogItem = dynamic(() => import("./BlogItem"), {
+  ssr: false,
+});
 
 import styles from "../styles/blogs.module.css";
 
 const Blogs = () => {
-  const dispatch = useDispatch();
-  const {user} = useSelector(state=> state.userReducer,shallowEqual);
   const {blogs} = useSelector(state=> state.blogReducer,shallowEqual);
 
-  useEffect(()=> {
-    if(user) {
-        dispatch(actionCreators.getAllBlogs());
-    }
-  }, [user, dispatch]);
   return (
     <div className={styles.blogs}>
         {blogs && blogs.map((blog)=> {
@@ -27,13 +20,3 @@ const Blogs = () => {
 }
 
 export default Blogs;
-
-export const getServerSideProps = wrapper.getServerSideProps(
-    (store) => async (context) => {
-      const mycookie = context?.req?.headers?.cookie || "";
-      const cookieObj = cookie.parse(mycookie);
-      if (cookieObj.jb_user_token) {
-        await store.dispatch(actionCreators.getAllBlogs(cookieObj.jb_user_token));
-      }
-    }
-  );

@@ -7,8 +7,20 @@
     /* background-color: aquamarine; */
 }
 
-.comment_content input, .comment_content textarea {
+.comment_content input, .comment_content textarea, .comment_content select {
     margin-bottom: 1rem;
+}
+
+.comment_content select {
+    outline: none;
+    width: 100%;
+    color: white;
+    padding: 1rem;
+    font-size: 1.2rem;
+    border: 0.1rem solid #af8afa;
+    border-radius: 0.5rem;
+    background-color: #3b3b3b;
+    cursor: pointer;
 }
 
 .comment_content textarea {

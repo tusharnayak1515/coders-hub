@@ -33,6 +33,7 @@
 .navbar .searchDiv input {
     outline: none;
     width: 100%;
+    color: white;
     font-size: 1.2rem;
     padding: 0.5rem 1rem;
     border: 0.1rem solid #af8afa;
@@ -42,9 +43,10 @@
 
 .navbar .searchDiv .searchIcon {
     position: absolute;
-    top: 0.2rem;
+    top: auto;
     right: 1rem;
     color: #af8afa;
+    font-size: 1.5rem;
     cursor: pointer;
 }
 

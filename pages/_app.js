@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import Head from "next/head";
 import Router from "next/router";
+import dynamic from "next/dynamic";
 import { shallowEqual, useSelector } from "react-redux";
 import { ToastContainer } from "react-toastify";
-import Navbar from "../components/Navbar";
+const Navbar = dynamic(() => import("../components/Navbar"), {ssr: false});
 import { wrapper } from "../redux/store";
 import Nprogress from "nprogress";
 Nprogress.configure({ showSpinner: false, easing: 'ease', speed: 1000, parent: 'html' });
@@ -42,8 +43,8 @@ function MyApp({ Component, pageProps }) {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      {(user && domLoaded) && <Navbar />}
-      {(domLoaded && !loading) && <Component {...pageProps} />}
+      {user && <Navbar />}
+      {!loading && <Component {...pageProps} />}
       {domLoaded && <ToastContainer />}
     </>
   );

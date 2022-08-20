@@ -11,6 +11,7 @@ if(typeof window !== "undefined") {
 
 const initState = {
     blogs: isBlogs,
+    searchedBlogs: null,
     blog: null,
     isLoading: false
 }
@@ -121,6 +122,20 @@ const blogReducer = (state=initState, action)=> {
             ...state,
             blogs: blogs,
             blog: null,
+            isLoading: false
+        }
+    }
+    else if(action.type === "search-blogs") {
+        const {error,searchedBlogs} = action.payload;
+        if(error) {
+            return {
+                ...state,
+                isLoading: false
+            }
+        }
+        return {
+            ...state,
+            searchedBlogs: searchedBlogs,
             isLoading: false
         }
     }

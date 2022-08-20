@@ -7,7 +7,7 @@ const Comment_Content = ({ edit, content, myComment, setMyComment }) => {
   const [thisContent, setThisContent] = useState({
     _id: content && content._id ? content._id : undefined,
     subtitle: content && content.subtitle ? content.subtitle : "",
-    language: content && content.language ? content.language : "",
+    language: content && content.language ? content.language : "Language",
     code: content && content.code ? content.code : "",
   });
 
@@ -51,14 +51,21 @@ const Comment_Content = ({ edit, content, myComment, setMyComment }) => {
         value={thisContent.subtitle}
         onChange={contentChangeHandler}
       />
-      <input
-        type="text"
+      <select
         name="language"
         id="language"
-        placeholder="Language"
         value={thisContent.language}
         onChange={contentChangeHandler}
-      />
+      >
+        <option value="javascript">JavaScript</option>
+        <option value="python">Python</option>
+        <option value="java">Java</option>
+        <option value="cpp">C++</option>
+        <option value="c">C</option>
+        <option value="markup">HTML</option>
+        <option value="css">Css</option>
+        <option value="other">Other</option>
+      </select>
       <textarea
         type="text"
         name="code"

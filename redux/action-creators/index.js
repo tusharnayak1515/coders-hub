@@ -1038,6 +1038,60 @@ export const deleteOtherBlog = (id)=> async (dispatch)=> {
     }
 }
 
+export const searchBlogs = ({name, token})=> async (dispatch)=> {
+    dispatch({
+        type: "blogs-loading"
+    });
+
+    const url = process.env.NODE_ENV === "production" ? "" : "http://localhost:3000";
+    try {
+        const res = await axios.get(`${url}/api/blogs/searchblogs?name=${name}`, {headers: {jb_user_token: token}});
+
+        if(res.data.success) {
+            dispatch({
+                type: "search-blogs",
+                payload: {
+                    searchedBlogs: res.data.searchedBlogs
+                }
+            });
+        }
+
+        if(res.data.error) {
+            dispatch({
+                type: "search-blogs",
+                payload: {
+                    error: res.data.error
+                }
+            });
+            toast.error(res.data.error, {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+        }
+    } catch (error) {
+        dispatch({
+            type: "search-blogs",
+            payload: {
+                error: error
+            }
+        });
+        toast.error(error, {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+        });
+    }
+}
+
 // *********************************** COMMENT SECTION *********************************** \\
 
 export const getAllComments = ({id, token})=> async (dispatch)=> {

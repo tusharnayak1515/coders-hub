@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import { shallowEqual, useSelector, useDispatch } from 'react-redux';
 import { FaUserAlt } from 'react-icons/fa';
@@ -15,6 +15,12 @@ const Navbar = () => {
   const router = useRouter();
   const dispatch = useDispatch();
   const {profile} = useSelector(state=> state.userReducer,shallowEqual);
+  const [bname, setBName] = useState("");
+
+  const onChangeHandler = (e)=> {
+    e.preventDefault();
+    setBName(e.target.value);
+  }
 
   const onBlogAdd = (e)=> {
     e.preventDefault();
@@ -26,6 +32,12 @@ const Navbar = () => {
     dispatch(actionCreators.logout());
   }
 
+  const onSearch = (e)=> {
+    e.preventDefault();
+    router.push(`/search/blogs/${bname}`);
+    setBName("");
+  }
+
   return (
     <div className={styles.navbar}>
         <div className={styles.logoDiv}>
@@ -33,14 +45,14 @@ const Navbar = () => {
         </div>
 
         <div className={styles.searchDiv}>
-            <input type="text" placeholder='Search Blogs' />
-            <h1 className={styles.searchIcon}><MdSearch /></h1>
+            <input type="text" placeholder='Search Blogs' value={bname} onChange={onChangeHandler} />
+            <MdSearch className={styles.searchIcon} onClick={onSearch} />
         </div>
 
         <div className={styles.menuDiv}>
             <RiHome2Fill className={styles.icons} onClick={()=> router.push("/")} />
             <IoMdAdd className={styles.icons} onClick={onBlogAdd} />
-            {profile && profile.role === "admin" && <ImUsers className={styles.icons} onClick={()=> router.push("/users")} />}
+            {(profile && profile?.role === "admin") && <ImUsers className={styles.icons} onClick={()=> router.push("/users")} />}
             <FaUserAlt className={`${styles.icons} ${styles.profileIcon}`} onClick={()=> router.push("/profile")} />
             <BiLogOut className={styles.icons} onClick={onLogout} />
         </div>

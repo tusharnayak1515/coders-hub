@@ -1,8 +1,11 @@
 import React from 'react';
 import { useRouter } from 'next/router';
+import dynamic from 'next/dynamic';
 import { useSelector, shallowEqual } from 'react-redux';
 import { MdAdd } from 'react-icons/md';
-import Comment from './Comment';
+const Comment = dynamic(() => import("./Comment"), {
+  ssr: false,
+});
 
 import styles from "../styles/comments.module.css";
 
