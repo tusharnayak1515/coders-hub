@@ -560,6 +560,7 @@ export const logout = ()=> async (dispatch)=> {
     deleteCookie("jb_user_token");
     localStorage.removeItem("jb_user_profile");
     localStorage.removeItem("jb_blogs");
+    localStorage.removeItem("jb_users");
     dispatch({
         type: "logout"
     });

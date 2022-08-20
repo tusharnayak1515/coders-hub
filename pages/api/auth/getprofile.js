@@ -26,7 +26,7 @@ const handler = async (req, res)=> {
 
             otheruser = await User.findById(userId)
                 .select("-password")
-                .populate("blogs");
+                .populate("blogs", "_id title createdAt updatedAt");
 
             success = true;
             return res.status(200).json({success, otheruser});

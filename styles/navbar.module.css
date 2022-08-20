@@ -52,6 +52,7 @@
 
 .navbar .searchDiv .searchIcon:hover {
     color: #d8b8ff;
+    transition: all 0.2s ease-in-out;
 }
 
 .navbar .menuDiv {

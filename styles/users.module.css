@@ -1,0 +1,51 @@
+.users_page {
+    min-height: 87vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* background-color: lime; */
+}
+
+.users_page .user_search_div {
+    position: relative;
+    margin: 2rem auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: orangered; */
+}
+
+.users_page .user_search_div input {
+    padding: 0.5rem 1rem;
+    color: white;
+    font-size: 1.3rem;
+    border: 0.1rem solid #af8afa;
+    border-radius: 0.5rem;
+    background-color: #212121;
+}
+
+.users_page .user_search_div .user_searchIcon {
+    position: absolute;
+    top: auto;
+    right: 1rem;
+    color: #af8afa;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.users_page .user_search_div .user_searchIcon:hover {
+    color: #d8b8ff;
+    transition: all 0.2s ease-in-out;
+}
+
+.users_page .allusers_head {
+    /* margin: 2rem auto; */
+    color: white;
+    margin-bottom: 2rem;
+    /* width: 75%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center; */
+    /* background-color: orange; */
+}

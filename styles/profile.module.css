@@ -19,7 +19,7 @@
 
 .profile_page .profile_wrapper .profile_box {
     padding: 2rem;
-    width: 80%;
+    min-width: 80%;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -41,6 +41,7 @@
 }
 
 .profile_page .profile_wrapper .profile_box .user_details {
+    min-width: 40%;
     color: white;
     display: flex;
     flex-direction: column;
@@ -52,9 +53,13 @@
     width: 100%;
     margin-bottom: 1rem;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     /* background-color: orange; */
+}
+
+.profile_page .profile_wrapper .profile_box .user_details .user_name_div .user_name {
+    margin-right: 1rem;
 }
 
 .profile_page .profile_wrapper .profile_box .user_details .user_email,
@@ -76,4 +81,9 @@
     margin-top: 1rem;
     width: 60%;
     /* background-color: green; */
+}
+
+.profile_page .user_blogs_container .noBlogs {
+    text-align: center;
+    color: white;
 }

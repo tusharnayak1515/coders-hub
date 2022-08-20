@@ -18,6 +18,8 @@ const handler = async (req, res)=> {
             }
 
             const users = await User.find({_id: {$ne: adminId}})
+                .select("-password")
+                .select("-blogs")
                 .sort({name: 1});
 
             success = true;
