@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
@@ -16,7 +16,6 @@ export default function Home({categories}) {
   const router = useRouter();
   const dispatch = useDispatch();
   const { user } = useSelector(state => state.userReducer,shallowEqual);
-  const [domLoaded, setDomLoaded] = useState(false);
 
   useEffect(() => {
     if (!user) {
@@ -26,10 +25,6 @@ export default function Home({categories}) {
       dispatch(actionCreators.getAllBlogs());
     }
   }, [user, router, dispatch]);
-
-  useEffect(()=> {
-    setDomLoaded(true);
-  }, []);
 
   return (
     <div className={styles.container}>

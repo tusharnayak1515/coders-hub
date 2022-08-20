@@ -10,7 +10,7 @@ TimeAgo.addLocale(en);
 //   TimeAgo.addLocale(en);
 // }
 
-const BlogItem = ({blog}) => {
+const BlogItem = ({blog, blog_user}) => {
   // let timeAgo = null;
   // if(typeof window !== "undefined") {
   //   timeAgo = new TimeAgo('en-US');
@@ -22,7 +22,7 @@ const BlogItem = ({blog}) => {
             <Link href={`/blogs/${blog._id}`}><h3>{blog.title}</h3></Link>
         </div>
         <div className={styles.time}>
-            <p>by {blog.user.name}</p>
+            <p>by {blog.user.name ? blog.user.name : blog_user}</p>
             <p>posted { timeAgo && timeAgo.format(blog.createdAt)}</p>
         </div>
     </div>

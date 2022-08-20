@@ -1,0 +1,79 @@
+.profile_page {
+    min-height: 87vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* background-color: lightgreen; */
+}
+
+.profile_page .profile_wrapper {
+    margin-top: 2rem;
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 0.1rem solid #af8afa;
+    /* background-color: limegreen; */
+}
+
+.profile_page .profile_wrapper .profile_box {
+    padding: 2rem;
+    width: 80%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    /* background-color: orange; */
+}
+
+.profile_page .profile_wrapper .profile_box .dp_div {
+    height: 10rem;
+    width: 10rem;
+    border: 0.1rem solid #af8afa;
+    border-radius: 50%;
+}
+
+.profile_page .profile_wrapper .profile_box .dp_div img {
+    height: 100%;
+    width: 100%;
+    border: 0.1rem solid #af8afa;
+    border-radius: 50%;
+}
+
+.profile_page .profile_wrapper .profile_box .user_details {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    /* background-color: lightpink; */
+}
+
+.profile_page .profile_wrapper .profile_box .user_details .user_name_div {
+    width: 100%;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* background-color: orange; */
+}
+
+.profile_page .profile_wrapper .profile_box .user_details .user_email,
+.profile_page .profile_wrapper .profile_box .user_details .user_blog_count {
+    margin-bottom: 1rem;
+}
+
+.profile_page .profile_wrapper .profile_box .user_details .user_name_div .user_editIcon {
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.profile_page .profile_wrapper .profile_box .user_details .user_name_div .user_editIcon:hover {
+    color: #af8afa;
+}
+
+.profile_page .user_blogs_container {
+    margin-top: 1rem;
+    width: 60%;
+    /* background-color: green; */
+}
