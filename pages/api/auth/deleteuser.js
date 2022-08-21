@@ -20,8 +20,8 @@ const handler = async (req, res)=> {
 
             const allUserBlogs = await Blog.find({user: userId});
 
-            allUserBlogs.forEach((blog)=> {
-                let blog = await Blog.findByIdAndDelete(blog._id.toString(),{new: true});
+            allUserBlogs.forEach(async (blog)=> {
+                let blog1 = await Blog.findByIdAndDelete(blog._id.toString(),{new: true});
             });
 
             user = await User.findByIdAndDelete(userId, {new: true});

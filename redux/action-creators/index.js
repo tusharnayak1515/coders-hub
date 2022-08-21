@@ -391,15 +391,15 @@ export const deleteUser = ()=> async (dispatch)=> {
     const url = process.env.NODE_ENV === "production" ? "" : "http://localhost:9000";
     try {
         const res = await axios.delete(`${url}/api/auth/deleteuser`);
-
         if(res.data.success) {
-            if(typeof window !== "undefined") {
-                localStorage.removeItem("jb_user_profile");
-                localStorage.removeItem("jb_blogs");
-                localStorage.removeItem("jb_users");
-            }
+            localStorage.removeItem("jb_user_profile");
+            localStorage.removeItem("jb_blogs");
+            localStorage.removeItem("jb_users");
             dispatch({
-                type: "delete-user"
+                type: "delete-user",
+                payload: {
+                    error: null
+                }
             });
             toast.success(`Account Deleted Successfully!`, {
                 position: "top-right",

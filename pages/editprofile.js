@@ -9,18 +9,22 @@ import { actionCreators } from "../redux";
 const PasswordModal = dynamic(() => import("../components/PasswordModal"), {
     ssr: false,
 });
+const ConfirmModal = dynamic(() => import("../components/ConfirmModal"), {
+    ssr: false,
+});
 
 import styles from "../styles/editProfile.module.css";
 
 const EditProfile = () => {
   const router = useRouter();
   const dispatch = useDispatch();
-  const { user, profile } = useSelector(state => state.userReducer,shallowEqual);
+  const { user, profile, isLoading } = useSelector(state => state.userReducer,shallowEqual);
   const [userDetails, setUserDetails] = useState({
     name: profile?.name,
     email: profile?.email,
   });
   const [show, setShow] = useState(false);
+  const [confirm, setConfirm] = useState(false);
 
   const onChangeHandler = (e) => {
     e.preventDefault();
@@ -38,6 +42,17 @@ const EditProfile = () => {
     router.replace("/profile");
   }
 
+  const onDelete = (e)=> {
+    e.preventDefault();
+    setConfirm(true);
+  }
+
+  const onDeleteUser = (e)=> {
+    e.preventDefault();
+    dispatch(actionCreators.deleteUser());
+    setConfirm(false);
+  }
+
   const onEdit = (e)=> {
     e.preventDefault();
     dispatch(actionCreators.editProfile(userDetails));
@@ -52,6 +67,10 @@ const EditProfile = () => {
     }
   }, [user, router, dispatch]);
 
+  if(isLoading) {
+    return <p style={{color: "white"}}>Loading...</p>
+  }
+
   return (
     <div className={styles.editProfile}>
       <Head>
@@ -62,7 +81,7 @@ const EditProfile = () => {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      
+      {confirm && <ConfirmModal setShow={setConfirm} text="delete your account permanently" onDelete={onDeleteUser} />}
       {show && <PasswordModal setShow={setShow} />}
       <div className={styles.edit_container}>
         <div className={styles.dp_div}>
@@ -100,6 +119,7 @@ const EditProfile = () => {
 
           <div className={styles.btn_div}>
             <button className={styles.edit_cancel_btn} onClick={onCancel}>Cancel</button>
+            <button className={styles.delete_btn} onClick={onDelete}>Deactivate</button>
             <button className={styles.edit_btn} onClick={onEdit}>Edit</button>
           </div>
 

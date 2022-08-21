@@ -14,6 +14,7 @@
 
 .modal {
     height: 25%;
+    width: 30%;
     margin-top: 2rem;
     padding: 1rem 2rem;
     display: flex;
@@ -27,7 +28,14 @@
 
 .modal .modalText {
     color: purple;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    word-wrap: break-word;
     /* margin-bottom: 1rem; */
+    /* background-color: lime; */
 }
 
 .modal .modal_btn_div {
