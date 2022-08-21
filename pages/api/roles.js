@@ -15,7 +15,8 @@ const roles = (function () {
     .updateOwn("likes")
     .readOwn("profile")
     .updateOwn("profile")
-    .deleteOwn("profile");
+    .deleteOwn("profile")
+    .updateOwn("password");
 
   ac.grant("admin")
     .extend("user")

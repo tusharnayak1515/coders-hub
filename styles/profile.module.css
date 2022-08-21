@@ -8,8 +8,8 @@
 }
 
 .profile_page .profile_wrapper {
-    margin-top: 2rem;
-    width: 60%;
+    margin: 2rem 0;
+    width: 45%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -19,7 +19,7 @@
 
 .profile_page .profile_wrapper .profile_box {
     padding: 2rem;
-    min-width: 80%;
+    min-width: 90%;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -78,8 +78,7 @@
 }
 
 .profile_page .user_blogs_container {
-    margin-top: 1rem;
-    width: 60%;
+    width: 45%;
     /* background-color: green; */
 }
 

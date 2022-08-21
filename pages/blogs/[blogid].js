@@ -8,7 +8,6 @@ import { wrapper } from "../../redux/store";
 import { actionCreators } from "../../redux";
 import TimeAgo from "javascript-time-ago";
 import en from "javascript-time-ago/locale/en";
-import Prism from "prismjs";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import { toast } from "react-toastify";
 const Comments = dynamic(() => import("../../components/Comments"), {
@@ -85,10 +84,6 @@ const BlogPage = () => {
       dispatch(actionCreators.getAllComments({ id: router.query.blogid }));
     }
   }, [user, router, dispatch]);
-
-  useEffect(() => {
-    Prism.highlightAll();
-  }, []);
 
   return (
     <div className={styles.blog_page}>

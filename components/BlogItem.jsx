@@ -22,7 +22,7 @@ const BlogItem = ({blog, blog_user}) => {
             <Link href={`/blogs/${blog._id}`}><h3>{blog.title}</h3></Link>
         </div>
         <div className={styles.time}>
-            <p>by {blog.user.name ? blog.user.name : blog_user}</p>
+            <p>by {blog.user ? blog.user.name : blog_user}</p>
             <p>posted { timeAgo && timeAgo.format(blog.createdAt)}</p>
         </div>
     </div>

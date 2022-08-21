@@ -316,6 +316,73 @@ export const editOtherProfile = ({id,name,email})=> async (dispatch)=> {
     }
 }
 
+export const changePassword = ({oldPassword, newPassword, confirmPassword})=> async (dispatch)=> {
+    dispatch({
+        type: "user-loading"
+    });
+
+    const url = process.env.NODE_ENV === "production" ? "" : "http://localhost:9000";
+    try {
+        const res = await axios.put(`${url}/api/auth/changepassword`, {oldPassword, newPassword, confirmPassword});
+
+        if(res.data.success) {
+            if(typeof window !== "undefined") {
+                localStorage.setItem("jb_user_profile", JSON.stringify(res.data.user));
+            }
+
+            dispatch({
+                type: "change-password",
+                payload: {
+                    profile: res.data.user,
+                }
+            });
+            toast.success(`Password updated successfully!`, {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+        }
+
+        if(res.data.error) {
+            dispatch({
+                type: "change-password",
+                payload: {
+                    error: res.data.error
+                }
+            });
+            toast.error(res.data.error, {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+        }
+    } catch (error) {
+        dispatch({
+            type: "change-password",
+            payload: {
+              error: error,
+            }
+        });
+        toast.error(error, {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+        });
+    } 
+}
+
 export const deleteUser = ()=> async (dispatch)=> {
     dispatch({
         type: "user-loading"

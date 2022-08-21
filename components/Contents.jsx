@@ -1,8 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
+import Prism from "prismjs";
 
 import styles from "../styles/blogPage.module.css";
 
 const Contents = ({content}) => {
+
+  useEffect(() => {
+    Prism.highlightAll();
+  }, []);
+
   return (
     <div className={styles.c_item}>
       {content.subtitle && content.subtitle !== "" && (

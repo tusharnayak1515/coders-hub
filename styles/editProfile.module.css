@@ -1,0 +1,121 @@
+.editProfile {
+    min-height: 87vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* background-color: orange; */
+}
+
+.editProfile .edit_container {
+    min-height: 50vh;
+    width: 40%;
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* background-color: lawngreen; */
+}
+
+.editProfile .edit_container .dp_div {
+    margin-bottom: 1rem;
+    height: 10rem;
+    width: 10rem;
+    border: 0.1rem solid #af8afa;
+    border-radius: 50%;
+    /* background-color: lightcoral; */
+}
+
+.editProfile .edit_container .dp_div img {
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+
+.editProfile .edit_container .user_details {
+    width: 57%;
+    padding: 1rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    /* background-color: peru; */
+}
+
+.editProfile .edit_container .user_details .wrapper_div {
+    width: 100%;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    /* background-color: hotpink; */
+}
+
+.editProfile .edit_container .user_details .wrapper_div label {
+    /* margin-right: 1rem; */
+    color: white;
+    font-size: 1.2rem;
+}
+
+.editProfile .edit_container .user_details .wrapper_div input {
+    /* width: 100%; */
+    padding: 0.3rem 0;
+    color: white;
+    font-size: 1.2rem;
+    border: none;
+    border-bottom: 0.1rem solid #af8afa;
+    background-color: #212121;
+}
+
+.editProfile .edit_container .user_details .wrapper_div .change_password {
+    color: #af8afa;
+    cursor: pointer;
+}
+
+.editProfile .edit_container .user_details .wrapper_div .change_password:hover {
+    text-decoration: underline;
+    transition: all 0.2s ease-in-out;
+}
+
+.editProfile .edit_container .user_details .btn_div {
+    width: 100%;
+    padding: 0.5rem 0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    /* background-color: lime; */
+}
+
+.editProfile .edit_container .user_details .btn_div button {
+    width: 6rem;
+    padding: 0.5rem 0.7rem;
+    font-size: 1.2rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
+.editProfile .edit_container .user_details .btn_div .edit_cancel_btn {
+    margin-right: 1rem;
+    color: purple;
+    border: 0.1rem solid purple;
+}
+
+.editProfile .edit_container .user_details .btn_div .edit_cancel_btn:hover {
+    color: white;
+    background-color: purple;
+    transition: all 0.2s ease-in-out;
+}
+
+.editProfile .edit_container .user_details .btn_div .edit_btn {
+    color: white;
+    border: 0.1rem solid purple;
+    background-color: purple;
+}
+
+.editProfile .edit_container .user_details .btn_div .edit_btn:hover {
+    color: purple;
+    background-color: white;
+    transition: all 0.2s ease-in-out;
+}

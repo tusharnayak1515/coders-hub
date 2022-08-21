@@ -29,7 +29,7 @@ const OtherProfile = () => {
     } else {
       dispatch(actionCreators.getUser({ id: router.query.uid }));
     }
-  }, []);
+  }, [user, profile?.role, router, dispatch]);
 
   return (
     <div className={styles.profile_page}>

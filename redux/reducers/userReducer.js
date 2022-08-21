@@ -113,6 +113,20 @@ const userReducer = (state=initState, action)=> {
             isLoading: false
         }
     }
+    else if(action.type === "change-password") {
+        const {error,profile} = action.payload;
+        if(error) {
+            return {
+                ...state,
+                isLoading: false
+            }
+        }
+        return {
+            ...state,
+            profile: profile,
+            isLoading: false
+        }
+    }
     else if(action.type === "delete-user") {
         const {error} = action.payload;
         if(error) {

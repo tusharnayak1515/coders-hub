@@ -21,6 +21,11 @@ const Profile = () => {
     shallowEqual
   );
 
+  const onEditClick = (e)=> {
+    e.preventDefault();
+    router.replace("/editprofile");
+  }
+
   useEffect(() => {
     if (!user) {
       router.replace("/login");
@@ -49,7 +54,7 @@ const Profile = () => {
           <div className={styles.user_details}>
             <div className={styles.user_name_div}>
               <h1 className={styles.user_name}>{profile?.name}</h1>
-              <FaUserEdit className={styles.user_editIcon} />
+              <FaUserEdit className={styles.user_editIcon} onClick={onEditClick} />
             </div>
             <h2 className={styles.user_email}>{profile?.email}</h2>
             <h3 className={styles.user_blog_count}>
