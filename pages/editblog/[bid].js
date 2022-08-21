@@ -1,11 +1,14 @@
 import React, { useEffect } from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
+import dynamic from "next/dynamic";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import * as cookie from "cookie";
 import { wrapper } from "../../redux/store";
 import { actionCreators } from "../../redux";
-import BlogForm from "../../components/BlogForm";
+const BlogForm = dynamic(() => import("../../components/BlogForm"), {
+  ssr: false,
+});
 
 import styles from "../../styles/editblog.module.css";
 

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import dynamic from "next/dynamic";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import Prism from "prismjs";
 import { actionCreators } from "../redux";
@@ -7,6 +8,9 @@ import TimeAgo from "javascript-time-ago";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import { toast } from "react-toastify";
+const ConfirmModal = dynamic(() => import("./ConfirmModal"), {
+  ssr: false,
+});
 
 import styles from "../styles/comment.module.css";
 
@@ -16,6 +20,7 @@ const Comment = ({ comment }) => {
   const dispatch = useDispatch();
   const { profile } = useSelector((state) => state.userReducer, shallowEqual);
   const [onHover, setOnHover] = useState(false);
+  const [show, setShow] = useState(false);
 
   const onFocusHandler = (e) => {
     e.preventDefault();
@@ -54,7 +59,12 @@ const Comment = ({ comment }) => {
     }
   };
 
-  const onDeleteClick = (e) => {
+  const onDeleteClick = (e)=> {
+    e.preventDefault();
+    setShow(true);
+  }
+
+  const onDelete = (e) => {
     e.preventDefault();
     if (comment.user._id !== profile?._id && profile?.role === "admin") {
       dispatch(actionCreators.deleteOtherComment(comment._id));
@@ -79,6 +89,7 @@ const Comment = ({ comment }) => {
 
   return (
     <div className={styles.comment_div}>
+      {show && <ConfirmModal setShow={setShow} text="Delete" onDelete={onDelete} />}
       <div className={styles.comment_user_div}>
         <div className={styles.flex_div}>
           <div className={styles.dp_div}>

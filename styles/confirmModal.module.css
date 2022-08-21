@@ -1,0 +1,68 @@
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    z-index: 1000;
+    /* opacity: 0.5; */
+    background-color: rgba(0, 0, 0, 0.404);
+}
+
+.modal {
+    margin-top: 2rem;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: none;
+    border-radius: 0.5rem;
+    background-color: white;
+}
+
+.modal .modalText {
+    color: purple;
+    /* margin-bottom: 1rem; */
+}
+
+.modal .modal_btn_div {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: orange; */
+}
+
+.modal .modal_btn_div button {
+    margin: 0 1rem;
+    padding: 0.3rem 0.7rem;
+    font-size: 1.2rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
+.modal .modal_btn_div .cancel_btn {
+    color: purple;
+    border: 0.1rem solid purple;
+    background-color: white;
+}
+
+.modal .modal_btn_div .cancel_btn:hover {
+    background-color: rgb(238, 237, 237);
+    transition: all 0.2s ease-in-out;
+}
+
+.modal .modal_btn_div .action_btn {
+    color: white;
+    border: 0.1rem solid purple;
+    background-color: purple;
+}
+
+.modal .modal_btn_div .action_btn:hover {
+    color: purple;
+    background-color: white;
+    transition: all 0.2s ease-in-out;
+}

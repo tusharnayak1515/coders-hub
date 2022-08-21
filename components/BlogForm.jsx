@@ -1,9 +1,15 @@
 import React, { useEffect, useState } from "react";
+import { useRouter } from "next/router";
+import dynamic from "next/dynamic";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { toast } from "react-toastify";
 import { actionCreators } from "../redux";
-import Content from "./Content";
-import { useRouter } from "next/router";
+const Content = dynamic(() => import("./Content"), {
+  ssr: false,
+});
+const ConfirmModal = dynamic(() => import("./ConfirmModal"), {
+  ssr: false,
+});
 
 import styles from "../styles/blogForm.module.css";
 
@@ -11,6 +17,7 @@ const BlogForm = ({ blog }) => {
   const router = useRouter();
   const dispatch = useDispatch();
   const {profile} = useSelector(state=> state.userReducer,shallowEqual);
+  const [show, setShow] = useState(false);
   const [count, setCount] = useState(
     blog && blog.content ? blog.content.length : 1
   );
@@ -73,6 +80,11 @@ const BlogForm = ({ blog }) => {
       }
     }
   };
+
+  const editHandler = (e)=> {
+    e.preventDefault();
+    setShow(true);
+  }
 
   const onEditHandler = (e) => {
     e.preventDefault();
@@ -142,6 +154,7 @@ const BlogForm = ({ blog }) => {
 
   return (
     <div className={styles.blogForm}>
+      {show && <ConfirmModal setShow={setShow} text="edit" onEdit={onEditHandler} />}
       <div className={styles.pair}>
         <label htmlFor="title">Title:</label>
         <input
@@ -217,7 +230,7 @@ const BlogForm = ({ blog }) => {
       </div>
 
       <div className={styles.pair}>
-        <button onClick={blog ? onEditHandler : onSubmitHandler}>
+        <button onClick={blog ? editHandler : onSubmitHandler}>
           {blog ? "EDIT" : "POST"}
         </button>
       </div>

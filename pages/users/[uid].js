@@ -6,10 +6,10 @@ import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import * as cookie from "cookie";
 import { wrapper } from "../../redux/store";
 import { actionCreators } from "../../redux";
+import { FaUserEdit } from "react-icons/fa";
 const BlogItem = dynamic(() => import("../../components/BlogItem"), {
     ssr: false,
 });
-import { FaUserEdit } from "react-icons/fa";
 
 import styles from "../../styles/profile.module.css";
 

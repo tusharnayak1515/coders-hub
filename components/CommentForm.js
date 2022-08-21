@@ -1,9 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import dynamic from "next/dynamic";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { actionCreators } from "../redux";
-import Comment_Content from "./Comment_Content";
 import { toast } from "react-toastify";
+const Comment_Content = dynamic(() => import("./Comment_Content"), {
+  ssr: false,
+});
+const ConfirmModal = dynamic(() => import("./ConfirmModal"), {
+  ssr: false,
+});
 
 import styles from "../styles/commentForm.module.css";
 
@@ -12,6 +18,7 @@ const CommentForm = ({comment}) => {
   const dispatch = useDispatch();
   const { profile } = useSelector((state) => state.userReducer, shallowEqual);
   const { blog } = useSelector((state) => state.blogReducer, shallowEqual);
+  const [show, setShow] = useState(false);
 
   const [myComment, setMyComment] = useState((comment && comment.comment.length !== 0) ? comment.comment : []);
   const [commentDetails, setCommentDetails] = useState({
@@ -44,6 +51,11 @@ const CommentForm = ({comment}) => {
         });
     }
   };
+
+  const editHandler = (e)=> {
+    e.preventDefault();
+    setShow(true);
+  }
 
   const onEditHandler = (e) => {
     e.preventDefault();
@@ -87,6 +99,7 @@ const CommentForm = ({comment}) => {
 
   return (
     <div className={styles.commentForm}>
+      {show && <ConfirmModal setShow={setShow} text="edit" onEdit={onEditHandler} />}
       <div className={styles.comment_pair}>
         <label htmlFor="title">Title:</label>
         <input
@@ -132,7 +145,7 @@ const CommentForm = ({comment}) => {
       </div>
 
       <div className={styles.comment_pair}>
-        <button onClick={comment ? onEditHandler : onSubmitHandler}>
+        <button onClick={comment ? editHandler : onSubmitHandler}>
           {comment ? "EDIT" : "POST"}
         </button>
       </div>

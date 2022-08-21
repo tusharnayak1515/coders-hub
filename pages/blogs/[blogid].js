@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
@@ -17,6 +17,9 @@ const Comments = dynamic(() => import("../../components/Comments"), {
 const Contents = dynamic(() => import("../../components/Contents"), {
   ssr: false,
 });
+const ConfirmModal = dynamic(() => import("../../components/ConfirmModal"), {
+  ssr: false,
+});
 
 import styles from "../../styles/blogPage.module.css";
 
@@ -28,6 +31,7 @@ const BlogPage = () => {
   const { user, profile } = useSelector(state => state.userReducer,shallowEqual);
   const { blog } = useSelector((state) => state.blogReducer, shallowEqual);
   const { comments } = useSelector((state) => state.commentReducer, shallowEqual);
+  const [show, setShow] = useState(false);
   const timeAgo = new TimeAgo("en-US");
 
   const onEditClick = (e) => {
@@ -47,7 +51,12 @@ const BlogPage = () => {
     }
   };
 
-  const onDeleteClick = (e) => {
+  const onDeleteClick = (e)=> {
+    e.preventDefault();
+    setShow(true);
+  }
+
+  const onDelete = (e) => {
     e.preventDefault();
     if (blog?.user._id !== profile._id && profile?.role === "admin") {
       dispatch(actionCreators.deleteOtherBlog(blog?._id));
@@ -91,6 +100,7 @@ const BlogPage = () => {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      {show && <ConfirmModal setShow={setShow} text="Delete" onDelete={onDelete} />}
       <div className={styles.blog_container}>
         <div className={styles.blog_title}>
           <h1>{blog?.title}</h1>
