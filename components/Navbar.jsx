@@ -4,7 +4,7 @@ import { shallowEqual, useSelector, useDispatch } from 'react-redux';
 import { FaUserAlt } from 'react-icons/fa';
 import { MdSearch } from 'react-icons/md';
 import { IoMdAdd } from 'react-icons/io';
-import { BiLogOut } from 'react-icons/bi';
+import { FiPower } from 'react-icons/fi';
 import { RiHome2Fill } from 'react-icons/ri';
 import { ImUsers } from 'react-icons/im';
 import { actionCreators } from '../redux';
@@ -54,7 +54,7 @@ const Navbar = () => {
             <IoMdAdd className={styles.icons} onClick={onBlogAdd} />
             {(profile && profile?.role === "admin") && <ImUsers className={styles.icons} onClick={()=> router.push("/users")} />}
             <FaUserAlt className={`${styles.icons} ${styles.profileIcon}`} onClick={()=> router.push("/profile")} />
-            <BiLogOut className={styles.icons} onClick={onLogout} />
+            <FiPower className={styles.icons} onClick={onLogout} />
         </div>
     </div>
   )
