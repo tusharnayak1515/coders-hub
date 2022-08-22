@@ -255,8 +255,7 @@ export const editOtherProfile = ({id,name,email})=> async (dispatch)=> {
 
     const url = process.env.NODE_ENV === "production" ? "" : "http://localhost:9000";
     try {
-        const res = await axios.put(`${url}/api/auth/editotherprofile`,{id,name, email});
-
+        const res = await axios.put(`${url}/api/auth/editotherprofile`,{id,name,email});
         if(res.data.success) {
             if(typeof window !== "undefined") {
                 localStorage.setItem("jb_users", JSON.stringify(res.data.users));
@@ -465,7 +464,8 @@ export const deleteOtherUser = (id)=> async (dispatch)=> {
             dispatch({
                 type: "delete-other-user",
                 payload: {
-                    users: res.data.users
+                    users: res.data.users,
+                    error: null
                 }
             });
             toast.success(`Account Deleted Successfully!`, {

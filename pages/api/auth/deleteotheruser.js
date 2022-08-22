@@ -10,6 +10,7 @@ const handler = async (req, res)=> {
     if(req.method === "DELETE") {
         let success = false;
         try {
+            const adminId = req.user.id;
             const id = req.query.id;
             let user = await User.findById(id);
             if(!user) {
@@ -19,8 +20,8 @@ const handler = async (req, res)=> {
 
             const allUserBlogs = await Blog.find({user: id});
 
-            allUserBlogs.forEach((blog)=> {
-                let blog = await Blog.findByIdAndDelete(blog._id.toString(),{new: true});
+            allUserBlogs.forEach(async (blog)=> {
+                let blog1 = await Blog.findByIdAndDelete(blog._id.toString(),{new: true});
             });
 
             user = await User.findByIdAndDelete(id, {new: true});

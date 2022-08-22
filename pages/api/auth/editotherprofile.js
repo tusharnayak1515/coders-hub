@@ -24,6 +24,7 @@ const handler = async (req, res)=> {
     if(req.method === "PUT") {
         let success = false;
         try {
+            const adminId = req.user.id;
             const {id,name,email} = req.body;
             const {error} = schema.validate(req.body);
             if(error) {
