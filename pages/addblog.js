@@ -20,8 +20,8 @@ const router = useRouter();
         <Head>
             <title>Add Blog</title>
             <meta name="keywords" content="next, next.js, just-blogs, blogs, add blog, form" />
-            <link rel="icon" href="/favicon.ico" />
         </Head>
+        
         <BlogForm />
     </div>
   )

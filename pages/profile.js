@@ -42,7 +42,6 @@ const Profile = () => {
           name="keywords"
           content="next, next.js, coders hub, blogs, profile"
         />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <div className={styles.profile_wrapper}>

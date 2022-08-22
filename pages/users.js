@@ -47,7 +47,6 @@ const Users = () => {
           name="keywords"
           content="next, next.js, coders hub, blogs, users"
         />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <div className={styles.user_search_div}>
@@ -58,7 +57,6 @@ const Users = () => {
       <h1 className={styles.allusers_head}>All Users</h1>
 
       {user && <UserList />}
-      {/* <UserList /> */}
     </div>
   );
 };

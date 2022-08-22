@@ -32,7 +32,6 @@ const SearchBlogs = () => {
       <Head>
         <title>Search Blogs</title>
         <meta name="keywords" content="next, next.js, coding hub, blogs" />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <h1 className={styles.result_head}>Blogs</h1>

@@ -73,7 +73,6 @@ const Login = () => {
           name="keywords"
           content="next, next.js, just-blogs, blogs, login"
         />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <div className={styles.leftSide}>

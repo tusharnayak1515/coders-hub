@@ -108,7 +108,6 @@ const EditOtherProfile = () => {
           name="keywords"
           content={`next, next.js, coders hub, blogs, ${otherUser?.name}, edit profile`}
         />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       {confirm && (

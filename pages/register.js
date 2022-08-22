@@ -96,7 +96,6 @@ const Register = () => {
           name="keywords"
           content="next, next.js, just-blogs, blogs, register"
         />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <div className={styles.leftSide}>

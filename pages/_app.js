@@ -41,7 +41,7 @@ function MyApp({ Component, pageProps }) {
           name="keywords"
           content="next, next.js, just-blogs, blogs"
         />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.png" />
       </Head>
       {user && <Navbar />}
       {!loading && <Component {...pageProps} />}

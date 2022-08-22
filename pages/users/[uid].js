@@ -44,7 +44,6 @@ const OtherProfile = () => {
           name="keywords"
           content={`next, next.js, coders hub, blogs, ${otherUser?.name}, profile`}
         />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <div className={styles.profile_wrapper}>

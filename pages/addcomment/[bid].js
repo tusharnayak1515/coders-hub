@@ -1,10 +1,13 @@
 import React, { useEffect } from 'react';
 import { useRouter } from 'next/router';
+import Head from 'next/head';
 import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 import * as cookie from "cookie";
 import { wrapper } from '../../redux/store';
 import { actionCreators } from '../../redux';
-import CommentForm from '../../components/CommentForm';
+const CommentForm = dynamic(() => import("../../components/CommentForm"), {
+  ssr: false,
+});
 
 import styles from "../../styles/addComment.module.css";
 
@@ -24,7 +27,14 @@ const Addcomment = () => {
   
   return (
     <div className={styles.addComment}>
-        <CommentForm />
+      <Head>
+        <title>Add Comment</title>
+        <meta
+          name="keywords"
+          content={"next, next.js, just-blogs, blogs, add comment, comment"}
+        />
+      </Head>
+      <CommentForm />
     </div>
   )
 }

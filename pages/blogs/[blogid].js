@@ -29,7 +29,6 @@ const BlogPage = () => {
   const dispatch = useDispatch();
   const { user, profile } = useSelector(state => state.userReducer,shallowEqual);
   const { blog } = useSelector((state) => state.blogReducer, shallowEqual);
-  const { comments } = useSelector((state) => state.commentReducer, shallowEqual);
   const [show, setShow] = useState(false);
   const timeAgo = new TimeAgo("en-US");
 
@@ -93,8 +92,8 @@ const BlogPage = () => {
           name="keywords"
           content={`next, next.js, just-blogs, blogs, ${blog?.title}, ${blog?.description}`}
         />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
+
       {show && <ConfirmModal setShow={setShow} text="Delete" onDelete={onDelete} />}
       <div className={styles.blog_container}>
         <div className={styles.blog_title}>

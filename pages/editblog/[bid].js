@@ -38,8 +38,8 @@ const EditBlog = () => {
           name="keywords"
           content={`next, next.js, just-blogs, blogs, edit blog, ${blog?.title}, ${blog?.description}`}
         />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
+      
       <BlogForm blog={blog ? blog : null} />
     </div>
   );

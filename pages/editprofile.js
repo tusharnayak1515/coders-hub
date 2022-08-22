@@ -112,8 +112,8 @@ const EditProfile = () => {
           name="keywords"
           content="next, next.js, coders hub, blogs, edit profile"
         />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
+      
       {confirm && <ConfirmModal setShow={setConfirm} text="delete your account permanently" onDelete={onDeleteUser} />}
       {show && <PasswordModal setShow={setShow} />}
       {onDpClick && <DpModal setShow={setOnDpClick} profile={profile} userDetails={userDetails} setUserDetails={setUserDetails} />}

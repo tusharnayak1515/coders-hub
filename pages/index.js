@@ -31,7 +31,6 @@ export default function Home({categories}) {
       <Head>
         <title>Coders-Hub</title>
         <meta name="keywords" content="next, next.js, just-blogs, blogs" />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main className={styles.main}>
