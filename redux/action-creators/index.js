@@ -184,14 +184,27 @@ export const profile = (token)=> async (dispatch)=> {
     }
 }
 
-export const editProfile = ({name,email})=> async (dispatch)=> {
+export const editProfile = ({name,email,profilepic})=> async (dispatch)=> {
     dispatch({
         type: "user-loading"
     });
 
+    let dp = null;
+    if(profilepic !== "") {
+        const data = new FormData();
+        data.append("file", profilepic);
+        data.append("upload_preset", "coders_hub");
+        data.append("cloud_name", "alpha2625");
+        const response = await axios.post("https://api.cloudinary.com/v1_1/alpha2625/image/upload", data);
+        dp = response.data.secure_url;
+    }
+    else {
+        dp = "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png";
+    }
+
     const url = process.env.NODE_ENV === "production" ? "" : "http://localhost:9000";
     try {
-        const res = await axios.put(`${url}/api/auth/editprofile`,{name, email});
+        const res = await axios.put(`${url}/api/auth/editprofile`,{name, email, profilepic: dp});
 
         if(res.data.success) {
             localStorage.setItem("jb_user_profile", JSON.stringify(res.data.user));

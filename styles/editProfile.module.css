@@ -33,6 +33,9 @@
     cursor: pointer;
 }
 
+.editProfile .edit_container .dp_div img:hover {
+    opacity: 0.9;
+}
 
 .editProfile .edit_container .user_details {
     width: 57%;

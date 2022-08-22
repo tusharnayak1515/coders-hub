@@ -13,25 +13,35 @@ const PasswordModal = dynamic(() => import("../components/PasswordModal"), {
 const ConfirmModal = dynamic(() => import("../components/ConfirmModal"), {
     ssr: false,
 });
+const DpModal = dynamic(() => import("../components/DpModal"), {
+    ssr: false,
+});
 
 import styles from "../styles/editProfile.module.css";
 
 const EditProfile = () => {
   const router = useRouter();
   const dispatch = useDispatch();
-  const { user, profile, isLoading } = useSelector(state => state.userReducer,shallowEqual);
+  const { user, profile } = useSelector(state => state.userReducer,shallowEqual);
   const [userDetails, setUserDetails] = useState({
     name: profile?.name,
     email: profile?.email,
+    profilepic: profile?.profilepic
   });
   const [show, setShow] = useState(false);
   const [confirm, setConfirm] = useState(false);
+  const [onDpClick, setOnDpClick] = useState(false);
 
   const onChangeHandler = (e) => {
     e.preventDefault();
     const { name, value } = e.target;
     setUserDetails({ ...userDetails, [name]: value });
   };
+
+  const onDpModalClick = (e)=> {
+    e.preventDefault();
+    setOnDpClick(true);
+  }
 
   const passwordChangeClick = (e)=> {
     e.preventDefault();
@@ -60,6 +70,7 @@ const EditProfile = () => {
     const {name, email} = userDetails;
     if((name.length >= 3 && name.length <= 25) && emailRegex.test(email)) {
       dispatch(actionCreators.editProfile(userDetails));
+      router.replace("/profile");
     }
     else if(name.length < 3 || name.length > 25) {
       toast.warn("Name must be minimum 3 and maximum 25 characters long!", {
@@ -83,7 +94,6 @@ const EditProfile = () => {
         progress: undefined,
       });
     }
-    router.replace("/profile");
   }
 
   useEffect(() => {
@@ -93,10 +103,6 @@ const EditProfile = () => {
       dispatch(actionCreators.profile());
     }
   }, [user, router, dispatch]);
-
-  if(isLoading) {
-    return <p style={{color: "white"}}>Loading...</p>
-  }
 
   return (
     <div className={styles.editProfile}>
@@ -110,9 +116,10 @@ const EditProfile = () => {
       </Head>
       {confirm && <ConfirmModal setShow={setConfirm} text="delete your account permanently" onDelete={onDeleteUser} />}
       {show && <PasswordModal setShow={setShow} />}
+      {onDpClick && <DpModal setShow={setOnDpClick} profile={profile} userDetails={userDetails} setUserDetails={setUserDetails} />}
       <div className={styles.edit_container}>
         <div className={styles.dp_div}>
-          <img src={profile?.profilepic} alt={profile?.name} />
+          <img src={profile?.profilepic} alt={profile?.name} onClick={onDpModalClick} />
         </div>
 
         <div className={styles.user_details}>

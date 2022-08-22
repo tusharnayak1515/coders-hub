@@ -24,8 +24,8 @@ const handler = async (req, res)=> {
         let success = false;
         try {
             const userId = req.user.id;
-            const {name,email} = req.body;
-            const {error} = schema.validate(req.body);
+            const {name,email,profilepic} = req.body;
+            const {error} = schema.validate({name,email});
             if(error) {
                 success = false;
                 return res.status(422).json({success, error: error.details[0].message});
@@ -45,7 +45,11 @@ const handler = async (req, res)=> {
                 }
             }
 
-            user = await User.findByIdAndUpdate(userId, {name: name, email: email}, {new: true})
+            if(!profilepic || profilepic === "") {
+                profilepic = "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png";
+            }
+
+            user = await User.findByIdAndUpdate(userId, {name: name, email: email, profilepic: profilepic}, {new: true})
                 .select("-password")
                 .populate("blogs");
 

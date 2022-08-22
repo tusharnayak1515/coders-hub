@@ -32,7 +32,7 @@ const Profile = () => {
     } else {
       dispatch(actionCreators.profile());
     }
-  }, [user, router, dispatch]);
+  }, [user, profile?.profilepic, router, dispatch]);
 
   return (
     <div className={styles.profile_page}>

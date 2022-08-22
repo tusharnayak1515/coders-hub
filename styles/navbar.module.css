@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=DynaPuff&family=Signika+Negative&display=swap');
+
 .navbar {
     height: 13vh;
     width: 100%;
@@ -16,6 +18,7 @@
 
 .navbar .logoDiv .logo {
     color: white;
+    font-family: 'DynaPuff', cursive;
 }
 
 .navbar .searchDiv {
@@ -35,6 +38,7 @@
     width: 100%;
     color: white;
     font-size: 1.2rem;
+    font-family: 'Signika Negative', sans-serif;
     padding: 0.5rem 1rem;
     border: 0.1rem solid #af8afa;
     border-radius: 0.5rem;
