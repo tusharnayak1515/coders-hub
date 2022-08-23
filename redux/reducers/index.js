@@ -20,18 +20,19 @@ const masterReducer = (state,action)=> {
                 profile: action.payload.userReducer.profile ? action.payload.userReducer.profile : state.userReducer.profile,
                 users: [...new Set(action.payload.userReducer.users, state.userReducer.users)],
                 otherUser: action.payload.userReducer.otherUser ? action.payload.userReducer.otherUser : state.userReducer.otherUser,
-                isLoading: action.payload.userReducer.isLoading,
+                isLoading: state.userReducer.isLoading,
+                theme: state.userReducer.theme
             },
             blogReducer: {
                 blogs: [...new Set(action.payload.blogReducer.blogs, state.blogReducer.blogs)],
                 searchedBlogs: [...new Set(action.payload.blogReducer.searchedBlogs, state.blogReducer.searchedBlogs)],
                 blog: action.payload.blogReducer.blog ? action.payload.blogReducer.blog : state.blogReducer.blog,
-                isLoading: action.payload.blogReducer.isLoading,
+                isLoading: state.blogReducer.isLoading,
             },
             commentReducer: {
                 comments: [...new Set(action.payload.commentReducer.comments, state.commentReducer.comments)],
                 comment: action.payload.commentReducer.comment ? action.payload.commentReducer.comment : state.commentReducer.comment,
-                isLoading: action.payload.commentReducer.isLoading,
+                isLoading: state.commentReducer.isLoading,
             },
         }
         return nextState;

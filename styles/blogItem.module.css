@@ -6,8 +6,12 @@
     flex-direction: column;
     justify-content: space-evenly;
     align-items: flex-start;
-    border-bottom: 0.05rem solid #af8afa;
+    border-bottom: 0.1rem solid #af8afa;
     /* background-color: yellowgreen; */
+}
+
+.light_blogItem {
+    border-bottom: 0.1rem solid purple;
 }
 
 .blogItem .details {
@@ -28,6 +32,10 @@
     /* background-color: orange; */
 }
 
+.light_blogItem .details h3 {
+    color: black;
+}
+
 .blogItem .details h3:hover {
     text-decoration: underline;
 }
@@ -43,4 +51,8 @@
 .blogItem .time p {
     color: lightgrey;
     font-family: 'Play', sans-serif;
+}
+
+.light_blogItem .time p {
+    color: grey;
 }

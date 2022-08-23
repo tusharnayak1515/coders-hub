@@ -7,6 +7,14 @@
     /* background-color: lightgreen; */
 }
 
+.dark_profile {
+    background-color: var(--dark-bg);
+}
+
+.light_profile {
+    background-color: var(--light-bg);
+}
+
 .profile_page .profile_wrapper {
     margin: 2rem 0;
     width: 45%;
@@ -15,6 +23,10 @@
     align-items: center;
     border-bottom: 0.1rem solid #af8afa;
     /* background-color: limegreen; */
+}
+
+.light_profile .profile_wrapper {
+    border-bottom: 0.1rem solid var(--light-border);
 }
 
 .profile_page .profile_wrapper .profile_box {
@@ -33,6 +45,10 @@
     border-radius: 50%;
 }
 
+.light_profile .profile_wrapper .profile_box .dp_div {
+    border: 0.2rem solid var(--light-border);
+}
+
 .profile_page .profile_wrapper .profile_box .dp_div img {
     height: 100%;
     width: 100%;
@@ -47,6 +63,10 @@
     flex-direction: column;
     align-items: flex-start;
     /* background-color: lightpink; */
+}
+
+.light_profile .profile_wrapper .profile_box .user_details {
+    color: var(--light-text);
 }
 
 .profile_page .profile_wrapper .profile_box .user_details .user_name_div {
@@ -77,8 +97,16 @@
     cursor: pointer;
 }
 
+.light_profile .profile_wrapper .profile_box .user_details .user_name_div .user_editIcon {
+    color: var(--light-text);
+}
+
 .profile_page .profile_wrapper .profile_box .user_details .user_name_div .user_editIcon:hover {
     color: #af8afa;
+}
+
+.light_profile .profile_wrapper .profile_box .user_details .user_name_div .user_editIcon:hover {
+    color: var(--light-border);
 }
 
 .profile_page .user_blogs_container {

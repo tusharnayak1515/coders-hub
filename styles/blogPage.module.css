@@ -7,6 +7,14 @@
     /* background-color: rgb(237, 237, 174); */
 }
 
+.dark_blog_page {
+    background-color: var(--dark-bg);
+}
+
+.light_blog_page {
+    background-color: var(--light-bg);
+}
+
 .blog_page .blog_container, .blog_page .comments_container {
     width: 80%;
     margin: 2rem auto;
@@ -16,8 +24,12 @@
 .blog_page .blog_container {
     margin-bottom: 1rem;
     padding-bottom: 1rem;
-    border-bottom: 0.1rem solid #af8afa;
+    border-bottom: 0.1rem solid var(--dark-border-1);
     /* background-color: rgb(255, 194, 82); */
+}
+
+.light_blog_page .blog_container {
+    border-bottom: 0.1rem solid var(--light-border);
 }
 
 .blog_page .comments_container {
@@ -25,12 +37,16 @@
 }
 
 .blog_page .blog_container .blog_title, .blog_page .blog_container .blog_description, .blog_page .blog_container .blog_category, .blog_page .blog_container .blog_subtitle {
-    color: white;
+    color: var(--dark-text);
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
     align-items: center;
     /* background-color: brown; */
+}
+
+.light_blog_page .blog_container .blog_title, .light_blog_page .blog_container .blog_description, .light_blog_page .blog_container .blog_category, .light_blog_page .blog_container .blog_subtitle {
+    color: var(--light-text);
 }
 
 .blog_page .blog_container .blog_title {
@@ -61,6 +77,10 @@
     color: #af8afa;
 }
 
+.light_blog_page .blog_container .blog_title .blog_iconDiv .blog_editIcon:hover {
+    color: var(--light-border);
+}
+
 .blog_page .blog_container .blog_title .blog_iconDiv .blog_deleteIcon:hover {
     color: red;
 }
@@ -69,6 +89,10 @@
     color: lightgrey;
     font-weight: normal;
     margin-bottom: 1.5rem;
+}
+
+.light_blog_page .blog_container .blog_description {
+    color: grey;
 }
 
 .blog_page .blog_container .blog_category {
@@ -101,8 +125,12 @@
 .blog_page .blog_container .c_item pre {
     /* width: 70%; */
     height: 40vh;
-    border: 0.1rem solid #af8afa;
+    border: 0.1rem solid var(--dark-border-1);
     border-radius: 0.5rem;
+}
+
+.light_blog_page .blog_container .c_item pre {
+    border: 0.1rem solid var(--light-border);
 }
 
 .blog_page .blog_container .blog_time {
@@ -114,7 +142,11 @@
 }
 
 .blog_page .blog_container .blog_time p {
-    color: white;
+    color: var(--dark-text);
+}
+
+.light_blog_page .blog_container .blog_time p {
+    color: var(--light-text);
 }
 
 /* .blog_page .comments_container {

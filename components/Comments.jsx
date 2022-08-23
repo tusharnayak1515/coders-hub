@@ -11,6 +11,7 @@ import styles from "../styles/comments.module.css";
 
 const Comments = () => {
   const router = useRouter();
+  const {theme} = useSelector(state=> state.userReducer,shallowEqual);
   const {blog} = useSelector(state=> state.blogReducer,shallowEqual);
   const {comments} = useSelector(state=> state.commentReducer,shallowEqual);
 
@@ -20,7 +21,7 @@ const Comments = () => {
   }
 
   return (
-    <div className={styles.comments}>
+    <div className={`${styles.comments} ${theme === "light" ? styles.light_comments : styles.dark_comments}`}>
         <div className={styles.head_div}>
             <h1 className={styles.comments_head}>Comments</h1>
             <MdAdd className={styles.comments_addIcon} onClick={onAddClick} />

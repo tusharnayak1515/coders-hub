@@ -636,6 +636,12 @@ export const getUser = ({id, token})=> async (dispatch)=> {
     }
 }
 
+export const toggleTheme = ()=> async (dispatch)=> {
+    dispatch({
+        type: "toggle-theme"
+    });
+}
+
 export const logout = ()=> async (dispatch)=> {
     deleteCookie("jb_user_token");
     localStorage.removeItem("jb_user_profile");

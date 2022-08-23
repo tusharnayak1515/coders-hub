@@ -16,7 +16,7 @@ import styles from "../styles/profile.module.css";
 const Profile = () => {
   const router = useRouter();
   const dispatch = useDispatch();
-  const { user, profile } = useSelector(
+  const { user, profile, theme } = useSelector(
     (state) => state.userReducer,
     shallowEqual
   );
@@ -35,7 +35,7 @@ const Profile = () => {
   }, [user, profile?.profilepic, router, dispatch]);
 
   return (
-    <div className={styles.profile_page}>
+    <div className={`${styles.profile_page} ${theme === "light" ? styles.light_profile : styles.dark_profile}`}>
       <Head>
         <title>Profile</title>
         <meta

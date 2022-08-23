@@ -5,6 +5,14 @@
   /* background-color: white; */
 }
 
+.light_home {
+  background-color: var(--light-bg);
+}
+
+.dark_home {
+  background-color: var(--dark-bg);
+}
+
 .main {
   min-height: 100vh;
   display: flex;
@@ -25,10 +33,18 @@
   /* background-color: orange; */
 }
 
+.light_home .main .categoriesDiv {
+  border-bottom: 0.1rem solid var(--light-border);
+}
+
 .main .categoriesDiv h4 {
   margin: 0 1rem;
   color: white;
   font-family: 'Heebo', sans-serif;
+}
+
+.light_home .categoriesDiv h4 {
+  color: var(--light-text);
 }
 
 .main .title {
@@ -38,4 +54,8 @@
   color: white;
   font-family: 'Secular One', sans-serif;
   /* background-color: yellowgreen; */
+}
+
+.light_home .main .title {
+  color: var(--light-text);
 }

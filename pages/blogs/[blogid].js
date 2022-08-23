@@ -27,7 +27,7 @@ TimeAgo.addLocale(en);
 const BlogPage = () => {
   const router = useRouter();
   const dispatch = useDispatch();
-  const { user, profile } = useSelector(state => state.userReducer,shallowEqual);
+  const { user, profile, theme } = useSelector(state => state.userReducer,shallowEqual);
   const { blog } = useSelector((state) => state.blogReducer, shallowEqual);
   const [show, setShow] = useState(false);
   const timeAgo = new TimeAgo("en-US");
@@ -85,7 +85,7 @@ const BlogPage = () => {
   }, [user, router, dispatch]);
 
   return (
-    <div className={styles.blog_page}>
+    <div className={`${styles.blog_page} ${theme === "light" ? styles.light_blog_page : styles.dark_blog_page}`}>
       <Head>
         <title>{blog?.title}</title>
         <meta

@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import { useSelector, shallowEqual } from 'react-redux';
 import TimeAgo from 'javascript-time-ago';
 import en from 'javascript-time-ago/locale/en';
 
@@ -9,8 +10,10 @@ TimeAgo.addLocale(en);
 
 const BlogItem = ({blog, blog_user}) => {
   const timeAgo = new TimeAgo('en-US');
+  const {theme} = useSelector(state=> state.userReducer, shallowEqual);
+
   return (
-    <div className={styles.blogItem}>
+    <div className={`${styles.blogItem} ${theme === "light" ? styles.light_blogItem : styles.dark_blogItem}`}>
         <div className={styles.details}>
             <Link href={`/blogs/${blog._id}`}><a><h3>{blog.title}</h3></a></Link>
         </div>

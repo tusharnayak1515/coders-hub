@@ -18,7 +18,7 @@ const Comment = ({ comment }) => {
   const timeAgo = new TimeAgo("en-US");
   const router = useRouter();
   const dispatch = useDispatch();
-  const { profile } = useSelector((state) => state.userReducer, shallowEqual);
+  const { profile, theme } = useSelector((state) => state.userReducer, shallowEqual);
   const [onHover, setOnHover] = useState(false);
   const [show, setShow] = useState(false);
 
@@ -88,7 +88,7 @@ const Comment = ({ comment }) => {
   }, []);
 
   return (
-    <div className={styles.comment_div}>
+    <div className={`${styles.comment_div} ${theme === "light" ? styles.light_comment_div : styles.dark_comment_div}`}>
       {show && <ConfirmModal setShow={setShow} text="Delete" onDelete={onDelete} />}
       <div className={styles.comment_user_div}>
         <div className={styles.flex_div}>

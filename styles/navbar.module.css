@@ -7,18 +7,34 @@
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+}
+
+.light_nav {
+    border-bottom: 00.1rem solid purple;
+    background-color: white;
+}
+
+.dark_nav {
     border-bottom: 0.1rem solid #af8afa;
     background-color: #212121;
 }
 
 .navbar .logoDiv {
     width: 25vw;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
     /* background-color: palegreen; */
 }
 
 .navbar .logoDiv .logo {
+    margin-right: 1rem;
     color: white;
     font-family: 'DynaPuff', cursive;
+}
+
+.light_nav .logoDiv .logo {
+    color: black;
 }
 
 .navbar .searchDiv {
@@ -45,6 +61,12 @@
     background-color: #3b3b3b;
 }
 
+.light_nav .searchDiv input {
+    color: black;
+    border: 0.1rem solid purple;
+    background-color: white;
+}
+
 .navbar .searchDiv .searchIcon {
     position: absolute;
     top: auto;
@@ -54,8 +76,17 @@
     cursor: pointer;
 }
 
+.light_nav .searchDiv .searchIcon {
+    color: purple;
+}
+
 .navbar .searchDiv .searchIcon:hover {
     color: #d8b8ff;
+    transition: all 0.2s ease-in-out;
+}
+
+.light_nav .searchDiv .searchIcon:hover {
+    color: rgb(165, 0, 165);
     transition: all 0.2s ease-in-out;
 }
 
@@ -68,24 +99,29 @@
     /* background-color: hotpink; */
 }
 
-.navbar .menuDiv h3, .navbar .menuDiv .icons {
+.navbar .icons {
     margin: 0 1rem;
     padding: 0;
     color: white;
+    font-size: 2rem;
     cursor: pointer;
     /* background-color: orange; */
 }
 
-.navbar .menuDiv .icons {
-    font-size: 2rem;
-    /* background-color: orchid; */
+.light_nav .icons {
+    color: black;
 }
 
 .navbar .menuDiv .profileIcon {
     font-size: 1.5rem;
 }
 
-.navbar .menuDiv h3:hover, .navbar .menuDiv .icons:hover {
+.navbar .icons:hover {
     color: #af8afa;
+    transition: all 0.2s ease-in-out;
+}
+
+.light_nav .icons:hover {
+    color: purple;
     transition: all 0.2s ease-in-out;
 }

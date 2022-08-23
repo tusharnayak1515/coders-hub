@@ -32,6 +32,7 @@ const initState = {
     profile: isProfile,
     users: isUsers,
     otherUser: null,
+    theme: "light",
     isLoading: false
 }
 
@@ -40,6 +41,14 @@ const userReducer = (state=initState, action)=> {
         return {
             ...state,
             isLoading: true
+        }
+    }
+    else if(action.type === "toggle-theme") {
+        const theme = state.theme === "light" ? "dark" : "light";
+        return {
+            ...state,
+            theme: theme,
+            isLoading: false
         }
     }
     else if(action.type === "register") {

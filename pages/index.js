@@ -15,7 +15,7 @@ import styles from "../styles/Home.module.css";
 export default function Home({categories}) {
   const router = useRouter();
   const dispatch = useDispatch();
-  const { user } = useSelector(state => state.userReducer,shallowEqual);
+  const { user, theme } = useSelector(state => state.userReducer,shallowEqual);
 
   useEffect(() => {
     if (!user) {
@@ -27,7 +27,7 @@ export default function Home({categories}) {
   }, [user, router, dispatch]);
 
   return (
-    <div className={styles.container}>
+    <div className={`${styles.container} ${theme === "light" ? styles.light_home : styles.dark_home}`}>
       <Head>
         <title>Coders-Hub</title>
         <meta name="keywords" content="next, next.js, just-blogs, blogs" />

@@ -21,9 +21,13 @@
 } */
 
 .comments .head_div .comments_addIcon {
-    color: #af8afa;
+    color: var(--dark-border-1);
     font-size: 3rem;
     cursor: pointer;
+}
+
+.light_comments .head_div .comments_addIcon {
+    color: var(--light-border);
 }
 
 .comments .head_div .comments_addIcon:hover {
@@ -31,6 +35,15 @@
     transition: all 0.2s ease-in-out;
 }
 
+.light_comments .head_div .comments_addIcon:hover {
+    color: rgb(175, 0, 175);
+    transition: all 0.2s ease-in-out;
+}
+
 .comments .head_div .comments_head, .comments .noComments {
-    color: white;
+    color: var(--dark-text);
+}
+
+.light_comments .head_div .comments_head, .light_comments .noComments {
+    color: var(--light-text);
 }
