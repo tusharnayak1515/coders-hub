@@ -5,6 +5,7 @@ import dynamic from "next/dynamic";
 import { shallowEqual, useSelector } from "react-redux";
 import { ToastContainer } from "react-toastify";
 const Navbar = dynamic(() => import("../components/Navbar"), {ssr: false});
+const LoadingSpinner = dynamic(() => import("../components/LoadingSpinner"), {ssr: false});
 import { wrapper } from "../redux/store";
 import Nprogress from "nprogress";
 Nprogress.configure({ showSpinner: false, easing: 'ease', speed: 1000, parent: 'html' });
@@ -44,6 +45,7 @@ function MyApp({ Component, pageProps }) {
         <link rel="icon" href="/favicon.png" />
       </Head>
       {user && <Navbar />}
+      {loading && <LoadingSpinner />}
       {!loading && <Component {...pageProps} />}
       {domLoaded && <ToastContainer />}
     </>

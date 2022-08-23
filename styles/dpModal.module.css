@@ -18,7 +18,14 @@
     flex-direction: column;
     align-items: center;
     /* background-color: purple; */
-    background-color: #212121;
+}
+
+.dp_overlay .dark_dp_modal {
+    background-color: var(--dark-bg);
+}
+
+.dp_overlay .light_dp_modal {
+    background-color: var(--light-bg);
 }
 
 .dp_overlay .dp_modal .image_preview {
@@ -30,9 +37,13 @@
     justify-content: center;
     align-items: center;
     border: none;
-    border: 0.1rem dashed #af8afa;
+    border: 0.1rem dashed var(--dark-border-1);
     border-radius: 0.5rem;
     /* background-color: brown; */
+}
+
+.dp_overlay .light_dp_modal .image_preview {
+    border: 0.1rem dashed var(--light-border);
 }
 
 .dp_overlay .dp_modal .image_preview img {
@@ -46,9 +57,13 @@
     position: absolute;
     top: 0.5rem;
     right: 0.5rem;
-    color: #af8afa;
+    color: var(--dark-border-1);
     font-size: 1.5rem;
     cursor: pointer;
+}
+
+.dp_overlay .light_dp_modal .image_preview .remove_image_icon {
+    color: var(--light-border);
 }
 
 .dp_overlay .dp_modal .image_preview .remove_image_icon:hover {
@@ -58,8 +73,12 @@
 .dp_overlay .dp_modal .image_preview .image_icon {
     height: 5rem;
     width: 5rem;
-    color: white;
+    color: var(--dark-text);
     cursor: pointer;
+}
+
+.dp_overlay .light_dp_modal .image_preview .image_icon {
+    color: var(--light-text);
 }
 
 .dp_overlay .dp_modal .image_preview input {
@@ -84,26 +103,26 @@
 
 .dp_overlay .dp_modal .dp_btn_div .dp_confirm_btn {
     margin-bottom: 1rem;
-    color: white;
-    border: none;
-    background-color: purple;
+    color: var(--dark-text);
+    border: 0.1rem solid var(--light-border);
+    background-color: var(--light-border);
 }
 
 .dp_overlay .dp_modal .dp_btn_div .dp_confirm_btn:hover {
-    color: purple;
-    background-color: white;
+    color: var(--light-border);
+    background-color: var(--light-bg);
     transition: all 0.2s ease-in-out;
 }
 
 .dp_overlay .dp_modal .dp_btn_div .dp_cancel_btn {
     margin-bottom: 1rem;
     color: red;
-    border: none;
-    background-color: white;
+    border: 0.1rem solid red;
+    background-color: var(--light-bg);
 }
 
 .dp_overlay .dp_modal .dp_btn_div .dp_cancel_btn:hover {
-    color: white;
+    color: var(--dark-text);
     background-color: red;
     transition: all 0.2s ease-in-out;
 }

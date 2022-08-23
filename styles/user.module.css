@@ -4,25 +4,36 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    border-bottom: 0.1rem solid #af8afa;
+    border-bottom: 0.1rem solid var(--dark-border-1);
     /* background-color: palevioletred; */
+}
+
+.light_user_div {
+    border-bottom: 0.1rem solid var(--light-border);
 }
 
 .user_div img {
     height: 3rem;
     width: 3rem;
     margin-right: 1rem;
-    border: 0.1rem solid #af8afa;
+    border: 0.1rem solid var(--dark-border-1);
     border-radius: 50%;
 }
 
+.light_user_div img {
+    border: 0.1rem solid var(--light-border);
+}
+
 .user_div .username {
-    color: white;
+    color: var(--dark-text);
     cursor: pointer;
 }
 
+.light_user_div .username {
+    color: var(--light-text);
+}
+
 .user_div .username:hover {
-    color: #af8afa;
     text-decoration: underline;
     transition: all 0.2s ease-in-out;
 }

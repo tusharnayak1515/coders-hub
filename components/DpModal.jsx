@@ -4,7 +4,7 @@ import { FaTrash, FaImage } from "react-icons/fa";
 
 import styles from "../styles/dpModal.module.css";
 
-const DpModal = ({ setShow, profile, userDetails, setUserDetails, setMyImg }) => {
+const DpModal = ({ setShow, profile, userDetails, setUserDetails, setMyImg, theme }) => {
   const [image, setImage] = useState(profile?.profilepic);
   const [dp, setDp] = useState("");
 
@@ -39,7 +39,7 @@ const DpModal = ({ setShow, profile, userDetails, setUserDetails, setMyImg }) =>
 
   return ReactDom.createPortal(
     <div className={styles.dp_overlay}>
-      <div className={styles.dp_modal}>
+      <div className={`${styles.dp_modal} ${theme === "light" ? styles.light_dp_modal : styles.dark_dp_modal}`}>
         <div className={styles.image_preview}>
           {image !== "" && <FaTrash className={styles.remove_image_icon} onClick={onRemove} />}
           {image !== "" ? (

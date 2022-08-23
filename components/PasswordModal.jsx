@@ -6,7 +6,7 @@ import { actionCreators } from "../redux";
 
 import styles from "../styles/passwordModal.module.css";
 
-const PasswordModal = ({ setShow }) => {
+const PasswordModal = ({ setShow, theme }) => {
   const dispatch = useDispatch();
   const [passwordDetails, setPasswordDetails] = useState({
     oldPassword: "",
@@ -83,7 +83,7 @@ const PasswordModal = ({ setShow }) => {
 
   return ReactDom.createPortal(
     <div className={styles.password_overlay}>
-      <div className={styles.password_modal}>
+      <div className={`${styles.password_modal} ${theme === "light" ? styles.light_password_modal : styles.dark_password_modal}`}>
         <div className={styles.password_input_div}>
           <input
             type="password"

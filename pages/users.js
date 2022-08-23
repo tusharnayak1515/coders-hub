@@ -15,7 +15,7 @@ import styles from "../styles/users.module.css";
 const Users = () => {
   const router = useRouter();
   const dispatch = useDispatch();
-  const { user, profile } = useSelector(state => state.userReducer,shallowEqual);
+  const { user, profile, theme } = useSelector(state => state.userReducer,shallowEqual);
 
   useEffect(() => {
     if (!user) {
@@ -29,7 +29,7 @@ const Users = () => {
   }, [user, router, profile?.role, dispatch]);
 
   return (
-    <div className={styles.users_page}>
+    <div className={`${styles.users_page} ${theme === "light" ? styles.light_users_page : styles.dark_users_page}`}>
       <Head>
         <title>All Users</title>
         <meta

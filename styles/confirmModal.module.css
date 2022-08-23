@@ -23,11 +23,18 @@
     justify-content: space-around;
     border: none;
     border-radius: 0.5rem;
-    background-color: white;
+}
+
+.dark_modal {
+    background-color: var(--dark-bg);
+}
+
+.light_modal {
+    background-color: var(--light-bg);
 }
 
 .modal .modalText {
-    color: purple;
+    color: var(--dark-text);
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -36,6 +43,10 @@
     word-wrap: break-word;
     /* margin-bottom: 1rem; */
     /* background-color: lime; */
+}
+
+.light_modal .modalText {
+    color: var(--light-text);
 }
 
 .modal .modal_btn_div {
@@ -56,8 +67,8 @@
 }
 
 .modal .modal_btn_div .cancel_btn {
-    color: purple;
-    border: 0.1rem solid purple;
+    color: var(--light-border);
+    border: 0.1rem solid var(--light-border);
     background-color: white;
 }
 
@@ -67,13 +78,13 @@
 }
 
 .modal .modal_btn_div .action_btn {
-    color: white;
-    border: 0.1rem solid purple;
-    background-color: purple;
+    color: var(--dark-text);
+    border: 0.1rem solid var(--light-border);
+    background-color: var(--light-border);
 }
 
 .modal .modal_btn_div .action_btn:hover {
-    color: purple;
-    background-color: white;
+    color: var(--light-border);
+    background-color: var(--light-bg);
     transition: all 0.2s ease-in-out;
 }

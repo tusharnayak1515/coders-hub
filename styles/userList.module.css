@@ -6,5 +6,9 @@
 }
 
 .userList .no_users_found {
-    color: white;
+    color: var(--dark-text);
+}
+
+.light_userList .no_users_found {
+    color: var(--light-text);
 }

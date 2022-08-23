@@ -3,7 +3,7 @@ import ReactDom from "react-dom";
 
 import styles from "../styles/confirmModal.module.css";
 
-const ConfirmModal = ({setShow, text, onEdit, onDelete}) => {
+const ConfirmModal = ({setShow, text, onEdit, onDelete, theme}) => {
 
   const onCancel = (e)=> {
     e.preventDefault();
@@ -12,7 +12,7 @@ const ConfirmModal = ({setShow, text, onEdit, onDelete}) => {
 
   return ReactDom.createPortal(
     <div className={styles.overlay}>
-        <div className={styles.modal}>
+        <div className={`${styles.modal} ${theme === "light" ? styles.light_modal : styles.dark_modal}`}>
             <h2 className={styles.modalText}>Are You sure you want to {text}?</h2>
             <div className={styles.modal_btn_div}>
                 <button className={styles.cancel_btn} onClick={onCancel}>Cancel</button>

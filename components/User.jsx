@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 
 import styles from "../styles/user.module.css";
 
-const User = ({user}) => {
+const User = ({user, theme}) => {
   const router = useRouter();
 
   const onUserClick = (e)=> {
@@ -12,9 +12,9 @@ const User = ({user}) => {
   }
 
   return (
-    <div className={styles.user_div}>
-        <img src={user.profilepic} alt={user.name} />
-        <h2 className={styles.username} onClick={onUserClick}><a href={`/users/${user._id}`}>{user.name}</a></h2>
+    <div className={`${styles.user_div} ${theme === "light" ? styles.light_user_div : styles.dark_user_div}`}>
+      <img src={user.profilepic} alt={user.name} />
+      <h2 className={styles.username} onClick={onUserClick}><a href={`/users/${user._id}`}>{user.name}</a></h2>
     </div>
   )
 }

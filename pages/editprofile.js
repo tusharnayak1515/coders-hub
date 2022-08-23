@@ -22,7 +22,7 @@ import styles from "../styles/editProfile.module.css";
 const EditProfile = () => {
   const router = useRouter();
   const dispatch = useDispatch();
-  const { user, profile } = useSelector(
+  const { user, profile, theme } = useSelector(
     (state) => state.userReducer,
     shallowEqual
   );
@@ -50,11 +50,6 @@ const EditProfile = () => {
   const passwordChangeClick = (e) => {
     e.preventDefault();
     setShow(true);
-  };
-
-  const onCancel = (e) => {
-    e.preventDefault();
-    router.replace("/profile");
   };
 
   const onDelete = (e) => {
@@ -107,7 +102,7 @@ const EditProfile = () => {
   }, [user, userDetails.profilepic, router, dispatch]);
 
   return (
-    <div className={styles.editProfile}>
+    <div className={`${styles.editProfile} ${theme === "light" ? styles.light_editProfile : styles.dark_editProfile}`}>
       <Head>
         <title>Edit Profile</title>
         <meta
@@ -118,14 +113,16 @@ const EditProfile = () => {
 
       {confirm && (
         <ConfirmModal
+          theme={theme}
           setShow={setConfirm}
           text="delete your account permanently"
           onDelete={onDeleteUser}
         />
       )}
-      {show && <PasswordModal setShow={setShow} />}
+      {show && <PasswordModal setShow={setShow} theme={theme} />}
       {onDpClick && (
         <DpModal
+          theme={theme}
           setShow={setOnDpClick}
           profile={profile}
           userDetails={userDetails}

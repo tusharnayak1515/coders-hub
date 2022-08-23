@@ -8,15 +8,15 @@ const User = dynamic(() => import("../components/User"), {
 import styles from "../styles/userList.module.css";
 
 const UserList = () => {
-  const {users} = useSelector(state=> state.userReducer,shallowEqual);
+  const {users, theme} = useSelector(state=> state.userReducer,shallowEqual);
 
   return (
-    <div className={styles.userList}>
+    <div className={`${styles.userList} ${theme === "light" ? styles.light_userList : styles.dark_userList}`}>
       {users && users?.length === 0 ? (
         <h1 className={styles.no_users_found}>No Users Found</h1>
       ) : (
         users?.map((user) => {
-          return <User key={user._id} user={user} />;
+          return <User key={user._id} user={user} theme={theme} />;
         })
       )}
     </div>

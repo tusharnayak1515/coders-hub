@@ -7,44 +7,24 @@
     /* background-color: lime; */
 }
 
-.users_page .user_search_div {
-    position: relative;
-    margin: 2rem auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* background-color: orangered; */
+.dark_users_page {
+    background-color: var(--dark-bg);
 }
 
-.users_page .user_search_div input {
-    padding: 0.5rem 1rem;
-    color: white;
-    font-size: 1.3rem;
-    border: 0.1rem solid #af8afa;
-    border-radius: 0.5rem;
-    background-color: #212121;
-}
-
-.users_page .user_search_div .user_searchIcon {
-    position: absolute;
-    top: auto;
-    right: 1rem;
-    color: #af8afa;
-    font-size: 1.5rem;
-    cursor: pointer;
-}
-
-.users_page .user_search_div .user_searchIcon:hover {
-    color: #d8b8ff;
-    transition: all 0.2s ease-in-out;
+.light_users_page {
+    background-color: var(--light-bg);
 }
 
 .users_page .allusers_head {
-    color: white;
+    color: var(--dark-text);
     margin: 2rem 0;
     /* width: 75%;
     display: flex;
     justify-content: flex-start;
     align-items: center; */
     /* background-color: orange; */
+}
+
+.light_users_page .allusers_head {
+    color: var(--light-text);
 }
