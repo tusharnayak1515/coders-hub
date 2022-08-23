@@ -16,7 +16,7 @@ import styles from "../styles/commentForm.module.css";
 const CommentForm = ({comment}) => {
   const router = useRouter();
   const dispatch = useDispatch();
-  const { profile } = useSelector((state) => state.userReducer, shallowEqual);
+  const { profile, theme } = useSelector((state) => state.userReducer, shallowEqual);
   const { blog } = useSelector((state) => state.blogReducer, shallowEqual);
   const [show, setShow] = useState(false);
 
@@ -98,7 +98,7 @@ const CommentForm = ({comment}) => {
   }, [myComment]);
 
   return (
-    <div className={styles.commentForm}>
+    <div className={`${styles.commentForm} ${theme === "light" ? styles.light_comment_form : styles.dark_comment_form}`}>
       {show && <ConfirmModal setShow={setShow} text="edit" onEdit={onEditHandler} />}
       <div className={styles.comment_pair}>
         <label htmlFor="title">Title:</label>
@@ -115,6 +115,7 @@ const CommentForm = ({comment}) => {
       <div className={styles.comment_pair}>
         <label htmlFor="comment">Comment:</label>
         {!comment && <Comment_Content
+          theme={theme}
           myComment={myComment}
           setMyComment={setMyComment}
         />}
@@ -122,6 +123,7 @@ const CommentForm = ({comment}) => {
           return (
             <Comment_Content
               key={index}
+              theme={theme}
               myComment={myComment}
               setMyComment={setMyComment}
             />
@@ -130,6 +132,7 @@ const CommentForm = ({comment}) => {
         {comment && commentDetails.comment.map((c, index) => {
           return (
             <Comment_Content
+              theme={theme}
               content={c}
               key={index}
               myComment={myComment}
@@ -138,6 +141,7 @@ const CommentForm = ({comment}) => {
           );
         })}
         {comment && <Comment_Content
+          theme={theme}
           edit={true}
           myComment={myComment}
           setMyComment={setMyComment}

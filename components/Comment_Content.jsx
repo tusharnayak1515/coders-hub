@@ -3,7 +3,7 @@ import { FaPlus } from "react-icons/fa";
 
 import styles from "../styles/commentContent.module.css";
 
-const Comment_Content = ({ edit, content, myComment, setMyComment }) => {
+const Comment_Content = ({ edit, content, myComment, setMyComment, theme }) => {
   const [thisContent, setThisContent] = useState({
     _id: content && content._id ? content._id : undefined,
     subtitle: content && content.subtitle ? content.subtitle : "",
@@ -42,7 +42,7 @@ const Comment_Content = ({ edit, content, myComment, setMyComment }) => {
   };
 
   return (
-    <div className={styles.comment_content}>
+    <div className={`${styles.comment_content} ${theme === "light" ? styles.light_comment_content : styles.dark_comment_content}`}>
       <input
         type="text"
         name="subtitle"

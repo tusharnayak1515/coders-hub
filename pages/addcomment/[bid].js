@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
+import dynamic from 'next/dynamic';
 import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 import * as cookie from "cookie";
 import { wrapper } from '../../redux/store';
@@ -14,7 +15,7 @@ import styles from "../../styles/addComment.module.css";
 const Addcomment = () => {
   const router = useRouter();
   const dispatch = useDispatch();
-  const {user} = useSelector(state=> state.userReducer,shallowEqual);
+  const {user, theme} = useSelector(state=> state.userReducer,shallowEqual);
 
   useEffect(()=> {
     if(!user) {
@@ -26,7 +27,7 @@ const Addcomment = () => {
   }, [user, router, dispatch]);
   
   return (
-    <div className={styles.addComment}>
+    <div className={`${styles.addComment} ${theme === "light" ? styles.light_add_comment : styles.dark_add_comment}`}>
       <Head>
         <title>Add Comment</title>
         <meta

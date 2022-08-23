@@ -1,0 +1,12 @@
+.addComment {
+    min-height: 87vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--dark-bg);
+}
+
+.light_add_comment {
+    background-color: var(--light-bg);
+}

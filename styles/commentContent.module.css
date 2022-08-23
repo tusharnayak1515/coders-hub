@@ -14,13 +14,19 @@
 .comment_content select {
     outline: none;
     width: 100%;
-    color: white;
+    color: var(--dark-text);
     padding: 1rem;
     font-size: 1.2rem;
-    border: 0.1rem solid #af8afa;
+    border: 0.1rem solid var(--dark-border-1);
     border-radius: 0.5rem;
     background-color: #3b3b3b;
     cursor: pointer;
+}
+
+.light_comment_content select {
+    color: var(--light-text);
+    border: 0.1rem solid var(--light-border);
+    background-color: var(--light-bg);
 }
 
 .comment_content textarea {
@@ -29,11 +35,19 @@
 
 .comment_content .addContentIcon {
     align-self: flex-end;
-    color: #af8afa;
+    color: var(--dark-border-1);
     font-size: 2rem;
     cursor: pointer;
 }
 
+.light_comment_content .addContentIcon {
+    color: var(--light-border);
+}
+
 .comment_content .addContentIcon:hover {
     color: #d8b8ff;
+}
+
+.light_comment_content .addContentIcon:hover {
+    color: rgb(169, 0, 169);
 }

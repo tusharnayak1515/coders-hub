@@ -125,3 +125,9 @@
     color: purple;
     transition: all 0.2s ease-in-out;
 }
+
+.navbar .logoDiv .themeIcon {
+    position: fixed;
+    top: 4%;
+    left: 3%;
+}

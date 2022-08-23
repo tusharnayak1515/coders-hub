@@ -16,11 +16,8 @@ import styles from "../styles/blogForm.module.css";
 const BlogForm = ({ blog }) => {
   const router = useRouter();
   const dispatch = useDispatch();
-  const {profile} = useSelector(state=> state.userReducer,shallowEqual);
+  const {profile , theme} = useSelector(state=> state.userReducer,shallowEqual);
   const [show, setShow] = useState(false);
-  const [count, setCount] = useState(
-    blog && blog.content ? blog.content.length : 1
-  );
   const [myContent, setMyContent] = useState(
     blog && blog.content.length !== 0 ? blog.content : []
   );
@@ -36,11 +33,6 @@ const BlogForm = ({ blog }) => {
     e.preventDefault();
     const { name, value } = e.target;
     setBlogDetails({ ...blogDetails, [name]: value });
-  };
-
-  const updateCount = (e) => {
-    e.preventDefault();
-    setCount((count) => count + 1);
   };
 
   const onSubmitHandler = (e) => {
@@ -153,7 +145,7 @@ const BlogForm = ({ blog }) => {
   // }, [blogDetails.content]);
 
   return (
-    <div className={styles.blogForm}>
+    <div className={`${styles.blogForm} ${theme === "light" ? styles.light_blog_form : styles.dark_blog_form}`}>
       {show && <ConfirmModal setShow={setShow} text="edit" onEdit={onEditHandler} />}
       <div className={styles.pair}>
         <label htmlFor="title">Title:</label>
@@ -194,7 +186,7 @@ const BlogForm = ({ blog }) => {
       <div className={styles.pair}>
         <label htmlFor="content">Content:</label>
         {!blog && <Content
-          updateCount={updateCount}
+          theme={theme}
           myContent={myContent}
           setMyContent={setMyContent}
         />}
@@ -202,8 +194,8 @@ const BlogForm = ({ blog }) => {
           return (
             <Content
               key={index}
+              theme={theme}
               index={index}
-              updateCount={updateCount}
               myContent={myContent}
               setMyContent={setMyContent}
             />
@@ -212,18 +204,18 @@ const BlogForm = ({ blog }) => {
         {blog && blogDetails.content.map((c, index) => {
           return (
             <Content
+              theme={theme}
               content={c}
               key={index}
               index={index}
-              updateCount={updateCount}
               myContent={myContent}
               setMyContent={setMyContent}
             />
           );
         })}
         {blog && <Content
+          theme={theme}
           edit={true}
-          updateCount={updateCount}
           myContent={myContent}
           setMyContent={setMyContent}
         />}

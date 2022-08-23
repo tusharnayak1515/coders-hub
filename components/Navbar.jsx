@@ -69,9 +69,9 @@ const Navbar = () => {
         <h2 onClick={onToggle}>
           <a href="">
             {theme === "light" ? (
-              <BsSun className={styles.icons} />
+              <BsSun className={`${styles.icons} ${styles.themeIcon}`} />
             ) : (
-              <BsFillMoonFill className={styles.icons} />
+              <BsFillMoonFill className={`${styles.icons} ${styles.themeIcon}`} />
             )}
           </a>
         </h2>

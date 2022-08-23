@@ -1,5 +1,5 @@
 .blogForm {
-    min-height: calc(100vh - 13vh);
+    min-height: 100%;
     width: 100%;
     /* background-color: violet; */
 }
@@ -16,23 +16,37 @@
 }
 
 .blogForm .pair label {
-    color: white;
+    color: var(--dark-text);
     margin-bottom: 1rem;
     font-size: 1.3rem;
 }
 
+.light_blog_form .pair label {
+    color: var(--light-text);
+}
+
 .blogForm .pair input, .blogForm .pair textarea {
     width: 100%;
-    color: white;
+    color: var(--dark-text);
     padding: 1rem;
     font-size: 1.2rem;
-    border: 0.1rem solid #af8afa;
+    border: 0.1rem solid var(--dark-border-1);
     border-radius: 0.5rem;
     background-color: #3b3b3b;
 }
 
+.light_blog_form .pair input, .light_blog_form .pair textarea {
+    color: var(--light-text);
+    border: 0.1rem solid var(--light-border);
+    background-color: var(--light-bg);
+}
+
 .blogForm .pair input::placeholder, .blogForm .pair textarea::placeholder {
     color: lightgrey;
+}
+
+.light_blog_form .pair input::placeholder, .light_blog_form .pair textarea::placeholder {
+    color: grey;
 }
 
 .blogForm .pair textarea {
@@ -43,17 +57,29 @@
 .blogForm .pair button {
     align-self: flex-end;
     padding: 0.5rem 1rem;
-    color: white;
+    color: var(--dark-text);
     font-size: 1.3rem;
     border: 0.1rem solid #b486ec;
     border-radius: 0.5rem;
-    background-color: #af8afa;
+    background-color: var(--dark-border-1);
     cursor: pointer;
 }
 
+.light_blog_form .pair button {
+    color: var(--dark-text);
+    border: 0.1rem solid rgb(169, 0, 169);
+    background-color: var(--light-border);
+}
+
 .blogForm .pair button:hover {
-    color: #af8afa;
-    background-color: white;
+    color: var(--dark-border-1);
+    background-color: var(--light-bg);
+    transition: all 0.2s ease-in-out;
+}
+
+.light_blog_form .pair button:hover {
+    color: var(--light-border);
+    background-color: var(--light-bg);
     transition: all 0.2s ease-in-out;
 }
 

@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { FaPlus } from "react-icons/fa";
 
 import styles from "../styles/content.module.css";
 
-const Content = ({ edit, content, myContent, setMyContent, updateCount }) => {
+const Content = ({ edit, content, myContent, setMyContent, theme }) => {
   const [thisContent, setThisContent] = useState({
     _id: content && content._id ? content._id : undefined,
     subtitle: content && content.subtitle ? content.subtitle : "",
@@ -19,7 +19,6 @@ const Content = ({ edit, content, myContent, setMyContent, updateCount }) => {
 
   const confirmContent = (e) => {
     e.preventDefault();
-    updateCount(e);
     if (!content) {
       setMyContent([...myContent, thisContent]);
       if (edit) {
@@ -42,16 +41,8 @@ const Content = ({ edit, content, myContent, setMyContent, updateCount }) => {
     }
   };
 
-  // useEffect(()=> {
-  //   console.log("content: ",content);
-  //   console.log("thisContent: ",thisContent);
-  //   console.log("myContent.length: ",myContent.length);
-  //   console.log("myContent: ",myContent);
-  //   console.log(myContent.includes(thisContent));
-  // }, [myContent]);
-
   return (
-    <div className={styles.content}>
+    <div className={`${styles.content} ${theme === "light" ? styles.light_content : styles.dark_content}`}>
       <input
         type="text"
         name="subtitle"

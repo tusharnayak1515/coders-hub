@@ -8,7 +8,7 @@ import styles from "../styles/addblog.module.css";
 
 const Addblog = () => {
 const router = useRouter();
-  const {user} = useSelector(state=> state.userReducer,shallowEqual);
+  const {user, theme} = useSelector(state=> state.userReducer,shallowEqual);
   
   useEffect(()=> {
     if(!user) {
@@ -16,7 +16,7 @@ const router = useRouter();
     }
   }, [user, router]);
   return (
-    <div className={styles.addblog}>
+    <div className={`${styles.addblog} ${theme === "light" ? styles.light_addBlog : styles.dark_addBlog}`}>
         <Head>
             <title>Add Blog</title>
             <meta name="keywords" content="next, next.js, just-blogs, blogs, add blog, form" />
