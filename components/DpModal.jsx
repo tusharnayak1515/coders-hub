@@ -4,7 +4,7 @@ import { FaTrash, FaImage } from "react-icons/fa";
 
 import styles from "../styles/dpModal.module.css";
 
-const DpModal = ({ setShow, profile, userDetails, setUserDetails }) => {
+const DpModal = ({ setShow, profile, userDetails, setUserDetails, setMyImg }) => {
   const [image, setImage] = useState(profile?.profilepic);
   const [dp, setDp] = useState("");
 
@@ -31,6 +31,7 @@ const DpModal = ({ setShow, profile, userDetails, setUserDetails }) => {
         setShow(false);
     }
     else {
+        setMyImg(image);
         setUserDetails({...userDetails, profilepic: dp});
         setShow(false);
     }

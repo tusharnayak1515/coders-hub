@@ -48,7 +48,7 @@
 
 .editProfile .edit_container .user_details .wrapper_div {
     width: 100%;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
     padding: 0.5rem;
     display: flex;
     justify-content: space-between;
@@ -84,7 +84,7 @@
 
 .editProfile .edit_container .user_details .btn_div {
     width: 100%;
-    padding: 0.5rem 0;
+    padding: 0.5rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -92,34 +92,20 @@
 }
 
 .editProfile .edit_container .user_details .btn_div button {
-    min-width: 6rem;
+    width: 7rem;
     padding: 0.5rem 0.7rem;
     font-size: 1.2rem;
     border-radius: 0.5rem;
     cursor: pointer;
 }
 
-.editProfile .edit_container .user_details .btn_div .edit_cancel_btn {
-    margin-right: 1rem;
-    color: purple;
-    border: 0.1rem solid purple;
-}
-
-.editProfile .edit_container .user_details .btn_div .edit_cancel_btn:hover {
-    color: white;
-    background-color: purple;
-    transition: all 0.2s ease-in-out;
-}
-
 .editProfile .edit_container .user_details .btn_div .delete_btn {
-    color: white;
-    border: 0.1rem solid red;
-    background-color: red;
+    color: red;
+    cursor: pointer;
 }
 
 .editProfile .edit_container .user_details .btn_div .delete_btn:hover {
-    color: red;
-    background-color: white;
+    text-decoration: underline;
     transition: all 0.2s ease-in-out;
 }
 

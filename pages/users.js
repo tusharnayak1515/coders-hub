@@ -6,7 +6,6 @@ import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import * as cookie from "cookie";
 import { actionCreators } from "../redux";
 import { wrapper } from "../redux/store";
-import { MdSearch } from 'react-icons/md';
 const UserList = dynamic(() => import("../components/UserList"), {
     ssr: true,
 });
@@ -16,17 +15,7 @@ import styles from "../styles/users.module.css";
 const Users = () => {
   const router = useRouter();
   const dispatch = useDispatch();
-  const { user, profile, users } = useSelector(state => state.userReducer,shallowEqual);
-  const [uname, setUname] = useState("");
-
-  const onChangeHandler = (e)=> {
-    e.preventDefault();
-    setUname(e.target.value);
-  }
-
-  const onSearch = (e)=> {
-    e.preventDefault();
-  }
+  const { user, profile } = useSelector(state => state.userReducer,shallowEqual);
 
   useEffect(() => {
     if (!user) {
@@ -48,11 +37,6 @@ const Users = () => {
           content="next, next.js, coders hub, blogs, users"
         />
       </Head>
-
-      <div className={styles.user_search_div}>
-        <input type="text" placeholder="Search Users" value={uname} onChange={onChangeHandler} />
-        <MdSearch className={styles.user_searchIcon} onClick={onSearch} />
-      </div>
 
       <h1 className={styles.allusers_head}>All Users</h1>
 

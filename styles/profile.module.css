@@ -19,7 +19,7 @@
 
 .profile_page .profile_wrapper .profile_box {
     padding: 2rem;
-    min-width: 90%;
+    width: 100%;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -29,14 +29,14 @@
 .profile_page .profile_wrapper .profile_box .dp_div {
     height: 10rem;
     width: 10rem;
-    border: 0.1rem solid #af8afa;
+    border: 0.2rem solid #af8afa;
     border-radius: 50%;
 }
 
 .profile_page .profile_wrapper .profile_box .dp_div img {
     height: 100%;
     width: 100%;
-    border: 0.1rem solid #af8afa;
+    border: none;
     border-radius: 50%;
 }
 
@@ -60,6 +60,10 @@
 
 .profile_page .profile_wrapper .profile_box .user_details .user_name_div .user_name {
     margin-right: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
 }
 
 .profile_page .profile_wrapper .profile_box .user_details .user_email,

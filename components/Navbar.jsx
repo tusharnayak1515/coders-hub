@@ -22,9 +22,24 @@ const Navbar = () => {
     setBName(e.target.value);
   }
 
+  const onHomeClick = (e)=> {
+    e.preventDefault();
+    router.push("/");
+  }
+
   const onBlogAdd = (e)=> {
     e.preventDefault();
     router.push("/addblog");
+  }
+
+  const onUsersClick = (e)=> {
+    e.preventDefault();
+    router.push("/users");
+  }
+
+  const onProfileClick = (e)=> {
+    e.preventDefault();
+    router.push("/profile");
   }
 
   const onLogout = (e)=> {
@@ -50,11 +65,11 @@ const Navbar = () => {
         </div>
 
         <div className={styles.menuDiv}>
-            <RiHome2Fill className={styles.icons} onClick={()=> router.push("/")} />
-            <IoMdAdd className={styles.icons} onClick={onBlogAdd} />
-            {(profile && profile?.role === "admin") && <ImUsers className={styles.icons} onClick={()=> router.push("/users")} />}
-            <FaUserAlt className={`${styles.icons} ${styles.profileIcon}`} onClick={()=> router.push("/profile")} />
-            <FiPower className={styles.icons} onClick={onLogout} />
+          <h2 onClick={onHomeClick}><a href='/'><RiHome2Fill className={styles.icons} /></a></h2>
+          <h2 onClick={onBlogAdd}><a href='/addblog'><IoMdAdd className={styles.icons} /></a></h2>
+          {(profile && profile?.role === "admin") && <h2 onClick={onUsersClick}><a href='/users'><ImUsers className={styles.icons} /></a></h2>}
+          <h2 onClick={onProfileClick}><a href='/profile'><FaUserAlt className={`${styles.icons} ${styles.profileIcon}`} /></a></h2>
+          <h2 onClick={onLogout}><a href=''><FiPower className={styles.icons} /></a></h2>
         </div>
     </div>
   )

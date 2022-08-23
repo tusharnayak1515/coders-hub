@@ -13,7 +13,7 @@ const UserList = () => {
   return (
     <div className={styles.userList}>
       {users && users?.length === 0 ? (
-        <p>No Users Found</p>
+        <h1 className={styles.no_users_found}>No Users Found</h1>
       ) : (
         users?.map((user) => {
           return <User key={user._id} user={user} />;

@@ -4,3 +4,7 @@
     align-items: center;
     /* background-color: orchid; */
 }
+
+.userList .no_users_found {
+    color: white;
+}

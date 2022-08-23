@@ -14,7 +14,7 @@ const User = ({user}) => {
   return (
     <div className={styles.user_div}>
         <img src={user.profilepic} alt={user.name} />
-        <h2 className={styles.username} onClick={onUserClick}>{user.name}</h2>
+        <h2 className={styles.username} onClick={onUserClick}><a href={`/users/${user._id}`}>{user.name}</a></h2>
     </div>
   )
 }

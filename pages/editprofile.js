@@ -8,13 +8,13 @@ import { wrapper } from "../redux/store";
 import { actionCreators } from "../redux";
 import { toast } from "react-toastify";
 const PasswordModal = dynamic(() => import("../components/PasswordModal"), {
-    ssr: false,
+  ssr: false,
 });
 const ConfirmModal = dynamic(() => import("../components/ConfirmModal"), {
-    ssr: false,
+  ssr: false,
 });
 const DpModal = dynamic(() => import("../components/DpModal"), {
-    ssr: false,
+  ssr: false,
 });
 
 import styles from "../styles/editProfile.module.css";
@@ -22,12 +22,16 @@ import styles from "../styles/editProfile.module.css";
 const EditProfile = () => {
   const router = useRouter();
   const dispatch = useDispatch();
-  const { user, profile } = useSelector(state => state.userReducer,shallowEqual);
+  const { user, profile } = useSelector(
+    (state) => state.userReducer,
+    shallowEqual
+  );
   const [userDetails, setUserDetails] = useState({
     name: profile?.name,
     email: profile?.email,
-    profilepic: profile?.profilepic
+    profilepic: profile?.profilepic,
   });
+  const [myImg, setMyImg] = useState(profile?.profilepic);
   const [show, setShow] = useState(false);
   const [confirm, setConfirm] = useState(false);
   const [onDpClick, setOnDpClick] = useState(false);
@@ -38,41 +42,40 @@ const EditProfile = () => {
     setUserDetails({ ...userDetails, [name]: value });
   };
 
-  const onDpModalClick = (e)=> {
+  const onDpModalClick = (e) => {
     e.preventDefault();
     setOnDpClick(true);
-  }
+  };
 
-  const passwordChangeClick = (e)=> {
+  const passwordChangeClick = (e) => {
     e.preventDefault();
     setShow(true);
-  }
+  };
 
-  const onCancel = (e)=> {
+  const onCancel = (e) => {
     e.preventDefault();
     router.replace("/profile");
-  }
+  };
 
-  const onDelete = (e)=> {
+  const onDelete = (e) => {
     e.preventDefault();
     setConfirm(true);
-  }
+  };
 
-  const onDeleteUser = (e)=> {
+  const onDeleteUser = (e) => {
     e.preventDefault();
     dispatch(actionCreators.deleteUser());
     setConfirm(false);
-  }
+  };
 
-  const onEdit = (e)=> {
+  const onEdit = (e) => {
     e.preventDefault();
     const emailRegex = /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/;
-    const {name, email} = userDetails;
-    if((name.length >= 3 && name.length <= 25) && emailRegex.test(email)) {
+    const { name, email } = userDetails;
+    if (name.length >= 3 && name.length <= 25 && emailRegex.test(email)) {
       dispatch(actionCreators.editProfile(userDetails));
       router.replace("/profile");
-    }
-    else if(name.length < 3 || name.length > 25) {
+    } else if (name.length < 3 || name.length > 25) {
       toast.warn("Name must be minimum 3 and maximum 25 characters long!", {
         position: "top-right",
         autoClose: 3000,
@@ -82,8 +85,7 @@ const EditProfile = () => {
         draggable: true,
         progress: undefined,
       });
-    }
-    else {
+    } else {
       toast.warn("Enter a valid email!", {
         position: "top-right",
         autoClose: 3000,
@@ -94,7 +96,7 @@ const EditProfile = () => {
         progress: undefined,
       });
     }
-  }
+  };
 
   useEffect(() => {
     if (!user) {
@@ -102,7 +104,7 @@ const EditProfile = () => {
     } else {
       dispatch(actionCreators.profile());
     }
-  }, [user, router, dispatch]);
+  }, [user, userDetails.profilepic, router, dispatch]);
 
   return (
     <div className={styles.editProfile}>
@@ -113,13 +115,31 @@ const EditProfile = () => {
           content="next, next.js, coders hub, blogs, edit profile"
         />
       </Head>
-      
-      {confirm && <ConfirmModal setShow={setConfirm} text="delete your account permanently" onDelete={onDeleteUser} />}
+
+      {confirm && (
+        <ConfirmModal
+          setShow={setConfirm}
+          text="delete your account permanently"
+          onDelete={onDeleteUser}
+        />
+      )}
       {show && <PasswordModal setShow={setShow} />}
-      {onDpClick && <DpModal setShow={setOnDpClick} profile={profile} userDetails={userDetails} setUserDetails={setUserDetails} />}
+      {onDpClick && (
+        <DpModal
+          setShow={setOnDpClick}
+          profile={profile}
+          userDetails={userDetails}
+          setUserDetails={setUserDetails}
+          setMyImg={setMyImg}
+        />
+      )}
       <div className={styles.edit_container}>
         <div className={styles.dp_div}>
-          <img src={profile?.profilepic} alt={profile?.name} onClick={onDpModalClick} />
+          <img
+            src={myImg ? myImg : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png"}
+            alt={userDetails.name}
+            onClick={onDpModalClick}
+          />
         </div>
 
         <div className={styles.user_details}>
@@ -148,15 +168,19 @@ const EditProfile = () => {
           </div>
 
           <div className={styles.wrapper_div}>
-            <p className={styles.change_password} onClick={passwordChangeClick}>Change Password</p>
+            <p className={styles.change_password} onClick={passwordChangeClick}>
+              Change Password
+            </p>
           </div>
 
           <div className={styles.btn_div}>
-            <button className={styles.edit_cancel_btn} onClick={onCancel}>Cancel</button>
-            <button className={styles.delete_btn} onClick={onDelete}>Deactivate</button>
-            <button className={styles.edit_btn} onClick={onEdit}>Edit</button>
+            <button className={styles.edit_btn} onClick={onEdit}>
+              Edit
+            </button>
+            <p className={styles.delete_btn} onClick={onDelete}>
+              Delete Account
+            </p>
           </div>
-
         </div>
       </div>
     </div>

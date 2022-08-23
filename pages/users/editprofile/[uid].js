@@ -149,15 +149,12 @@ const EditOtherProfile = () => {
           </div>
 
           <div className={styles.btn_div}>
-            <button className={styles.edit_cancel_btn} onClick={onCancel}>
-              Cancel
-            </button>
-            <button className={styles.delete_btn} onClick={onDelete}>
-              Deactivate
-            </button>
             <button className={styles.edit_btn} onClick={onEdit}>
               Edit
             </button>
+            <p className={styles.delete_btn} onClick={onDelete}>
+              Delete Account
+            </p>
           </div>
         </div>
       </div>

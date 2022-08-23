@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Heebo&family=Secular+One&display=swap');
+
 .container {
   width: 100%;
   /* background-color: white; */
@@ -26,6 +28,7 @@
 .main .categoriesDiv h4 {
   margin: 0 1rem;
   color: white;
+  font-family: 'Heebo', sans-serif;
 }
 
 .main .title {
@@ -33,5 +36,6 @@
   margin: 2rem auto;
   margin-bottom: 0;
   color: white;
+  font-family: 'Secular One', sans-serif;
   /* background-color: yellowgreen; */
 }

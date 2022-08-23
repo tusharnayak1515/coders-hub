@@ -40,9 +40,8 @@
 }
 
 .users_page .allusers_head {
-    /* margin: 2rem auto; */
     color: white;
-    margin-bottom: 2rem;
+    margin: 2rem 0;
     /* width: 75%;
     display: flex;
     justify-content: flex-start;
