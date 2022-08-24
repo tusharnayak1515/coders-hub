@@ -24,7 +24,7 @@
   /* background-color: limegreen; */
 }
 
-.main .categoriesDiv {
+/* .main .categoriesDiv {
   height: 12vh;
   width: 100%;
   padding: 1rem 1.5rem;
@@ -34,10 +34,10 @@
   overflow: none;
   overflow-x: scroll;
   border-bottom: 0.1rem solid var(--dark-border-1);
-  /* background-color: orange; */
-}
+  background-color: orange;
+} */
 
-.light_home .main .categoriesDiv {
+/* .light_home .main .categoriesDiv {
   border-bottom: 0.1rem solid var(--light-border);
 }
 
@@ -49,7 +49,7 @@
 
 .light_home .categoriesDiv h4 {
   color: var(--light-text);
-}
+} */
 
 .main .title {
   width: 75%;
@@ -68,11 +68,9 @@
 
 @media only screen and (max-width: 480px) {
 
-  .main .categoriesDiv {
-    /* flex-wrap: wrap; */
-    /* padding: 0 auto; */
+  /* .main .categoriesDiv {
     display: none;
-  }
+  } */
 
   .main .title {
     width: 95%;
@@ -82,9 +80,9 @@
 
 @media only screen and (min-width: 481px) and (max-width: 600px) {
 
-  .main .categoriesDiv {
+  /* .main .categoriesDiv {
     display: none;
-  }
+  } */
 
   .main .title {
     width: 90%;
@@ -94,9 +92,9 @@
 
 @media only screen and (min-width: 601px) and (max-width: 720px) {
 
-  .main .categoriesDiv {
+  /* .main .categoriesDiv {
     display: none;
-  }
+  } */
 
   .main .title {
     width: 85%;
@@ -106,9 +104,9 @@
 
 @media only screen and (min-width: 721px) and (max-width: 900px) {
 
-  .main .categoriesDiv {
+  /* .main .categoriesDiv {
     display: none;
-  }
+  } */
 
   .main .title {
     width: 80%;

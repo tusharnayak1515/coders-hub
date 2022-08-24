@@ -34,17 +34,13 @@ export default function Home({categories}) {
       </Head>
 
       <main className={styles.main}>
-        <div className={styles.categoriesDiv}>
+        {/* <div className={styles.categoriesDiv}>
           {categories && categories.map((category,index)=> {
             return <h4 key={index}>{category}</h4>
           })}
-        </div>
-
+        </div> */}
         <h1 className={styles.title}>Trending Blogs</h1>
-
-        {/* {user && <Blogs />} */}
-        <Blogs />
-
+        {user && <Blogs />}
       </main>
     </div>
   );
