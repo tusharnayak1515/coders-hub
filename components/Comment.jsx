@@ -5,7 +5,7 @@ import dynamic from "next/dynamic";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import Prism from "prismjs";
 import { actionCreators } from "../redux";
-// import TimeAgo from "javascript-time-ago";
+import TimeAgo from "javascript-time-ago";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import { toast } from "react-toastify";
@@ -18,8 +18,8 @@ import styles from "../styles/comment.module.css";
 const Comment = ({ comment }) => {
   const router = useRouter();
   const dispatch = useDispatch();
-  const { user, profile, theme } = useSelector((state) => state.userReducer, shallowEqual);
-  // const timeAgo = user && new TimeAgo("en-US");
+  const { profile, theme } = useSelector((state) => state.userReducer, shallowEqual);
+  const timeAgo = new TimeAgo("en-US");
   const [onHover, setOnHover] = useState(false);
   const [show, setShow] = useState(false);
 
@@ -148,7 +148,7 @@ const Comment = ({ comment }) => {
               onMouseEnter={onFocusHandler}
             />
           )}
-          {/* <p className={styles.comment_time}>Posted {timeAgo && timeAgo.format(comment.createdAt)}</p> */}
+          <p className={styles.comment_time}>Posted {timeAgo && timeAgo.format(comment.createdAt)}</p>
         </div>
         <p className={styles.likes_count}>{comment.likes.length} likes</p>
       </div>
