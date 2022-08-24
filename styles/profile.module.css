@@ -51,7 +51,7 @@
     border: 0.2rem solid var(--light-border);
 }
 
-.profile_page .profile_wrapper .profile_box .dp_div img {
+.profile_page .profile_wrapper .profile_box .dp_div span img {
     height: 100%;
     width: 100%;
     border: none;

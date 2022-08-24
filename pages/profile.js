@@ -12,6 +12,7 @@ const BlogItem = dynamic(() => import("../components/BlogItem"), {
 });
 
 import styles from "../styles/profile.module.css";
+import Image from "next/image";
 
 const Profile = () => {
   const router = useRouter();
@@ -47,7 +48,7 @@ const Profile = () => {
       <div className={styles.profile_wrapper}>
         <div className={styles.profile_box}>
           <div className={styles.dp_div}>
-            <img src={profile?.profilepic} alt={profile?.name} />
+            <Image src={profile?.profilepic} alt={profile?.name} height="160px" width="160px" />
           </div>
 
           <div className={styles.user_details}>

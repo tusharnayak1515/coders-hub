@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Head from "next/head";
+import Image from "next/image";
 import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
@@ -132,10 +133,12 @@ const EditProfile = () => {
       )}
       <div className={styles.edit_container}>
         <div className={styles.dp_div}>
-          <img
+          <Image
             src={myImg ? myImg : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png"}
             alt={userDetails.name}
             onClick={onDpModalClick}
+            height="160px"
+            width="160px"
           />
         </div>
 

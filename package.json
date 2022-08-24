@@ -3,10 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev -p 9000",
-    "build": "next build -p 9000",
-    "start": "next start -p 9000",
-    "lint": "next lint -p 9000"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
   },
   "dependencies": {
     "@babel/preset-env": "^7.18.10",

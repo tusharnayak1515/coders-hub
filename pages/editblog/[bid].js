@@ -28,7 +28,7 @@ const EditBlog = () => {
     else {
       dispatch(actionCreators.getBlog({ id: router.query.bid }));
     }
-  }, [user, router, dispatch]);
+  }, [user, profile?._id, profile?.role, blog?.user._id, blog?._id, router, dispatch]);
 
   return (
     <div className={`${styles.editblog} ${theme === "light" ? styles.light_editblog : styles.dark_editblog}`}>

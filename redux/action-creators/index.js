@@ -10,7 +10,7 @@ export const register = ({name,email,password})=> async (dispatch)=> {
         type: "user-loading"
     });
     
-    const url = process.env.NODE_ENV === "production" ? "" : "http://localhost:9000";
+    const url = process.env.NODE_ENV === "production" ? "" : "http://localhost:3000";
     try {
         const res = await axios.post(`${url}/api/auth/register`,{name,email,password});
 
@@ -73,7 +73,7 @@ export const login = ({email,password})=> async (dispatch)=> {
         type: "user-loading"
     });
     
-    const url = process.env.NODE_ENV === "production" ? "" : "http://localhost:9000";
+    const url = process.env.NODE_ENV === "production" ? "" : "http://localhost:3000";
     try {
         const res = await axios.post(`${url}/api/auth/login`,{email,password});
 
@@ -132,7 +132,7 @@ export const login = ({email,password})=> async (dispatch)=> {
 }
 
 export const profile = (token)=> async (dispatch)=> {
-    const url = process.env.NODE_ENV === "production" ? "" : "http://localhost:9000";
+    const url = process.env.NODE_ENV === "production" ? "" : "http://localhost:3000";
     try {
         const res = await axios.get(`${url}/api/auth/profile`,{headers: {jb_user_token: token}});
 
@@ -202,7 +202,7 @@ export const editProfile = ({name,email,profilepic})=> async (dispatch)=> {
         dp = "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png";
     }
 
-    const url = process.env.NODE_ENV === "production" ? "" : "http://localhost:9000";
+    const url = process.env.NODE_ENV === "production" ? "" : "http://localhost:3000";
     try {
         const res = await axios.put(`${url}/api/auth/editprofile`,{name, email, profilepic: dp});
 
@@ -266,7 +266,7 @@ export const editOtherProfile = ({id,name,email})=> async (dispatch)=> {
         type: "user-loading"
     });
 
-    const url = process.env.NODE_ENV === "production" ? "" : "http://localhost:9000";
+    const url = process.env.NODE_ENV === "production" ? "" : "http://localhost:3000";
     try {
         const res = await axios.put(`${url}/api/auth/editotherprofile`,{id,name,email});
         if(res.data.success) {
@@ -333,7 +333,7 @@ export const changePassword = ({oldPassword, newPassword, confirmPassword})=> as
         type: "user-loading"
     });
 
-    const url = process.env.NODE_ENV === "production" ? "" : "http://localhost:9000";
+    const url = process.env.NODE_ENV === "production" ? "" : "http://localhost:3000";
     try {
         const res = await axios.put(`${url}/api/auth/changepassword`, {oldPassword, newPassword, confirmPassword});
 
@@ -400,7 +400,7 @@ export const deleteUser = ()=> async (dispatch)=> {
         type: "user-loading"
     });
 
-    const url = process.env.NODE_ENV === "production" ? "" : "http://localhost:9000";
+    const url = process.env.NODE_ENV === "production" ? "" : "http://localhost:3000";
     try {
         const res = await axios.delete(`${url}/api/auth/deleteuser`);
         if(res.data.success) {
@@ -465,7 +465,7 @@ export const deleteOtherUser = (id)=> async (dispatch)=> {
         type: "user-loading"
     });
 
-    const url = process.env.NODE_ENV === "production" ? "" : "http://localhost:9000";
+    const url = process.env.NODE_ENV === "production" ? "" : "http://localhost:3000";
     try {
         const res = await axios.delete(`${url}/api/auth/deleteotheruser?id=${id}`);
 
@@ -529,7 +529,7 @@ export const deleteOtherUser = (id)=> async (dispatch)=> {
 }
 
 export const getAllUsers = (token)=> async (dispatch)=> {
-    const url = process.env.NODE_ENV === "production" ? "" : "http://localhost:9000";
+    const url = process.env.NODE_ENV === "production" ? "" : "http://localhost:3000";
     try {
         const res = await axios.get(`${url}/api/auth/`, {headers: {jb_user_token: token}});
 
@@ -587,7 +587,7 @@ export const getUser = ({id, token})=> async (dispatch)=> {
         type: "user-loading"
     });
 
-    const url = process.env.NODE_ENV === "production" ? "" : "http://localhost:9000";
+    const url = process.env.NODE_ENV === "production" ? "" : "http://localhost:3000";
     try {
         const res = await axios.get(`${url}/api/auth/getprofile?id=${id}`, {headers: {jb_user_token: token}});
 
@@ -668,7 +668,7 @@ export const getAllBlogs = (token)=> async (dispatch)=> {
         type: "blogs-loading"
     });
 
-    const url = process.env.NODE_ENV === "production" ? "" : "http://localhost:9000";
+    const url = process.env.NODE_ENV === "production" ? "" : "http://localhost:3000";
 
     try {
         const res = await axios.get(`${url}/api/blogs/`, {headers: {jb_user_token: token}});
@@ -727,7 +727,7 @@ export const getBlog = ({id, token})=> async (dispatch)=> {
         type: "blogs-loading"
     });
 
-    const url = process.env.NODE_ENV === "production" ? "" : "http://localhost:9000";
+    const url = process.env.NODE_ENV === "production" ? "" : "http://localhost:3000";
 
     try {
         const res = await axios.get(`${url}/api/blogs/getblog?id=${id}`, {headers: {jb_user_token: token}});
@@ -782,7 +782,7 @@ export const addBlog = ({title,description,content,category})=> async (dispatch)
         type: "blogs-loading"
     });
 
-    const url = process.env.NODE_ENV === "production" ? "" : "http://localhost:9000";
+    const url = process.env.NODE_ENV === "production" ? "" : "http://localhost:3000";
 
     try {
         const res = await axios.post(`${url}/api/blogs/addblog`, {title, description, content ,category});
@@ -852,7 +852,7 @@ export const editBlog = ({id,title,description,content,category})=> async (dispa
         type: "blogs-loading"
     });
 
-    const url = process.env.NODE_ENV === "production" ? "" : "http://localhost:9000";
+    const url = process.env.NODE_ENV === "production" ? "" : "http://localhost:3000";
 
     try {
         const res = await axios.put(`${url}/api/blogs/editblog`, {id, title, description, content ,category});
@@ -921,7 +921,7 @@ export const editOtherBlog = ({id,title,description,content,category})=> async (
         type: "blogs-loading"
     });
 
-    const url = process.env.NODE_ENV === "production" ? "" : "http://localhost:9000";
+    const url = process.env.NODE_ENV === "production" ? "" : "http://localhost:3000";
 
     try {
         const res = await axios.put(`${url}/api/blogs/editotherblog`, {id, title, description, content ,category});
@@ -990,7 +990,7 @@ export const deleteBlog = (id)=> async (dispatch)=> {
         type: "blogs-loading"
     });
 
-    const url = process.env.NODE_ENV === "production" ? "" : "http://localhost:9000";
+    const url = process.env.NODE_ENV === "production" ? "" : "http://localhost:3000";
 
     try {
         const res = await axios.delete(`${url}/api/blogs/deleteblog?id=${id}`);
@@ -1061,7 +1061,7 @@ export const deleteOtherBlog = (id)=> async (dispatch)=> {
         type: "blogs-loading"
     });
 
-    const url = process.env.NODE_ENV === "production" ? "" : "http://localhost:9000";
+    const url = process.env.NODE_ENV === "production" ? "" : "http://localhost:3000";
 
     try {
         const res = await axios.delete(`${url}/api/blogs/deleteotherblog?id=${id}`);
@@ -1130,7 +1130,7 @@ export const searchBlogs = ({name, token})=> async (dispatch)=> {
         type: "blogs-loading"
     });
 
-    const url = process.env.NODE_ENV === "production" ? "" : "http://localhost:9000";
+    const url = process.env.NODE_ENV === "production" ? "" : "http://localhost:3000";
     try {
         const res = await axios.get(`${url}/api/blogs/searchblogs?name=${name}`, {headers: {jb_user_token: token}});
 
@@ -1186,7 +1186,7 @@ export const getAllComments = ({id, token})=> async (dispatch)=> {
         type: "comments-loading"
     });
 
-    const url = process.env.NODE_ENV === "production" ? "" : "http://localhost:9000";
+    const url = process.env.NODE_ENV === "production" ? "" : "http://localhost:3000";
     try {
         const res = await axios.get(`${url}/api/comment?id=${id}`, {headers: {jb_user_token: token}});
 
@@ -1241,7 +1241,7 @@ export const getComment = ({id, token})=> async (dispatch)=> {
         type: "comments-loading"
     });
 
-    const url = process.env.NODE_ENV === "production" ? "" : "http://localhost:9000";
+    const url = process.env.NODE_ENV === "production" ? "" : "http://localhost:3000";
 
     try {
         const res = await axios.get(`${url}/api/comment/getcomment?id=${id}`, {headers: {jb_user_token: token}});
@@ -1296,7 +1296,7 @@ export const addComment = ({title,comment,blogId})=> async (dispatch)=> {
         type: "comments-loading"
     });
 
-    const url = process.env.NODE_ENV === "production" ? "" : "http://localhost:9000";
+    const url = process.env.NODE_ENV === "production" ? "" : "http://localhost:3000";
     try {
         const res = await axios.post(`${url}/api/comment/addcomment`, {title, comment, blogId});
 
@@ -1359,7 +1359,7 @@ export const editComment = ({id,title,comment})=> async (dispatch)=> {
         type: "comments-loading"
     });
 
-    const url = process.env.NODE_ENV === "production" ? "" : "http://localhost:9000";
+    const url = process.env.NODE_ENV === "production" ? "" : "http://localhost:3000";
     try {
         const res = await axios.put(`${url}/api/comment/editcomment`, {id, title, comment});
 
@@ -1423,7 +1423,7 @@ export const editOtherComment = ({id,title,comment})=> async (dispatch)=> {
         type: "comments-loading"
     });
 
-    const url = process.env.NODE_ENV === "production" ? "" : "http://localhost:9000";
+    const url = process.env.NODE_ENV === "production" ? "" : "http://localhost:3000";
     try {
         const res = await axios.put(`${url}/api/comment/editothercomment`, {id, title, comment});
 
@@ -1487,7 +1487,7 @@ export const deleteComment = (id)=> async (dispatch)=> {
         type: "comments-loading"
     });
 
-    const url = process.env.NODE_ENV === "production" ? "" : "http://localhost:9000";
+    const url = process.env.NODE_ENV === "production" ? "" : "http://localhost:3000";
     try {
         const res = await axios.delete(`${url}/api/comment/deletecomment?id=${id}`);
 
@@ -1550,7 +1550,7 @@ export const deleteOtherComment = (id)=> async (dispatch)=> {
         type: "comments-loading"
     });
 
-    const url = process.env.NODE_ENV === "production" ? "" : "http://localhost:9000";
+    const url = process.env.NODE_ENV === "production" ? "" : "http://localhost:3000";
     try {
         const res = await axios.delete(`${url}/api/comment/deleteothercomment?id=${id}`);
 
@@ -1609,7 +1609,7 @@ export const deleteOtherComment = (id)=> async (dispatch)=> {
 }
 
 export const likeComment = (id)=> async (dispatch)=> {
-    const url = process.env.NODE_ENV === "production" ? "" : "http://localhost:9000";
+    const url = process.env.NODE_ENV === "production" ? "" : "http://localhost:3000";
     try {
         const res = await axios.put(`${url}/api/comment/likecomment`,{id});
 
@@ -1668,7 +1668,7 @@ export const likeComment = (id)=> async (dispatch)=> {
 }
 
 export const unlikeComment = (id)=> async (dispatch)=> {
-    const url = process.env.NODE_ENV === "production" ? "" : "http://localhost:9000";
+    const url = process.env.NODE_ENV === "production" ? "" : "http://localhost:3000";
     try {
         const res = await axios.put(`${url}/api/comment/unlikecomment`,{id});
 
