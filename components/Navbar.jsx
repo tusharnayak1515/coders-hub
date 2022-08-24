@@ -93,6 +93,15 @@ const Navbar = () => {
             <RiHome2Fill className={styles.icons} />
           </a>
         </h2>
+        <h2 className={styles.theme_toggle} onClick={onToggle}>
+          <a href="">
+            {theme === "light" ? (
+              <BsSun className={`${styles.icons} ${styles.themeIcon}`} />
+            ) : (
+              <BsFillMoonFill className={`${styles.icons} ${styles.themeIcon}`} />
+            )}
+          </a>
+        </h2>
         <h2 onClick={onBlogAdd}>
           <a href="/addblog">
             <IoMdAdd className={styles.icons} />

@@ -13,3 +13,11 @@
 .light_addBlog {
     background-color: var(--light_bg);
 }
+
+/* Media Queries */
+
+@media only screen and (max-width: 480px) {
+    .addblog {
+        padding-bottom: 5rem;
+    }
+}

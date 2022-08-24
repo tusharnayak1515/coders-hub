@@ -122,3 +122,98 @@
     text-align: center;
     color: white;
 }
+
+/* Media Queries */
+
+@media only screen and (max-width: 720px) {
+
+    .profile_page {
+        min-height: 90vh;
+        padding-bottom: 8rem;
+        /* background-color: orange; */
+    }
+
+    .profile_page .profile_wrapper {
+        width: 90%;
+        /* background-color: limegreen; */
+    }
+
+    .profile_page .profile_wrapper .profile_box {
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        /* background-color: orange; */
+    }
+
+    .profile_page .profile_wrapper .profile_box .user_details {
+        min-width: 100%;
+        margin-top: 0.5rem;
+        flex-direction: column;
+        align-items: center;
+        /* background-color: lightpink; */
+    }
+
+    .profile_page .profile_wrapper .profile_box .user_details .user_name_div {
+        justify-content: center;
+        /* background-color: orange; */
+    }
+
+    .profile_page .user_blogs_container {
+        width: 90%;
+        /* background-color: green; */
+    }
+}
+
+@media only screen and (min-width: 721px) and (max-width: 900px) {
+
+    .profile_page {
+        min-height: 90vh;
+        padding-bottom: 8rem;
+        /* background-color: orange; */
+    }
+
+    .profile_page .profile_wrapper {
+        width: 90%;
+        /* background-color: limegreen; */
+    }
+
+    .profile_page .profile_wrapper .profile_box {
+        padding: 1rem;
+        display: flex;
+        /* flex-direction: column; */
+        align-items: center;
+        /* background-color: orange; */
+    }
+
+    .profile_page .profile_wrapper .profile_box .user_details {
+        /* min-width: 100%; */
+        /* margin-top: 0.5rem; */
+        flex-direction: column;
+        align-items: center;
+        /* background-color: lightpink; */
+    }
+
+    .profile_page .profile_wrapper .profile_box .user_details .user_name_div {
+        justify-content: center;
+        /* background-color: orange; */
+    }
+
+    .profile_page .user_blogs_container {
+        width: 90%;
+        /* background-color: green; */
+    }
+}
+
+@media only screen and (min-width: 901px) and (max-width: 1200px) {
+
+    .profile_page .profile_wrapper {
+        width: 60%;
+        /* background-color: limegreen; */
+    }
+
+    .profile_page .user_blogs_container {
+        width: 60%;
+        /* background-color: green; */
+    }
+}

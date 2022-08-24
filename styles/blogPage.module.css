@@ -164,3 +164,28 @@
 /* .blog_page .comments_container {
     width: 80%;
 } */
+
+/* Media Queries */
+
+@media only screen and (max-width: 900px) {
+
+    .blog_page .blog_container, .blog_page .comments_container {
+        width: 90%;
+        margin: 2rem auto;
+        /* background-color: orangered; */
+    }
+
+    .blog_page .comments_container {
+        margin-bottom: 5rem;
+    }
+
+    .blog_page .blog_container .blog_title .blog_iconDiv {
+        width: 30%;
+        /* background-color: orange; */
+    }
+
+    .blog_page .blog_container .blog_title .blog_iconDiv .blog_editIcon, .blog_page .blog_container .blog_title .blog_iconDiv .blog_deleteIcon {
+        font-size: 1.5rem;
+    }
+
+}

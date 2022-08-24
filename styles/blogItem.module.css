@@ -50,9 +50,22 @@
 
 .blogItem .time p {
     color: lightgrey;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
     font-family: 'Play', sans-serif;
 }
 
 .light_blogItem .time p {
     color: grey;
+}
+
+/* Media Queries */
+
+@media only screen and (max-width: 480px) {
+
+    /* .blogItem {
+        padding: 0 0.7rem;
+    } */
+
 }

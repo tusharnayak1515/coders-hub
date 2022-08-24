@@ -10,3 +10,9 @@
 .light_add_comment {
     background-color: var(--light-bg);
 }
+
+@media only screen and (max-width: 480px) {
+    .addComment {
+        padding-bottom: 5rem;
+    }
+}

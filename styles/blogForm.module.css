@@ -91,3 +91,13 @@
     width: 100%;
     /* background-color: antiquewhite; */
 }
+
+/* Media Queries */
+
+@media only screen and (max-width: 480px) {
+    /* .blogForm {
+        width: 100%;
+        background-color: orange;
+        padding-bottom: 50rem;
+    } */
+}

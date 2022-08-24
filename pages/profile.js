@@ -65,7 +65,7 @@ const Profile = () => {
 
       <div className={styles.user_blogs_container}>
         {profile?.blogs.length === 0 ? <h1 className={styles.noBlogs}>No Blogs</h1> : profile?.blogs.map((blog)=> {
-            return <BlogItem key={blog._id} blog={blog} blog_user={profile ? profile?.name : null} />
+            return <BlogItem key={blog._id} blog={blog} blog_user={profile?.name} />
         })}
       </div>
     </div>

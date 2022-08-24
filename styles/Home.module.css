@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Heebo&family=Secular+One&display=swap');
 
 .container {
+  min-height: 100vh;
   width: 100%;
   /* background-color: white; */
 }
@@ -14,7 +15,8 @@
 }
 
 .main {
-  min-height: 100vh;
+  min-height: 100%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   /* justify-content: center; */
@@ -25,11 +27,13 @@
 .main .categoriesDiv {
   height: 12vh;
   width: 100%;
-  padding: 1rem;
+  padding: 1rem 1.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-bottom: 0.1rem solid #af8afa;
+  overflow: none;
+  overflow-x: scroll;
+  border-bottom: 0.1rem solid var(--dark-border-1);
   /* background-color: orange; */
 }
 
@@ -39,7 +43,7 @@
 
 .main .categoriesDiv h4 {
   margin: 0 1rem;
-  color: white;
+  color: var(--dark-text);
   font-family: 'Heebo', sans-serif;
 }
 
@@ -51,11 +55,63 @@
   width: 75%;
   margin: 2rem auto;
   margin-bottom: 0;
-  color: white;
+  color: var(--dark-text);
   font-family: 'Secular One', sans-serif;
   /* background-color: yellowgreen; */
 }
 
 .light_home .main .title {
   color: var(--light-text);
+}
+
+/* Media Queries */
+
+@media only screen and (max-width: 480px) {
+
+  .main .categoriesDiv {
+    /* flex-wrap: wrap; */
+    /* padding: 0 auto; */
+    display: none;
+  }
+
+  .main .title {
+    width: 95%;
+  }
+
+}
+
+@media only screen and (min-width: 481px) and (max-width: 600px) {
+
+  .main .categoriesDiv {
+    display: none;
+  }
+
+  .main .title {
+    width: 90%;
+  }
+
+}
+
+@media only screen and (min-width: 601px) and (max-width: 720px) {
+
+  .main .categoriesDiv {
+    display: none;
+  }
+
+  .main .title {
+    width: 85%;
+  }
+
+}
+
+@media only screen and (min-width: 721px) and (max-width: 900px) {
+
+  .main .categoriesDiv {
+    display: none;
+  }
+
+  .main .title {
+    width: 80%;
+  }
+
 }

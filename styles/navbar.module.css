@@ -7,6 +7,7 @@
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+    z-index: 1000;
 }
 
 .light_nav {
@@ -94,6 +95,7 @@
     width: 25vw;
     padding: 0.5rem;
     display: flex;
+    /* flex-wrap: wrap; */
     justify-content: center;
     align-items: center;
     /* background-color: hotpink; */
@@ -102,14 +104,14 @@
 .navbar .icons {
     margin: 0 1rem;
     padding: 0;
-    color: white;
+    color: var(--dark-text);
     font-size: 2rem;
     cursor: pointer;
     /* background-color: orange; */
 }
 
 .light_nav .icons {
-    color: black;
+    color: var(--light-text);
 }
 
 .navbar .menuDiv .profileIcon {
@@ -117,12 +119,12 @@
 }
 
 .navbar .icons:hover {
-    color: #af8afa;
+    color: var(--dark-border-1);
     transition: all 0.2s ease-in-out;
 }
 
 .light_nav .icons:hover {
-    color: purple;
+    color: var(--light-border);
     transition: all 0.2s ease-in-out;
 }
 
@@ -130,4 +132,98 @@
     position: fixed;
     top: 4%;
     left: 3%;
+}
+
+.navbar .menuDiv .theme_toggle {
+    display: none;
+}
+
+/* Media Queries */
+
+@media only screen and (max-width: 900px) {
+
+    .navbar {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        height: 12vh;
+        justify-content: space-between;
+        padding: 0;
+        /* background-color: orange; */
+    }
+
+    .light_nav {
+        border-bottom: none;
+        border-top: 0.1rem solid var(--light-border);
+    }
+    
+    .dark_nav {
+        border-bottom: none;
+        border-top: 0.1rem solid var(--dark-border-1);
+    }
+
+    .navbar .searchDiv {
+        display: none;
+    }
+
+    .navbar .logoDiv {
+        /* width: 0; */
+        display: none;
+    }
+
+    /* .navbar .logoDiv .logo {
+        display: none;
+    } */
+
+    .navbar .menuDiv .theme_toggle {
+        display: block;
+    }
+
+    .navbar .menuDiv .themeIcon {
+        font-size: 1.7rem;
+    }
+
+    .navbar .logoDiv .themeIcon {
+        top: auto;
+        bottom: 13%;
+        left: 90%;
+        font-size: 2rem;
+        /* left: 100%; */
+    }
+
+    .navbar .menuDiv {
+        width: 100vw;
+        justify-content: space-around;
+        /* background-color: hotpink; */
+    }
+
+    .navbar .icons {
+        margin: 0;
+    }
+}
+
+@media only screen and (min-width: 901px) and (max-width: 1200px) {
+
+    .navbar {
+        padding: 0 0rem;
+    }
+
+    .navbar .logoDiv .themeIcon {
+        top: 20%;
+        left: 2%;
+    }
+
+    .navbar .searchDiv {
+        width: 30vw;
+        /* background-color: orange; */
+    }
+
+    .navbar .menuDiv {
+        width: 30vw;
+        /* background-color: yellowgreen; */
+    }
+
+    .navbar .icons {
+        margin: 0 0.7rem;
+    }
 }
