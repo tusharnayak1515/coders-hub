@@ -18,6 +18,7 @@ const ConfirmModal = dynamic(() => import("../../../components/ConfirmModal"), {
 });
 
 import styles from "../../../styles/editProfile.module.css";
+import Image from "next/image";
 
 const EditOtherProfile = () => {
   const router = useRouter();
@@ -120,7 +121,7 @@ const EditOtherProfile = () => {
       {show && <PasswordModal setShow={setShow} />}
       <div className={styles.edit_container}>
         <div className={styles.dp_div}>
-          <img src={profile?.profilepic} alt={profile?.name} />
+          <Image src={profile?.profilepic} alt={profile?.name} height="160px" width="160px" />
         </div>
 
         <div className={styles.user_details}>

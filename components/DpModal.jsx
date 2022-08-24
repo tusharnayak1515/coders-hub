@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React, { useState } from "react";
 import ReactDom from "react-dom";
 import { FaTrash, FaImage } from "react-icons/fa";
@@ -43,7 +44,7 @@ const DpModal = ({ setShow, profile, userDetails, setUserDetails, setMyImg, them
         <div className={styles.image_preview}>
           {image !== "" && <FaTrash className={styles.remove_image_icon} onClick={onRemove} />}
           {image !== "" ? (
-            <img src={image} alt={profile?.name} />
+            <Image src={image} alt={profile?.name} />
           ) : (
             <label htmlFor="dp">
               <FaImage className={styles.image_icon} />

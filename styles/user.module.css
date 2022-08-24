@@ -14,19 +14,20 @@
     border-bottom: 0.1rem solid var(--light-border);
 }
 
-.user_div img {
-    height: 3rem;
-    width: 3rem;
-    margin-right: 1rem;
+.user_div span img {
+    height: 3rem !important;
+    width: 3rem !important;
+    /* margin-right: 1rem !important; */
     border: 0.1rem solid var(--dark-border-1);
     border-radius: 50%;
 }
 
-.light_user_div img {
+.light_user_div span img {
     border: 0.1rem solid var(--light-border);
 }
 
 .user_div .username {
+    margin-left: 1rem;
     color: var(--dark-text);
     font-family: 'Kanit', sans-serif;
     cursor: pointer;

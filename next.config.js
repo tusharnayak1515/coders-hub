@@ -5,7 +5,7 @@ const nextConfig = {
     styledComponents: true
   },
   images: {
-    domains: ['res.cloudinary.com'],
+    domains: ['res.cloudinary.com','cdn.pixabay.com'],
   },
   devIndicators: {
     buildActivity: false

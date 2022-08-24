@@ -94,6 +94,7 @@ const CommentForm = ({comment}) => {
 
   useEffect(() => {
     // console.log("yes1: ", myComment);
+    // eslint-disable-next-line
     setCommentDetails({ ...commentDetails, comment: myComment });
   }, [myComment]);
 

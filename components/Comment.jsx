@@ -13,6 +13,7 @@ const ConfirmModal = dynamic(() => import("./ConfirmModal"), {
 });
 
 import styles from "../styles/comment.module.css";
+import Image from "next/image";
 
 const Comment = ({ comment }) => {
   const timeAgo = new TimeAgo("en-US");
@@ -93,10 +94,11 @@ const Comment = ({ comment }) => {
       <div className={styles.comment_user_div}>
         <div className={styles.flex_div}>
           <div className={styles.dp_div}>
-            <img
+            <Image
               src={comment.user.profilepic}
               alt={comment.user.name}
-              layout="fill"
+              height="50px"
+              width="50px"
             />
           </div>
           <h3 className={styles.comment_user_name}>{comment.user.name}</h3>

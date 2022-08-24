@@ -50,9 +50,9 @@
     border: 0.1rem dashed var(--light-border);
 }
 
-.dp_overlay .dp_modal .image_preview img {
-    height: 100%;
-    width: 100%;
+.dp_overlay .dp_modal .image_preview span img {
+    height: 100% !important;
+    width: 100% !important;
     border: none;
     border-radius: 0.5rem;
 }

@@ -2,6 +2,7 @@ import React from 'react';
 import { useRouter } from 'next/router';
 
 import styles from "../styles/user.module.css";
+import Image from 'next/image';
 
 const User = ({user, theme}) => {
   const router = useRouter();
@@ -13,7 +14,7 @@ const User = ({user, theme}) => {
 
   return (
     <div className={`${styles.user_div} ${theme === "light" ? styles.light_user_div : styles.dark_user_div}`}>
-      <img src={user.profilepic} alt={user.name} />
+      <Image src={user.profilepic} alt={user.name} height="50px" width="50px" />
       <h2 className={styles.username} onClick={onUserClick}><a href={`/users/${user._id}`}>{user.name}</a></h2>
     </div>
   )

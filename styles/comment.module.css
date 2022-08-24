@@ -43,9 +43,9 @@
     border: 0.1rem solid var(--light-border);
 }
 
-.comment_div .comment_user_div .dp_div img {
-    height: 100%;
-    width: 100%;
+.comment_div .comment_user_div .dp_div span img {
+    height: 100% !important;
+    width: 100% !important;
     border: none;
     border-radius: 50%;
 }

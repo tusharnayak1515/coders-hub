@@ -11,6 +11,7 @@ import { ImUsers } from "react-icons/im";
 import { BsSun, BsFillMoonFill } from "react-icons/bs";
 
 import styles from "../styles/navbar.module.css";
+import Link from "next/link";
 
 const Navbar = () => {
   const router = useRouter();
@@ -67,13 +68,13 @@ const Navbar = () => {
       <div className={styles.logoDiv}>
         <h1 className={styles.logo}>Coders-Hub</h1>
         <h2 onClick={onToggle}>
-          <a href="">
+          <Link href="">
             {theme === "light" ? (
-              <BsSun className={`${styles.icons} ${styles.themeIcon}`} />
+              <a><BsSun className={`${styles.icons} ${styles.themeIcon}`} /></a>
             ) : (
               <BsFillMoonFill className={`${styles.icons} ${styles.themeIcon}`} />
             )}
-          </a>
+          </Link>
         </h2>
       </div>
 
@@ -89,40 +90,40 @@ const Navbar = () => {
 
       <div className={styles.menuDiv}>
         <h2 onClick={onHomeClick}>
-          <a href="/">
-            <RiHome2Fill className={styles.icons} />
-          </a>
+          <Link href="/">
+            <a><RiHome2Fill className={styles.icons} /></a>
+          </Link>
         </h2>
         <h2 className={styles.theme_toggle} onClick={onToggle}>
-          <a href="">
+          <Link href="">
             {theme === "light" ? (
-              <BsSun className={`${styles.icons} ${styles.themeIcon}`} />
+              <a><BsSun className={`${styles.icons} ${styles.themeIcon}`} /></a>
             ) : (
-              <BsFillMoonFill className={`${styles.icons} ${styles.themeIcon}`} />
+              <a><BsFillMoonFill className={`${styles.icons} ${styles.themeIcon}`} /></a>
             )}
-          </a>
+          </Link>
         </h2>
         <h2 onClick={onBlogAdd}>
-          <a href="/addblog">
-            <IoMdAdd className={styles.icons} />
-          </a>
+          <Link href="/addblog">
+            <a><IoMdAdd className={styles.icons} /></a>
+          </Link>
         </h2>
         {profile && profile?.role === "admin" && (
           <h2 onClick={onUsersClick}>
-            <a href="/users">
-              <ImUsers className={styles.icons} />
-            </a>
+            <Link href="/users">
+              <a><ImUsers className={styles.icons} /></a>
+            </Link>
           </h2>
         )}
         <h2 onClick={onProfileClick}>
-          <a href="/profile">
-            <FaUserAlt className={`${styles.icons} ${styles.profileIcon}`} />
-          </a>
+          <Link href="/profile">
+            <a><FaUserAlt className={`${styles.icons} ${styles.profileIcon}`} /></a>
+          </Link>
         </h2>
         <h2 onClick={onLogout}>
-          <a href="">
-            <FiPower className={styles.icons} />
-          </a>
+          <Link href="">
+            <a><FiPower className={styles.icons} /></a>
+          </Link>
         </h2>
         {/* <h2 onClick={onToggle}>
           <a href="">

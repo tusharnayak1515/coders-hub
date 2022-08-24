@@ -20,7 +20,7 @@ const Users = () => {
   useEffect(() => {
     if (!user) {
       router.replace("/login");
-    } else if (user && profile && profile?.role !== "admin") {
+    } else if (user && profile?.role !== "admin") {
       router.replace("/");
     } else {
       dispatch(actionCreators.profile());
