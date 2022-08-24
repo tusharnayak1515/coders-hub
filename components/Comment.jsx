@@ -148,7 +148,7 @@ const Comment = ({ comment }) => {
               onMouseEnter={onFocusHandler}
             />
           )}
-          <p className={styles.comment_time}>Posted {timeAgo.format(comment.createdAt)}</p>
+          <p className={styles.comment_time}>Posted {timeAgo?.format(comment.createdAt)}</p>
         </div>
         <p className={styles.likes_count}>{comment.likes.length} likes</p>
       </div>
