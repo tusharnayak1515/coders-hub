@@ -27,26 +27,6 @@ const Navbar = () => {
     setBName(e.target.value);
   };
 
-  const onHomeClick = (e) => {
-    e.preventDefault();
-    router.push("/");
-  };
-
-  const onBlogAdd = (e) => {
-    e.preventDefault();
-    router.push("/addblog");
-  };
-
-  const onUsersClick = (e) => {
-    e.preventDefault();
-    router.push("/users");
-  };
-
-  const onProfileClick = (e) => {
-    e.preventDefault();
-    router.push("/profile");
-  };
-
   const onLogout = (e) => {
     e.preventDefault();
     dispatch(actionCreators.logout());
@@ -72,7 +52,7 @@ const Navbar = () => {
             {theme === "light" ? (
               <a><BsSun className={`${styles.icons} ${styles.themeIcon}`} /></a>
             ) : (
-              <BsFillMoonFill className={`${styles.icons} ${styles.themeIcon}`} />
+              <a><BsFillMoonFill className={`${styles.icons} ${styles.themeIcon}`} /></a>
             )}
           </Link>
         </h2>
@@ -89,7 +69,7 @@ const Navbar = () => {
       </div>
 
       <div className={styles.menuDiv}>
-        <h2 onClick={onHomeClick}>
+        <h2>
           <Link href="/">
             <a><RiHome2Fill className={styles.icons} /></a>
           </Link>
@@ -103,19 +83,19 @@ const Navbar = () => {
             )}
           </Link>
         </h2>
-        <h2 onClick={onBlogAdd}>
+        <h2>
           <Link href="/addblog">
             <a><IoMdAdd className={styles.icons} /></a>
           </Link>
         </h2>
         {profile && profile?.role === "admin" && (
-          <h2 onClick={onUsersClick}>
+          <h2>
             <Link href="/users">
               <a><ImUsers className={styles.icons} /></a>
             </Link>
           </h2>
         )}
-        <h2 onClick={onProfileClick}>
+        <h2>
           <Link href="/profile">
             <a><FaUserAlt className={`${styles.icons} ${styles.profileIcon}`} /></a>
           </Link>
