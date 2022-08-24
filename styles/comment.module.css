@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit&family=Merriweather&family=Signika+Negative&family=Source+Serif+Pro&display=swap');
+
 .comment_div {
     width: 100%;
     margin-bottom: 2rem;
@@ -50,6 +52,7 @@
 
 .comment_div .comment_user_div .comment_user_name {
     color: var(--dark-text);
+    font-family: 'Kanit', sans-serif;
 }
 
 .light_comment_div .comment_user_div .comment_user_name {
@@ -110,6 +113,7 @@
 .comment_div .comment_details_div .comment_title {
     margin-bottom: 2rem;
     color: var(--dark-text);
+    font-family: 'Merriweather', serif;
 }
 
 .light_comment_div .comment_details_div .comment_title {
@@ -123,6 +127,7 @@
 
 .comment_div .comment_details_div .solution_div .comment_subtitle {
     margin-bottom: 1rem;
+    font-family: 'Signika Negative', sans-serif;
 }
 
 .comment_div .comment_details_div .solution_div pre {
@@ -170,6 +175,7 @@
 
 .comment_div .likes_div .icon_div .comment_time {
     color: var(--dark-text);
+    font-family: 'Source Serif Pro', serif;
 }
 
 .light_comment_div .likes_div .icon_div .comment_time {

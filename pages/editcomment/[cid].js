@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useRouter } from "next/router";
 import Head from "next/head";
+import dynamic from "next/dynamic";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import * as cookie from "cookie";
 import { wrapper } from "../../redux/store";
@@ -14,7 +15,7 @@ import styles from "../../styles/editComment.module.css";
 const EditComment = () => {
   const router = useRouter();
   const dispatch = useDispatch();
-  const { user } = useSelector((state) => state.userReducer, shallowEqual);
+  const { user, theme } = useSelector((state) => state.userReducer, shallowEqual);
   const { comment } = useSelector(
     (state) => state.commentReducer,
     shallowEqual
@@ -29,7 +30,7 @@ const EditComment = () => {
   }, [user, router, dispatch]);
 
   return (
-    <div className={styles.editComment}>
+    <div className={`${styles.editComment} ${theme === "light" ? styles.light_editComment : styles.dark_editComment}`}>
       <Head>
         <title>Edit Comment</title>
         <meta

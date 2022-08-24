@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Play&family=Signika&display=swap');
+
 .blogForm {
     min-height: 100%;
     width: 100%;
@@ -16,9 +18,10 @@
 }
 
 .blogForm .pair label {
-    color: var(--dark-text);
     margin-bottom: 1rem;
+    color: var(--dark-text);
     font-size: 1.3rem;
+    font-family: 'Play', sans-serif;
 }
 
 .light_blog_form .pair label {
@@ -28,6 +31,7 @@
 .blogForm .pair input, .blogForm .pair textarea {
     width: 100%;
     color: var(--dark-text);
+    font-family: 'Signika', sans-serif;
     padding: 1rem;
     font-size: 1.2rem;
     border: 0.1rem solid var(--dark-border-1);

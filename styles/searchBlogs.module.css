@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Secular+One&display=swap');
+
 .searchBlogs {
     min-height: 87vh;
     width: 100%;
@@ -7,11 +9,24 @@
     /* background-color: orange; */
 }
 
+.dark_searchBlogs {
+    background-color: var(--dark-bg);
+}
+
+.light_searchBlogs {
+    background-color: var(--light-bg);
+}
+
 .searchBlogs .result_head {
     width: 75%;
     margin: 2rem 0;
-    color: white;
+    color: var(--dark-text);
+    font-family: 'Secular One', sans-serif;
     /* background-color: pink; */
+}
+
+.light_searchBlogs .result_head {
+    color: var(--light-text);
 }
 
 .searchBlogs .results_div {
@@ -20,5 +35,9 @@
 }
 
 .searchBlogs .results_div .no_result {
-    color: white;
+    color: var(--dark-text);
+}
+
+.light_searchBlogs .results_div .no_result {
+    color: var(--light-text);
 }

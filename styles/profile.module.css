@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit&family=Karla&display=swap');
+
 .profile_page {
     min-height: 87vh;
     width: 100%;
@@ -80,6 +82,7 @@
 
 .profile_page .profile_wrapper .profile_box .user_details .user_name_div .user_name {
     margin-right: 1rem;
+    font-family: 'Kanit', sans-serif;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -89,6 +92,7 @@
 .profile_page .profile_wrapper .profile_box .user_details .user_email,
 .profile_page .profile_wrapper .profile_box .user_details .user_blog_count {
     margin-bottom: 1rem;
+    font-family: 'Karla', sans-serif;
 }
 
 .profile_page .profile_wrapper .profile_box .user_details .user_name_div .user_editIcon {

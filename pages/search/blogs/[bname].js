@@ -15,7 +15,7 @@ import styles from "../../../styles/searchBlogs.module.css";
 const SearchBlogs = () => {
   const router = useRouter();
   const dispatch = useDispatch();
-  const {user} = useSelector(state=> state.userReducer, shallowEqual);
+  const {user, theme} = useSelector(state=> state.userReducer, shallowEqual);
   const {searchedBlogs} = useSelector(state=> state.blogReducer, shallowEqual);
 
   useEffect(()=> {
@@ -28,7 +28,7 @@ const SearchBlogs = () => {
   }, [user, router, dispatch]);
 
   return (
-    <div className={styles.searchBlogs}>
+    <div className={`${styles.searchBlogs} ${theme === "light" ? styles.light_searchBlogs : styles.dark_searchBlogs}`}>
       <Head>
         <title>Search Blogs</title>
         <meta name="keywords" content="next, next.js, coding hub, blogs" />

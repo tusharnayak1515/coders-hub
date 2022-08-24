@@ -15,7 +15,7 @@ import styles from "../../styles/editblog.module.css";
 const EditBlog = () => {
   const router = useRouter();
   const dispatch = useDispatch();
-  const { user, profile } = useSelector((state) => state.userReducer, shallowEqual);
+  const { user, profile, theme } = useSelector((state) => state.userReducer, shallowEqual);
   const { blog } = useSelector((state) => state.blogReducer, shallowEqual);
 
   useEffect(() => {
@@ -31,7 +31,7 @@ const EditBlog = () => {
   }, [user, router, dispatch]);
 
   return (
-    <div className={styles.editblog}>
+    <div className={`${styles.editblog} ${theme === "light" ? styles.light_editblog : styles.dark_editblog}`}>
       <Head>
         <title>Edit Blog-{blog?.title}</title>
         <meta

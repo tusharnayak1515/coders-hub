@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Acme&family=Jost&family=Vollkorn&display=swap');
+
 .editProfile {
     min-height: 87vh;
     width: 100%;
@@ -72,6 +74,7 @@
     /* margin-right: 1rem; */
     color: var(--dark-text);
     font-size: 1.2rem;
+    font-family: 'Jost', sans-serif;
 }
 
 .light_editProfile .edit_container .user_details .wrapper_div label {
@@ -83,6 +86,7 @@
     padding: 0.3rem 0;
     color: var(--dark-text);
     font-size: 1.2rem;
+    font-family: 'Vollkorn', serif;
     border: none;
     border-bottom: 0.1rem solid var(--dark-border-1);
     background-color: var(--dark-bg);
@@ -96,6 +100,7 @@
 
 .editProfile .edit_container .user_details .wrapper_div .change_password {
     color: var(--dark-border-1);
+    font-family: 'Acme', sans-serif;
     cursor: pointer;
 }
 
@@ -127,6 +132,7 @@
 
 .editProfile .edit_container .user_details .btn_div .delete_btn {
     color: red;
+    font-family: 'Acme', sans-serif;
     cursor: pointer;
 }
 
@@ -137,6 +143,7 @@
 
 .editProfile .edit_container .user_details .btn_div .edit_btn {
     color: white;
+    font-family: 'Acme', sans-serif;
     border: 0.1rem solid purple;
     background-color: purple;
 }

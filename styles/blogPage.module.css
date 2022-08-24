@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Secular+One&family=Signika+Negative&family=Source+Serif+Pro&display=swap');
+
 .blog_page {
     min-height: 100vh;
     width: 100%;
@@ -52,6 +54,7 @@
 .blog_page .blog_container .blog_title {
     width: 100%;
     margin-bottom: 1.5rem;
+    font-family: 'Secular One', sans-serif;
     justify-content: space-between;
     /* background-color: rebeccapurple; */
 }
@@ -86,21 +89,24 @@
 }
 
 .blog_page .blog_container .blog_description {
-    color: lightgrey;
-    font-weight: normal;
     margin-bottom: 1.5rem;
+    color: lightgrey;
+    font-family: 'Source Serif Pro', serif;
+    font-weight: normal;
 }
 
 .light_blog_page .blog_container .blog_description {
-    color: grey;
+    color: var(--light-text);
 }
 
 .blog_page .blog_container .blog_category {
     margin-bottom: 2rem;
+    font-family: 'Signika Negative', sans-serif;
 }
 
 .blog_page .blog_container .blog_category .text {
     margin-left: 0.5rem;
+    font-family: 'Source Serif Pro', serif;
 }
 
 .blog_page .blog_container .blog_content {
@@ -109,8 +115,9 @@
 }
 
 .blog_page .blog_container .blog_subtitle {
-    font-weight: normal;
     margin-bottom: 1.5rem;
+    font-weight: normal;
+    font-family: 'Signika Negative', sans-serif;
 }
 
 .blog_page .blog_container span {
@@ -143,6 +150,11 @@
 
 .blog_page .blog_container .blog_time p {
     color: var(--dark-text);
+    font-family: 'Source Serif Pro', serif;
+}
+
+.blog_page .blog_container .blog_time .blog_username {
+    margin-left: 0.3rem;
 }
 
 .light_blog_page .blog_container .blog_time p {

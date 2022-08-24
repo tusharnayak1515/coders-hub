@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Secular+One&display=swap');
+
 .users_page {
     min-height: 87vh;
     width: 100%;
@@ -16,8 +18,9 @@
 }
 
 .users_page .allusers_head {
-    color: var(--dark-text);
     margin: 2rem 0;
+    color: var(--dark-text);
+    font-family: 'Secular One', sans-serif;
     /* width: 75%;
     display: flex;
     justify-content: flex-start;

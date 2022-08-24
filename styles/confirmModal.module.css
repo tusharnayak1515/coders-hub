@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora&display=swap');
+
 .overlay {
     position: fixed;
     top: 0;
@@ -35,6 +37,7 @@
 
 .modal .modalText {
     color: var(--dark-text);
+    font-family: 'Lora', serif;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -60,8 +63,9 @@
 
 .modal .modal_btn_div button {
     margin: 0 1rem;
-    padding: 0.3rem 0.7rem;
+    padding: 0.5rem 1rem;
     font-size: 1.2rem;
+    font-family: 'Lora', serif;
     border-radius: 0.5rem;
     cursor: pointer;
 }
@@ -73,7 +77,8 @@
 }
 
 .modal .modal_btn_div .cancel_btn:hover {
-    background-color: rgb(238, 237, 237);
+    color: var(--dark-text);
+    background-color: var(--light-border);
     transition: all 0.2s ease-in-out;
 }
 
