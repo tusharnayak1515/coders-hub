@@ -14,3 +14,12 @@
 .light_editblog {
     background-color: var(--light-bg);
 }
+
+/* Media Queries */
+
+@media only screen and (max-width: 900px) {
+    .editblog {
+        min-height: 90vh;
+        padding-bottom: 5rem;
+    }
+}

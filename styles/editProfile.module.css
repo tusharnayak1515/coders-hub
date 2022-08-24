@@ -153,3 +153,11 @@
     background-color: white;
     transition: all 0.2s ease-in-out;
 }
+
+/* Media Queries */
+
+@media only screen and (max-width: 900px) {
+    .editProfile {
+        min-height: 90vh;
+    }
+}

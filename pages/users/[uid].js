@@ -54,7 +54,7 @@ const OtherProfile = () => {
 
           <div className={styles.user_details}>
             <div className={styles.user_name_div}>
-              <h1 className={styles.user_name}>{otherUser?.name}</h1>
+              <h2 className={styles.user_name}>{otherUser?.name}</h2>
               <FaUserEdit className={styles.user_editIcon} onClick={onEditClick} />
             </div>
             <h2 className={styles.user_email}>{otherUser?.email}</h2>

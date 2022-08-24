@@ -181,21 +181,7 @@
     .profile_page .profile_wrapper .profile_box {
         padding: 1rem;
         display: flex;
-        /* flex-direction: column; */
         align-items: center;
-        /* background-color: orange; */
-    }
-
-    .profile_page .profile_wrapper .profile_box .user_details {
-        /* min-width: 100%; */
-        /* margin-top: 0.5rem; */
-        flex-direction: column;
-        align-items: center;
-        /* background-color: lightpink; */
-    }
-
-    .profile_page .profile_wrapper .profile_box .user_details .user_name_div {
-        justify-content: center;
         /* background-color: orange; */
     }
 

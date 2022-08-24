@@ -31,3 +31,12 @@
 .light_users_page .allusers_head {
     color: var(--light-text);
 }
+
+/* Media Queries */
+
+@media only screen and (max-width: 900px) {
+    .users_page {
+        min-height: 90vh;
+        padding-bottom: 5rem;
+    }
+}
