@@ -48,13 +48,11 @@ const Navbar = () => {
       <div className={styles.logoDiv}>
         <h1 className={styles.logo}>Coders-Hub</h1>
         <h2 onClick={onToggle}>
-          <Link href="">
             {theme === "light" ? (
-              <a><BsSun className={`${styles.icons} ${styles.themeIcon}`} /></a>
+            <BsSun className={`${styles.icons} ${styles.themeIcon}`} />
             ) : (
-              <a><BsFillMoonFill className={`${styles.icons} ${styles.themeIcon}`} /></a>
+              <BsFillMoonFill className={`${styles.icons} ${styles.themeIcon}`} />
             )}
-          </Link>
         </h2>
       </div>
 
@@ -75,13 +73,11 @@ const Navbar = () => {
           </Link>
         </h2>
         <h2 className={styles.theme_toggle} onClick={onToggle}>
-          <Link href="">
             {theme === "light" ? (
-              <a><BsSun className={`${styles.icons} ${styles.themeIcon}`} /></a>
+              <BsSun className={`${styles.icons} ${styles.themeIcon}`} />
             ) : (
-              <a><BsFillMoonFill className={`${styles.icons} ${styles.themeIcon}`} /></a>
+              <BsFillMoonFill className={`${styles.icons} ${styles.themeIcon}`} />
             )}
-          </Link>
         </h2>
         <h2>
           <Link href="/addblog">
@@ -101,19 +97,8 @@ const Navbar = () => {
           </Link>
         </h2>
         <h2 onClick={onLogout}>
-          <Link href="">
-            <a><FiPower className={styles.icons} /></a>
-          </Link>
+          <a><FiPower className={styles.icons} /></a>
         </h2>
-        {/* <h2 onClick={onToggle}>
-          <a href="">
-            {theme === "light" ? (
-              <BsSun className={styles.icons} />
-            ) : (
-              <BsFillMoonFill className={styles.icons} />
-            )}
-          </a>
-        </h2> */}
       </div>
     </div>
   );
