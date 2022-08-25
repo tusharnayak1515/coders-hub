@@ -15,7 +15,7 @@
 }
 
 .modal {
-    height: 25%;
+    height: 35%;
     width: 30%;
     margin-top: 2rem;
     padding: 1rem 2rem;
@@ -92,4 +92,41 @@
     color: var(--light-border);
     background-color: var(--light-bg);
     transition: all 0.2s ease-in-out;
+}
+
+/* Media Queries */
+
+@media only screen and (max-width: 480px) {
+    .modal {
+        height: 40%;
+        width: 80%;
+    }
+}
+
+@media only screen and (min-width: 481px) and (max-width: 600px) {
+    .modal {
+        height: 40%;
+        width: 70%;
+    }
+}
+
+@media only screen and (min-width: 601px) and (max-width: 720px) {
+    .modal {
+        height: 40%;
+        width: 60%;
+    }
+}
+
+@media only screen and (min-width: 721px) and (max-width: 900px) {
+    .modal {
+        height: 40%;
+        width: 55%;
+    }
+}
+
+@media only screen and (min-width: 901px) and (max-width: 1200px) {
+    .modal {
+        height: 40%;
+        width: 40%;
+    }
 }

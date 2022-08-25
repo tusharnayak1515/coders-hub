@@ -63,6 +63,7 @@
     right: 0.5rem;
     color: var(--dark-border-1);
     font-size: 1.5rem;
+    z-index: 2000;
     cursor: pointer;
 }
 
@@ -130,4 +131,111 @@
     color: var(--dark-text);
     background-color: red;
     transition: all 0.2s ease-in-out;
+}
+
+/* Media Queries */
+
+@media only screen and (max-width: 480px) {
+
+    .dp_overlay .dp_modal {
+        height: 65vh;
+        width: 80%;
+    }
+
+    .dp_overlay .dp_modal .image_preview {
+        height: 50%;
+        width: 85%;
+        margin: 1.5rem 0;
+    }
+
+    .dp_overlay .dp_modal .dp_btn_div {
+        width: 85%;
+    }
+
+    .dp_overlay .dp_modal .dp_btn_div button {
+        padding: 0.5rem 1rem;
+    }
+}
+
+@media only screen and (min-width: 481px) and (max-width: 600px) {
+
+    .dp_overlay .dp_modal {
+        height: 70vh;
+        width: 80%;
+    }
+
+    .dp_overlay .dp_modal .image_preview {
+        height: 55%;
+        width: 75%;
+        margin: 1.5rem 0;
+    }
+
+    .dp_overlay .dp_modal .dp_btn_div {
+        width: 75%;
+    }
+
+    .dp_overlay .dp_modal .dp_btn_div button {
+        padding: 0.5rem 1rem;
+    }
+}
+
+@media only screen and (min-width: 601px) and (max-width: 720px) {
+
+    .dp_overlay .dp_modal {
+        height: 70vh;
+        width: 75%;
+    }
+
+    .dp_overlay .dp_modal .image_preview {
+        height: 55%;
+        width: 70%;
+        margin: 1.5rem 0;
+    }
+
+    .dp_overlay .dp_modal .dp_btn_div {
+        width: 70%;
+    }
+
+    .dp_overlay .dp_modal .dp_btn_div button {
+        padding: 0.5rem 1rem;
+    }
+}
+
+@media only screen and (min-width: 721px) and (max-width: 900px) {
+
+    .dp_overlay .dp_modal {
+        height: 70vh;
+        width: 60%;
+    }
+
+    .dp_overlay .dp_modal .image_preview {
+        height: 55%;
+        width: 70%;
+        margin: 1.5rem 0;
+    }
+
+    .dp_overlay .dp_modal .dp_btn_div {
+        width: 70%;
+    }
+
+    .dp_overlay .dp_modal .dp_btn_div button {
+        padding: 0.5rem 1rem;
+    }
+}
+
+@media only screen and (min-width: 901px) and (max-width: 1200px) {
+    .dp_overlay .dp_modal {
+        height: 80vh;
+        width: 55%;
+    }
+
+    .dp_overlay .dp_modal .image_preview {
+        height: 55%;
+        width: 70%;
+        margin: 1.5rem 0;
+    }
+
+    .dp_overlay .dp_modal .dp_btn_div {
+        width: 70%;
+    }
 }

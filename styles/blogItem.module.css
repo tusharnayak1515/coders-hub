@@ -1,7 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Figtree&family=Play&display=swap');
 
 .blogItem {
-    height: 12vh;
+    min-height: 12vh;
+    /* padding: 1rem 0; */
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;

@@ -55,7 +55,10 @@
     width: 100%;
     margin-bottom: 1.5rem;
     font-family: 'Secular One', sans-serif;
+    display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
+    align-items: center;
     /* background-color: rebeccapurple; */
 }
 
