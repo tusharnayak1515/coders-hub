@@ -97,7 +97,7 @@ const BlogPage = () => {
       {show && <ConfirmModal setShow={setShow} text="Delete" onDelete={onDelete} />}
       <div className={styles.blog_container}>
         <div className={styles.blog_title}>
-          <h1>{blog?.title}</h1>
+          <h2>{blog?.title}</h2>
           <div className={styles.blog_iconDiv}>
             {(blog?.user?._id === profile?._id ||
               profile?.role === "admin") && (
