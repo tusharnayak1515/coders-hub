@@ -30,7 +30,7 @@ const BlogPage = () => {
   const { user, profile, theme } = useSelector(state => state.userReducer,shallowEqual);
   const { blog } = useSelector((state) => state.blogReducer, shallowEqual);
   const [show, setShow] = useState(false);
-  const timeAgo = user && new TimeAgo("en-US");
+  const timeAgo = new TimeAgo("en-US");
 
   const onEditClick = (e) => {
     e.preventDefault();
