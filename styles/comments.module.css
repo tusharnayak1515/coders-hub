@@ -40,6 +40,10 @@
     transition: all 0.2s ease-in-out;
 }
 
+.comments .noComments {
+    margin-bottom: 5rem;
+}
+
 .comments .head_div .comments_head, .comments .noComments {
     color: var(--dark-text);
 }
