@@ -168,3 +168,110 @@
     text-align: center;
     /* background-color: brown; */
 }
+
+/* Media Queries */
+
+@media only screen and (max-width: 480px) {
+
+    .mycontainer .rightSide {
+        display: none;
+    }
+
+    .mycontainer .leftSide {
+        width: 100%;
+        /* background-color: orange; */
+    }
+
+    .mycontainer .leftSide .formDiv {
+        min-height: 75%;
+        width: 85%;
+        /* background-color: blueviolet; */
+    }
+
+    /* .mycontainer .leftSide .formDiv .flexDiv {
+        background-color: orchid;
+    } */
+
+    .mycontainer .leftSide .formDiv .btnDiv button {
+        width: 25%;
+    }
+}
+
+@media only screen and (min-width: 481px) and (max-width: 600px) {
+
+    .mycontainer .rightSide {
+        display: none;
+    }
+
+    .mycontainer .leftSide {
+        width: 100%;
+        /* background-color: orange; */
+    }
+
+    .mycontainer .leftSide .formDiv {
+        min-height: 75%;
+        width: 80%;
+        /* background-color: blueviolet; */
+    }
+
+    .mycontainer .leftSide .formDiv .btnDiv button {
+        width: 22%;
+    }
+}
+
+@media only screen and (min-width: 601px) and (max-width: 720px) {
+
+    .mycontainer .rightSide {
+        display: none;
+    }
+
+    .mycontainer .leftSide {
+        width: 100%;
+        /* background-color: orange; */
+    }
+
+    .mycontainer .leftSide .formDiv {
+        min-height: 70%;
+        width: 75%;
+        /* background-color: blueviolet; */
+    }
+}
+
+@media only screen and (min-width: 721px) and (max-width: 900px) {
+
+    .mycontainer .rightSide {
+        display: none;
+    }
+
+    .mycontainer .leftSide {
+        width: 100%;
+        /* background-color: orange; */
+    }
+
+    .mycontainer .leftSide .formDiv {
+        min-height: 70%;
+        width: 70%;
+        /* background-color: blueviolet; */
+    }
+
+    .mycontainer .leftSide .formDiv .flexDiv input {
+        width: 65%;
+    }
+}
+
+@media only screen and (min-width: 901px) and (max-width: 1200px) {
+
+    .mycontainer .leftSide .formDiv {
+        min-height: 75%;
+        width: 80%;
+        /* background-color: blueviolet; */
+    }
+
+    .mycontainer .leftSide .formDiv .btnDiv button {
+        width: 22%;
+    }
+
+    /* .mycontainer .leftSide .formDiv .flexDiv input {
+        width: 65%;
+    } */
+}
