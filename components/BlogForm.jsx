@@ -136,8 +136,8 @@ const BlogForm = ({ blog }) => {
 
   useEffect(() => {
     // console.log("yes1: ", myContent);
-    // eslint-disable-next-line
     setBlogDetails({ ...blogDetails, content: myContent });
+    // eslint-disable-next-line
   }, [myContent]);
 
   // useEffect(() => {
