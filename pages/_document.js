@@ -11,6 +11,9 @@ export default function Document() {
           crossOrigin="anonymous"
           referrerPolicy="no-referrer"
         />
+        <link rel="manifest" href="/manifest.json" />
+        <link rel="apple-touch-icon" href="/icon.png"></link>
+        <link rel="theme-color" content="#fff" />
       </Head>
       <body>
         <div id="modal-root"></div>
