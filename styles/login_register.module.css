@@ -193,7 +193,7 @@
     } */
 
     .mycontainer .leftSide .formDiv .btnDiv button {
-        width: 25%;
+        min-width: 25%;
     }
 }
 
@@ -215,7 +215,7 @@
     }
 
     .mycontainer .leftSide .formDiv .btnDiv button {
-        width: 22%;
+        min-width: 22%;
     }
 }
 
@@ -268,7 +268,7 @@
     }
 
     .mycontainer .leftSide .formDiv .btnDiv button {
-        width: 22%;
+        min-width: 22%;
     }
 
     /* .mycontainer .leftSide .formDiv .flexDiv input {
