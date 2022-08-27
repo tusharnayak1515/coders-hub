@@ -17,7 +17,7 @@ const User = ({user, theme}) => {
       <div className={styles.user_dp_div}>
         <Image src={user.profilepic} alt={user.name} layout="fill" />
       </div>
-      <h2 className={styles.username} onClick={onUserClick}><a href={`/users/${user._id}`}>{user.name}</a></h2>
+      <h3 className={styles.username} onClick={onUserClick}><a href={`/users/${user._id}`}>{user.name}</a></h3>
     </div>
   )
 }
