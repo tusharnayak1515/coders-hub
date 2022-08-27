@@ -1,12 +1,12 @@
 {
-    "theme_color": "#f69435",
-    "background_color": "#f69435",
+    "theme_color": "white",
+    "background_color": "white",
     "display": "standalone",
     "scope": "/",
     "start_url": "/",
     "name": "Coders Hub",
     "short_name": "coders-hub",
-    "description": "Coders Hub is a blog website specially for the programmers.",
+    "description": "Coders Hub is a blog website specially for the programmers where they can find solutions to their queries and also help others find solutions to their queries.",
     "icons": [
         {
             "src": "/icon-192x192.png",
