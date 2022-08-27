@@ -3,6 +3,7 @@
 .userList {
     width: 20%;
     display: flex;
+    flex-wrap: wrap;
     flex-direction: column;
     align-items: center;
     /* background-color: orchid; */
