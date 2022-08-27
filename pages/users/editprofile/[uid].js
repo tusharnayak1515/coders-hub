@@ -23,7 +23,7 @@ import Image from "next/image";
 const EditOtherProfile = () => {
   const router = useRouter();
   const dispatch = useDispatch();
-  const { otherUser, profile, user } = useSelector(
+  const { otherUser, profile, user, theme } = useSelector(
     (state) => state.userReducer,
     shallowEqual
   );
@@ -102,7 +102,7 @@ const EditOtherProfile = () => {
   }, [user, profile?.role, router, dispatch]);
 
   return (
-    <div className={styles.editProfile}>
+    <div className={`${styles.editProfile} ${theme === "light" ? styles.light_editProfile : styles.dark_editProfile}`}>
       <Head>
         <title>Edit {otherUser?.name}</title>
         <meta
@@ -121,7 +121,7 @@ const EditOtherProfile = () => {
       {show && <PasswordModal setShow={setShow} />}
       <div className={styles.edit_container}>
         <div className={styles.dp_div}>
-          <Image src={profile?.profilepic} alt={profile?.name} height="160px" width="160px" />
+          <Image src={userDetails.profilepic} alt={userDetails?.name} layout="fill" />
         </div>
 
         <div className={styles.user_details}>

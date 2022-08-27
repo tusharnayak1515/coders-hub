@@ -61,6 +61,7 @@
     padding: 0.5rem 1rem;
     font-size: 1.1rem;
     border: 0.1rem solid grey;
+    background-color: white;
 }
 
 .mycontainer .leftSide .formDiv .flexDiv input:focus {
@@ -97,11 +98,11 @@
 
 .mycontainer .leftSide .formDiv .btnDiv button {
     /* align-self: center; */
-    width: 20%;
+    min-width: 25%;
     /* margin-top: 2rem; */
     color: white;
     font-size: 1.2rem;
-    padding: 0.5rem 1rem;
+    padding: 0.7rem 1rem;
     border: 0.1rem solid purple;
     cursor: pointer;
     background-color: rgb(145, 0, 145);
@@ -193,7 +194,7 @@
     } */
 
     .mycontainer .leftSide .formDiv .btnDiv button {
-        min-width: 25%;
+        min-width: 30%;
     }
 }
 
@@ -215,7 +216,7 @@
     }
 
     .mycontainer .leftSide .formDiv .btnDiv button {
-        min-width: 22%;
+        min-width: 25%;
     }
 }
 
@@ -234,6 +235,10 @@
         min-height: 70%;
         width: 75%;
         /* background-color: blueviolet; */
+    }
+
+    .mycontainer .leftSide .formDiv .btnDiv button {
+        min-width: 23%;
     }
 }
 
@@ -268,7 +273,7 @@
     }
 
     .mycontainer .leftSide .formDiv .btnDiv button {
-        min-width: 22%;
+        min-width: 28%;
     }
 
     /* .mycontainer .leftSide .formDiv .flexDiv input {

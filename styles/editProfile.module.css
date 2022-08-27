@@ -28,6 +28,7 @@
 }
 
 .editProfile .edit_container .dp_div {
+    position: relative;
     margin-bottom: 1rem;
     height: 10rem;
     width: 10rem;
@@ -44,8 +45,8 @@
 }
 
 .editProfile .edit_container .dp_div span img {
-    height: 10rem !important;
-    width: 10rem !important;
+    /* height: 10rem !important;
+    width: 10rem !important; */
     border-radius: 50%;
     cursor: pointer;
 }
@@ -75,9 +76,13 @@
 
 .editProfile .edit_container .user_details .wrapper_div label {
     /* margin-right: 1rem; */
-    color: var(--dark-text);
+    /* color: var(--dark-text); */
     font-size: 1.2rem;
     font-family: 'Jost', sans-serif;
+}
+
+.dark_editProfile .edit_container .user_details .wrapper_div label {
+    color: var(--dark-text);
 }
 
 .light_editProfile .edit_container .user_details .wrapper_div label {
@@ -87,10 +92,13 @@
 .editProfile .edit_container .user_details .wrapper_div input {
     /* width: 100%; */
     padding: 0.3rem 0;
-    color: var(--dark-text);
     font-size: 1.2rem;
     font-family: 'Vollkorn', serif;
     border: none;
+}
+
+.dark_editProfile .edit_container .user_details .wrapper_div input {
+    color: var(--dark-text);
     border-bottom: 0.1rem solid var(--dark-border-1);
     background-color: var(--dark-bg);
 }
