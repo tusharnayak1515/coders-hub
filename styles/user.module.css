@@ -14,16 +14,23 @@
     border-bottom: 0.1rem solid var(--light-border);
 }
 
-.user_div span img {
-    height: 3rem !important;
-    width: 3rem !important;
-    /* margin-right: 1rem !important; */
-    border: 0.1rem solid var(--dark-border-1);
+.user_div .user_dp_div {
+    position: relative;
+    height: 3rem;
+    width: 3rem;
     border-radius: 50%;
 }
 
-.light_user_div span img {
+.dark_user_div .user_dp_div {
+    border: 0.1rem solid var(--dark-border-1);
+}
+
+.light_user_div .user_dp_div {
     border: 0.1rem solid var(--light-border);
+}
+
+.user_div span img {
+    border-radius: 50%;
 }
 
 .user_div .username {

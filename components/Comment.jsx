@@ -97,8 +97,7 @@ const Comment = ({ comment }) => {
             <Image
               src={comment.user.profilepic}
               alt={comment.user.name}
-              height="50px"
-              width="50px"
+              layout="fill"
             />
           </div>
           <h3 className={styles.comment_user_name}>{comment.user.name}</h3>

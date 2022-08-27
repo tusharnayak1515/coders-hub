@@ -50,7 +50,7 @@ const OtherProfile = () => {
       <div className={styles.profile_wrapper}>
         <div className={styles.profile_box}>
           <div className={styles.dp_div}>
-            <Image src={otherUser?.profilepic} alt={otherUser?.name} height="160px" width="160px" />
+            <Image src={otherUser?.profilepic} alt={otherUser?.name} layout="fill" />
           </div>
 
           <div className={styles.user_details}>

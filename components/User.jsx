@@ -14,7 +14,9 @@ const User = ({user, theme}) => {
 
   return (
     <div className={`${styles.user_div} ${theme === "light" ? styles.light_user_div : styles.dark_user_div}`}>
-      <Image src={user.profilepic} alt={user.name} height="50px" width="50px" />
+      <div className={styles.user_dp_div}>
+        <Image src={user.profilepic} alt={user.name} layout="fill" />
+      </div>
       <h2 className={styles.username} onClick={onUserClick}><a href={`/users/${user._id}`}>{user.name}</a></h2>
     </div>
   )

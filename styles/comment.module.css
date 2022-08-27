@@ -32,8 +32,9 @@
 }
 
 .comment_div .comment_user_div .flex_div .dp_div {
-    height: 2.5rem;
-    width: 2.5rem;
+    position: relative;
+    height: 3rem;
+    width: 3rem;
     margin-right: 1rem;
     border: 0.1rem solid var(--dark-border-1);
     border-radius: 50%;
@@ -44,8 +45,6 @@
 }
 
 .comment_div .comment_user_div .dp_div span img {
-    height: 100% !important;
-    width: 100% !important;
     border: none;
     border-radius: 50%;
 }
