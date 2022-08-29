@@ -127,9 +127,9 @@ const BlogPage = () => {
         </div>
         <div className={styles.blog_time}>
           <p>by <span className={styles.blog_username}>{blog?.user.name}</span></p>
-          {blog?.createdAt === blog?.updatedAt ? (
+          {user && (blog?.createdAt === blog?.updatedAt) ? (
             <p>posted {timeAgo && timeAgo.format(blog?.createdAt)}</p>
-          ) : (
+          ) : user && (
             <p>updated {timeAgo && timeAgo.format(blog?.updatedAt)}</p>
           )}
         </div>
