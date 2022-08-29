@@ -40,7 +40,6 @@ const handler = async (req, res)=> {
                 otp: otp,
                 expiry: new Date().getTime() + 30000
             });
-            // mailer(email, otp);
             const mailOptions = {
                 from: process.env.NODE_MAILER_EMAIL,
                 to: email,
@@ -71,13 +70,10 @@ const handler = async (req, res)=> {
         
             await new Promise((resolve, reject) => {
                 transporter.sendMail(mailOptions, (error,info)=> {
-                    // console.log(error || info);
                     if(error) {
-                        // console.log(error);
                         reject(error);
                     }
                     else {
-                        // console.log("Email Sent");
                         resolve(info);
                     }
                 });
@@ -89,62 +85,6 @@ const handler = async (req, res)=> {
             return res.status(500).json({success, error: error.message});
         }
     }
-}
-
-const mailer = (email, code)=> {
-    const nodemailer = require("nodemailer");
-
-    const mailOptions = {
-        from: process.env.NODE_MAILER_EMAIL,
-        to: email,
-        subject: "Verification Code for password reset of your coders-hub account!",
-        text: code
-    }
-    
-    const transporter = nodemailer.createTransport({
-        service: "gmail",
-        port: 465,
-        secure: true,
-        auth: {
-            user: process.env.NODE_MAILER_EMAIL,
-            pass: process.env.NODE_MAILER_PASSWORD
-        }
-    });
-
-    transporter.sendMail(mailOptions, (error,info)=> {
-        console.log(error || info);
-        if(error) {
-            console.log(error);
-        }
-        else {
-            console.log("Email Sent");
-        }
-    });
-
-    // await new Promise((resolve, reject) => {
-    //     transporter.verify(function (error, success) {
-    //         if (error) {
-    //             console.log(error);
-    //             reject(error);
-    //         } else {
-    //             console.log("Server is ready to take our messages");
-    //             resolve(success);
-    //         }
-    //     });
-    // });
-
-    // await new Promise((resolve, reject) => {
-    //     transporter.sendMail(mailOptions, (error,info)=> {
-    //         // console.log(error || info);
-    //         if(error) {
-    //             console.log(error);
-    //         }
-    //         else {
-    //             console.log("Email Sent");
-    //         }
-    //     });
-    // });
-    
 }
  
 export default handler;
