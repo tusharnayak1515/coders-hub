@@ -27,9 +27,9 @@ const ResetPassword = ({myotp}) => {
     if(user) {
       router.replace("/");
     }
-    else if(process.env.NODE_ENV !== "development") {
-      router.replace("/login");
-    }
+    // else if(process.env.NODE_ENV !== "development") {
+    //   router.replace("/login");
+    // }
     else if(!otp) {
       router.replace("/login");
     }
@@ -37,7 +37,7 @@ const ResetPassword = ({myotp}) => {
     return () => {
       dispatch(actionCreators.resetStatus());
     };
-  }, [process.env.NODE_ENV, user, otp, router]);
+  }, [user, otp, router]);
 
   return (
     <div className={styles.passwordreset}>

@@ -1,6 +1,7 @@
 import connectToMongo from "../../../db";
 const joi = require("joi");
 const bcrypt = require("bcryptjs");
+const nodemailer = require("nodemailer");
 
 import User from "../../../models/User";
 import Otp from "../../../models/Otp";
@@ -39,7 +40,48 @@ const handler = async (req, res)=> {
                 otp: otp,
                 expiry: new Date().getTime() + 30000
             });
-            mailer(email, otp);
+            // mailer(email, otp);
+            const mailOptions = {
+                from: process.env.NODE_MAILER_EMAIL,
+                to: email,
+                subject: "Verification Code for password reset of your coders-hub account!",
+                text: myotp.otp
+            }
+            
+            const transporter = nodemailer.createTransport({
+                service: "gmail",
+                secure: true,
+                auth: {
+                    user: process.env.NODE_MAILER_EMAIL,
+                    pass: process.env.NODE_MAILER_PASSWORD
+                }
+            });
+
+            await new Promise((resolve, reject) => {
+                transporter.verify(function (error, success) {
+                    if (error) {
+                        console.log(error);
+                        reject(error);
+                    } else {
+                        console.log("Server is ready to take our messages");
+                        resolve(success);
+                    }
+                });
+            });
+        
+            await new Promise((resolve, reject) => {
+                transporter.sendMail(mailOptions, (error,info)=> {
+                    // console.log(error || info);
+                    if(error) {
+                        // console.log(error);
+                        reject(error);
+                    }
+                    else {
+                        // console.log("Email Sent");
+                        resolve(info);
+                    }
+                });
+            });
             success = true;
             return res.status(200).json({success});
         } catch (error) {
