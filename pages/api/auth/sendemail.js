@@ -51,6 +51,8 @@ const handler = async (req, res)=> {
 
 const mailer = async (email, code)=> {
     const nodemailer = require("nodemailer");
+    console.log(process.env.NODE_MAILER_EMAIL);
+    console.log(process.env.NODE_MAILER_PASSWORD);
 
     const mailOptions = {
         from: process.env.NODE_MAILER_EMAIL,
