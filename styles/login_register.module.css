@@ -72,6 +72,13 @@
     border: 0.1rem solid rgb(175, 1, 175);
 }
 
+.mycontainer .leftSide .formDiv .forgot_password {
+    align-self: flex-end;
+    color: purple;
+    font-weight: bold;
+    cursor: pointer;
+}
+
 .mycontainer .leftSide .formDiv .btnDiv {
     width: 100%;
     margin: 1.5rem 0;

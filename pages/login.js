@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import Head from "next/head";
 import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/router";
+import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { actionCreators } from "../redux";
 import { toast } from "react-toastify";
 import bannerImg from "../public/static/images/banner.svg";
@@ -104,6 +105,8 @@ const Login = () => {
               onChange={onChangeHandler}
             />
           </div>
+
+          <Link href="/forgotpassword"><p className={styles.forgot_password}>Forgot Password?</p></Link>
 
           <div className={styles.btnDiv}>
             <div className={styles.rememberDiv}>

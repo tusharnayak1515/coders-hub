@@ -5,10 +5,198 @@ import "react-toastify/dist/ReactToastify.css";
 
 // *********************************** USER SECTION *********************************** \\
 
+export const sendEmail = (email)=> async (dispatch)=> {
+    dispatch({
+        type: "users-loading"
+    });
+
+    const url = process.env.NODE_ENV === "production" ? "https://coders-hub-rho.vercel.app" : "http://localhost:3000";
+    try {
+        const res = await axios.post(`${url}/api/auth/sendemail`,{email});
+
+        if(res.data.success) {
+            dispatch({
+                type: "send-email",
+                payload: {
+                    error: null
+                }
+            });
+            toast.success("Verification code sent to your email!", {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+        }
+
+        if(res.data.error) {
+            dispatch({
+                type: "send-email",
+                payload: {
+                    error: res.data.error
+                }
+            });
+            toast.error(res.data.error, {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+        }
+    } catch (error) {
+        dispatch({
+            type: "send-email",
+            payload: {
+              error: error,
+            }
+        });
+        toast.error(error, {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+        });
+    }
+}
+
+export const submitOtp = (otp)=> async (dispatch)=> {
+    dispatch({
+        type: "users-loading"
+    });
+
+    const url = process.env.NODE_ENV === "production" ? "https://coders-hub-rho.vercel.app" : "http://localhost:3000";
+    try {
+        const res = await axios.post(`${url}/api/auth/verifyotp`,{otp});
+        localStorage.setItem("jb_otp", JSON.stringify(res.data.myotp))
+        if(res.data.success) {
+            dispatch({
+                type: "submit-otp",
+                payload: {
+                    otp: res.data.myotp
+                }
+            });
+        }
+
+        if(res.data.error) {
+            dispatch({
+                type: "submit-otp",
+                payload: {
+                    error: res.data.error
+                }
+            });
+            toast.error(res.data.error, {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+        }
+    } catch (error) {
+        dispatch({
+            type: "submit-otp",
+            payload: {
+              error: error,
+            }
+        });
+        toast.error(error, {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+        });
+    } 
+}
+
+export const resetPassword = ({otp, newpassword, confirmpassword})=> async (dispatch)=> {
+    dispatch({
+        type: "user-loading"
+    });
+
+    const url = process.env.NODE_ENV === "production" ? "https://coders-hub-rho.vercel.app" : "http://localhost:3000";
+    try {
+        const res = await axios.put(`${url}/api/auth/resetpassword`,{otp,newpassword,confirmpassword});
+
+        if(res.data.success) {
+            dispatch({
+                type: "reset-password",
+                payload: {
+                    error: null
+                }
+            });
+            toast.success("Password reset successfull!", {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+        }
+
+        if(res.data.error) {
+            dispatch({
+                type: "reset-password",
+                payload: {
+                    error: res.data.error
+                }
+            });
+            toast.error(res.data.error, {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+        }
+    } catch (error) {
+        dispatch({
+            type: "reset-password",
+            payload: {
+              error: error,
+            }
+        });
+        toast.error(error, {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+        });
+    }
+}
+
+export const resetStatus = ()=> async(dispatch)=> {
+    localStorage.removeItem("jb_otp");
+    dispatch({
+        type: "reset-otp-status"
+    });
+}
+
 export const register = ({name,email,password})=> async (dispatch)=> {
     dispatch({
         type: "user-loading"
     });
+
     const url = process.env.NODE_ENV === "production" ? "https://coders-hub-rho.vercel.app" : "http://localhost:3000";
     try {
         const res = await axios.post(`${url}/api/auth/register`,{name,email,password});

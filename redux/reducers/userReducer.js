@@ -3,6 +3,7 @@ import { getCookie } from "cookies-next";
 let isUser = null;
 let isProfile = null;
 let isUsers = null;
+let isOtp = null;
 
 if(!getCookie("jb_user_token")) {
     isUser = null;
@@ -25,6 +26,13 @@ if(typeof window !== "undefined") {
     else {
         isUsers = JSON.parse(localStorage.getItem("jb_users"));
     }
+
+    if(localStorage.getItem("jb_otp") === null) {
+        isOtp = null;
+    }
+    else {
+        isOtp = JSON.parse(localStorage.getItem("jb_otp"));
+    }
 }
 
 const initState = {
@@ -33,6 +41,7 @@ const initState = {
     users: isUsers,
     otherUser: null,
     theme: "light",
+    otp: isOtp,
     isLoading: false
 }
 
@@ -48,6 +57,53 @@ const userReducer = (state=initState, action)=> {
         return {
             ...state,
             theme: theme,
+            isLoading: false
+        }
+    }
+    else if(action.type === "send-email") {
+        const {error} = action.payload;
+        if(error) {
+            return {
+                ...state,
+                isLoading: false
+            }
+        }
+        return {
+            ...state,
+            isLoading: false
+        }
+    }
+    else if(action.type === "submit-otp") {
+        const {error, otp} = action.payload;
+        if(error) {
+            return {
+                ...state,
+                isLoading: false
+            }
+        }
+        return {
+            ...state,
+            otp: otp,
+            isLoading: false
+        }
+    }
+    else if(action.type === "reset-password") {
+        const {error} = action.payload;
+        if(error) {
+            return {
+                ...state,
+                isLoading: false
+            }
+        }
+        return {
+            ...state,
+            isLoading: false
+        }
+    }
+    else if(action.type === "reset-otp-status") {
+        return {
+            ...state,
+            otp: null,
             isLoading: false
         }
     }
