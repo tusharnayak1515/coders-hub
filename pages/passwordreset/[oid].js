@@ -24,7 +24,6 @@ const ResetPassword = ({myotp}) => {
   }
 
   useEffect(()=> {
-    console.log(otp);
     if(user) {
       router.replace("/");
     }
@@ -48,6 +47,7 @@ const ResetPassword = ({myotp}) => {
       </Head>
 
       <div className={styles.password_box}>
+        <h2 className={styles.reset_header}>Reset Password</h2>
         <input type="password" name='newpassword' placeholder='New Password' value={passwordDetails.newpassword} onChange={onChangeHandler}  />
         <input type="password" name='confirmpassword' placeholder='Confirm Password' value={passwordDetails.confirmpassword} onChange={onChangeHandler}  />
         <button onClick={onResetPassword}>Reset</button>
