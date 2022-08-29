@@ -69,6 +69,7 @@ const mailer = async (email, code)=> {
         }
     });
 
+    console.log("yes");
     await transporter.sendMail(mailOptions, (error,info)=> {
         console.log(error || info);
         if(error) {
