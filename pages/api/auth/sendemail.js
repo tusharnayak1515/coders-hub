@@ -22,7 +22,7 @@ const handler = async (req, res)=> {
             const {error} = schema.validate(req.body);
             if(error) {
                 success = false;
-                return res.status(422).json({success, error: error.details[0].message});
+                return res.json({success, error: error.details[0].message});
             }
             
             let user = await User.findOne({email: email});
@@ -39,7 +39,7 @@ const handler = async (req, res)=> {
                 otp: otp,
                 expiry: new Date().getTime() + 30000
             });
-            await mailer(email, otp);
+            mailer(email, otp);
             success = true;
             return res.status(200).json({success});
         } catch (error) {
@@ -66,6 +66,18 @@ const mailer = async (email, code)=> {
             user: process.env.NODE_MAILER_EMAIL,
             pass: process.env.NODE_MAILER_PASSWORD
         }
+    });
+
+    await new Promise((resolve, reject) => {
+        transporter.verify(function (error, success) {
+            if (error) {
+                console.log(error);
+                reject(error);
+            } else {
+                console.log("Server is ready to take our messages");
+                resolve(success);
+            }
+        });
     });
 
     await new Promise((resolve, reject) => {

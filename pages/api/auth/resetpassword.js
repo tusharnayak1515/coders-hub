@@ -59,7 +59,7 @@ const handler = async (req, res)=> {
             const {error} = schema.validate(req.body);
             if(error) {
                 success = false;
-                return res.status(422).json({success, error: error.details[0].message});
+                return res.json({success, error: error.details[0].message});
             }
 
             let myotp = await Otp.findById(otp);
