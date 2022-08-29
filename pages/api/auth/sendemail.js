@@ -51,8 +51,6 @@ const handler = async (req, res)=> {
 
 const mailer = async (email, code)=> {
     const nodemailer = require("nodemailer");
-    console.log(process.env.NODE_MAILER_EMAIL);
-    console.log(process.env.NODE_MAILER_PASSWORD);
 
     const mailOptions = {
         from: process.env.NODE_MAILER_EMAIL,
@@ -84,7 +82,7 @@ const mailer = async (email, code)=> {
 
     await new Promise((resolve, reject) => {
         transporter.sendMail(mailOptions, (error,info)=> {
-            // console.log(error || info);
+            console.log(error || info);
             if(error) {
                 console.log(error);
             }
