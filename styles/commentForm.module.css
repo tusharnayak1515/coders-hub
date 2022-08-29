@@ -6,6 +6,14 @@
     /* background-color: violet; */
 }
 
+.dark_comment_form {
+    background-color: var(--dark-bg);
+}
+
+.light_comment_form {
+    background-color: var(--light-bg);
+}
+
 .commentForm .comment_pair {
     width: 80%;
     margin: 1rem auto;
