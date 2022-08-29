@@ -39,7 +39,7 @@ const handler = async (req, res)=> {
                 otp: otp,
                 expiry: new Date().getTime() + 30000
             });
-            mailer(email, otp);
+            await mailer(email, otp);
             success = true;
             return res.status(200).json({success});
         } catch (error) {
@@ -49,7 +49,7 @@ const handler = async (req, res)=> {
     }
 }
 
-const mailer = (email, code)=> {
+const mailer = async (email, code)=> {
     const nodemailer = require("nodemailer");
 
     const mailOptions = {
@@ -68,15 +68,18 @@ const mailer = (email, code)=> {
         }
     });
 
-    transporter.sendMail(mailOptions, (error,info)=> {
-        // console.log(error || info);
-        if(error) {
-            console.log(error);
-        }
-        else {
-            console.log("Email Sent");
-        }
+    await new Promise((resolve, reject) => {
+        transporter.sendMail(mailOptions, (error,info)=> {
+            // console.log(error || info);
+            if(error) {
+                console.log(error);
+            }
+            else {
+                console.log("Email Sent");
+            }
+        });
     });
+    
 }
  
 export default handler;
