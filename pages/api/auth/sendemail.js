@@ -69,7 +69,7 @@ const mailer = (email, code)=> {
     });
 
     transporter.sendMail(mailOptions, (error,info)=> {
-        console.log(error || info);
+        console.log(info);
         if(error) {
             console.log(error);
         }
