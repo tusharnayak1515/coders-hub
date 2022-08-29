@@ -65,13 +65,13 @@ const handler = async (req, res)=> {
             let myotp = await Otp.findById(otp);
             if(!myotp) {
                 success = false;
-                return res.status(404).json({success, error: "Otp expired!"});
+                return res.json({success, error: "Otp expired!"});
             }
 
             let user = await User.findOne({email: myotp.email});
             if(!user) {
                 success = false;
-                return res.status(404).json({success, error: "User not found!"});
+                return res.json({success, error: "User not found!"});
             }
 
             if(newpassword !== confirmpassword) {
