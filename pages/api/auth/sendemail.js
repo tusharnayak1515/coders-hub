@@ -49,27 +49,28 @@ const handler = async (req, res)=> {
     }
 }
 
-const mailer = (email, code)=> {
+const mailer = async (email, code)=> {
     const nodemailer = require("nodemailer");
 
     const mailOptions = {
         from: process.env.NODE_MAILER_EMAIL,
-        port: 465,
         to: email,
         subject: "Verification Code for password reset of your coders-hub account!",
         text: code
     }
-
+    
     const transporter = nodemailer.createTransport({
         service: "gmail",
+        port: 465,
+        secure: true,
         auth: {
             user: process.env.NODE_MAILER_EMAIL,
             pass: process.env.NODE_MAILER_PASSWORD
         }
     });
 
-    transporter.sendMail(mailOptions, (error,info)=> {
-        console.log(info);
+    await transporter.sendMail(mailOptions, (error,info)=> {
+        console.log(error || info);
         if(error) {
             console.log(error);
         }
