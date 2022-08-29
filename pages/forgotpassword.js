@@ -64,14 +64,13 @@ const ForgotPassword = () => {
   }, [isLoading]);
 
   useEffect(() => {
-    if (otp) {
+    if(process.env.NODE_ENV !== "development") {
+      router.push("/login");
+    }
+    else if (otp) {
       router.push(`/passwordreset/${otp._id}`);
     }
-  }, [otp, router, dispatch]);
-
-  // if(otp) {
-  //   router.push(`/passwordreset/${otp.otp}`);
-  // }
+  }, [process.env.NODE_ENV, otp, router, dispatch]);
 
   return (
     <div className={styles.forgotPassword}>
