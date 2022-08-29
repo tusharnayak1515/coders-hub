@@ -49,7 +49,7 @@ const handler = async (req, res)=> {
     }
 }
 
-const mailer = async (email, code)=> {
+const mailer = (email, code)=> {
     const nodemailer = require("nodemailer");
 
     const mailOptions = {
@@ -68,29 +68,39 @@ const mailer = async (email, code)=> {
         }
     });
 
-    await new Promise((resolve, reject) => {
-        transporter.verify(function (error, success) {
-            if (error) {
-                console.log(error);
-                reject(error);
-            } else {
-                console.log("Server is ready to take our messages");
-                resolve(success);
-            }
-        });
+    transporter.sendMail(mailOptions, (error,info)=> {
+        console.log(error || info);
+        if(error) {
+            console.log(error);
+        }
+        else {
+            console.log("Email Sent");
+        }
     });
 
-    await new Promise((resolve, reject) => {
-        transporter.sendMail(mailOptions, (error,info)=> {
-            console.log(error || info);
-            if(error) {
-                console.log(error);
-            }
-            else {
-                console.log("Email Sent");
-            }
-        });
-    });
+    // await new Promise((resolve, reject) => {
+    //     transporter.verify(function (error, success) {
+    //         if (error) {
+    //             console.log(error);
+    //             reject(error);
+    //         } else {
+    //             console.log("Server is ready to take our messages");
+    //             resolve(success);
+    //         }
+    //     });
+    // });
+
+    // await new Promise((resolve, reject) => {
+    //     transporter.sendMail(mailOptions, (error,info)=> {
+    //         // console.log(error || info);
+    //         if(error) {
+    //             console.log(error);
+    //         }
+    //         else {
+    //             console.log("Email Sent");
+    //         }
+    //     });
+    // });
     
 }
  
