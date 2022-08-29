@@ -6,8 +6,6 @@ import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import * as cookie from "cookie";
 import { wrapper } from "../../redux/store";
 import { actionCreators } from "../../redux";
-import TimeAgo from "javascript-time-ago";
-import en from "javascript-time-ago/locale/en";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import { toast } from "react-toastify";
 const Comments = dynamic(() => import("../../components/Comments"), {
@@ -19,10 +17,11 @@ const Contents = dynamic(() => import("../../components/Contents"), {
 const ConfirmModal = dynamic(() => import("../../components/ConfirmModal"), {
   ssr: false,
 });
+const BlogTime = dynamic(() => import("../../components/BlogTime"), {
+  ssr: false,
+});
 
 import styles from "../../styles/blogPage.module.css";
-
-TimeAgo.addLocale(en);
 
 const BlogPage = () => {
   const router = useRouter();
@@ -30,7 +29,6 @@ const BlogPage = () => {
   const { user, profile, theme } = useSelector(state => state.userReducer,shallowEqual);
   const { blog } = useSelector((state) => state.blogReducer, shallowEqual);
   const [show, setShow] = useState(false);
-  const timeAgo = new TimeAgo("en-US");
 
   const onEditClick = (e) => {
     e.preventDefault();
@@ -125,14 +123,7 @@ const BlogPage = () => {
               );
             })}
         </div>
-        <div className={styles.blog_time}>
-          <p>by <span className={styles.blog_username}>{blog?.user.name}</span></p>
-          {user && (blog?.createdAt === blog?.updatedAt) ? (
-            <p>posted {timeAgo && timeAgo.format(blog?.createdAt)}</p>
-          ) : user && (
-            <p>updated {timeAgo && timeAgo.format(blog?.updatedAt)}</p>
-          )}
-        </div>
+        {user && <BlogTime blog={blog ? blog : null} />}
       </div>
 
       <div className={styles.comments_container}>
