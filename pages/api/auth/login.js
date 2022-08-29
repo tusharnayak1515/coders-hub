@@ -30,19 +30,19 @@ export default async function handler(req, res) {
             const {error} = schema.validate(req.body);
             if(error) {
                 success = false;
-                return res.status(422).json({success, error: error.details[0].message});
+                return res.json({success, error: error.details[0].message});
             }
             
             let user = await User.findOne({email: email});
             if(!user) {
                 success = false;
-                return res.status(404).json({success, error: "No account is associated to this email!"});
+                return res.json({success, error: "No account is associated to this email!"});
             }
 
             const passwordCompare = await bcrypt.compare(password, user.password);
             if(!passwordCompare) {
                 success = false;
-                return res.status(401).json({success, error: "Incorrect Password!"});
+                return res.json({success, error: "Incorrect Password!"});
             }
 
             const data = {
@@ -59,7 +59,7 @@ export default async function handler(req, res) {
             return res.status(200).json({success});
         } catch (error) {
             success = false;
-            return res.status(500).json({success, error: error.message});
+            return res.json({success, error: error.message});
         }
     }
 }
