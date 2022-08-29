@@ -54,6 +54,7 @@ const mailer = (email, code)=> {
 
     const mailOptions = {
         from: process.env.NODE_MAILER_EMAIL,
+        port: 465,
         to: email,
         subject: "Verification Code for password reset of your coders-hub account!",
         text: code
