@@ -67,7 +67,8 @@ const mailer = (email, code)=> {
         }
     });
 
-    transporter.sendMail(mailOptions, (error)=> {
+    transporter.sendMail(mailOptions, (error,info)=> {
+        // console.log(error || info);
         if(error) {
             console.log(error);
         }

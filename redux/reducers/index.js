@@ -21,7 +21,7 @@ const masterReducer = (state,action)=> {
                 users: [...new Set(action.payload.userReducer.users, state.userReducer.users)],
                 otherUser: action.payload.userReducer.otherUser ? action.payload.userReducer.otherUser : state.userReducer.otherUser,
                 isLoading: state.userReducer.isLoading,
-                otpStatus: state.userReducer.otpStatus,
+                otp: state.userReducer.otp,
                 theme: state.userReducer.theme
             },
             blogReducer: {
