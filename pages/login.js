@@ -106,7 +106,7 @@ const Login = () => {
             />
           </div>
 
-          <Link href="/forgotpassword"><p className={styles.forgot_password}>Forgot Password?</p></Link>
+          {process.env.NODE_ENV === "development" && <Link href="/forgotpassword"><p className={styles.forgot_password}>Forgot Password?</p></Link>}
 
           <div className={styles.btnDiv}>
             <div className={styles.rememberDiv}>

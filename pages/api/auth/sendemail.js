@@ -49,7 +49,7 @@ const handler = async (req, res)=> {
     }
 }
 
-const mailer = async (email, code)=> {
+const mailer = (email, code)=> {
     const nodemailer = require("nodemailer");
 
     const mailOptions = {
@@ -69,8 +69,7 @@ const mailer = async (email, code)=> {
         }
     });
 
-    console.log("yes");
-    await transporter.sendMail(mailOptions, (error,info)=> {
+    transporter.sendMail(mailOptions, (error,info)=> {
         console.log(error || info);
         if(error) {
             console.log(error);
