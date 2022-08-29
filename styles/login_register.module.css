@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=DynaPuff&family=Merriweather&family=Mukta&family=PT+Sans&family=Rubik&family=Secular+One&family=Signika&family=Signika+Negative&family=Source+Serif+Pro&display=swap');
+
 .mycontainer {
     height: 100vh;
     width: 100%;
@@ -31,11 +33,13 @@
 
 .mycontainer .leftSide .formDiv .heading {
     color: black;
+    font-family: 'Secular One', sans-serif;
     margin-bottom: 1rem;
 }
 
 .mycontainer .leftSide .formDiv .intro {
     color: black;
+    font-family: 'Source Serif Pro', serif;
     margin-bottom: 2rem;
 }
 
@@ -52,6 +56,7 @@
     color: black;
     font-size: 1.1rem;
     font-weight: bold;
+    font-family: 'Signika Negative', sans-serif;
 }
 
 .mycontainer .leftSide .formDiv .flexDiv input, .mycontainer .leftSide .formDiv .btnDiv button {
@@ -64,6 +69,7 @@
     padding: 0.5rem 1rem;
     color: black;
     font-size: 1.1rem;
+    font-family: 'Signika', sans-serif;
     border: 0.1rem solid grey;
     background-color: white;
 }
@@ -76,6 +82,7 @@
     align-self: flex-end;
     color: purple;
     font-weight: bold;
+    font-family: 'Rubik', sans-serif;
     cursor: pointer;
 }
 
@@ -99,6 +106,7 @@
 
 .mycontainer .leftSide .formDiv .btnDiv .rememberDiv input, .mycontainer .leftSide .formDiv .btnDiv .rememberDiv label {
     color: black;
+    font-family: 'Mukta', sans-serif;
     cursor: pointer;
 }
 
@@ -115,6 +123,7 @@
     /* margin-top: 2rem; */
     color: white;
     font-size: 1.2rem;
+    font-family: 'Merriweather', serif;
     padding: 0.7rem 1rem;
     border: 0.1rem solid purple;
     cursor: pointer;
@@ -128,6 +137,7 @@
 .mycontainer .leftSide .formDiv .other {
     align-self: center;
     color: black;
+    font-family: 'Rubik', sans-serif;
     /* background-color: red; */
 }
 
@@ -175,11 +185,13 @@
 .mycontainer .rightSide .info h2 {
     margin-bottom: 1rem;
     color: white;
+    font-family: 'DynaPuff', cursive;
 }
 
 .mycontainer .rightSide .info p {
-    color: white;
     width: 80%;
+    color: white;
+    font-family: 'PT Sans', sans-serif;
     text-align: center;
     /* background-color: brown; */
 }
