@@ -12,6 +12,7 @@ const ConfirmModal = ({setShow, text, onEdit, onDelete, theme}) => {
 
   return ReactDom.createPortal(
     <div className={styles.overlay}>
+      {console.log(theme)}
         <div className={`${styles.modal} ${theme === "light" ? styles.light_modal : styles.dark_modal}`}>
             <h2 className={styles.modalText}>Are You sure you want to {text}?</h2>
             <div className={styles.modal_btn_div}>

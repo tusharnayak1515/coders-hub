@@ -92,7 +92,7 @@ const BlogPage = () => {
         />
       </Head>
 
-      {show && <ConfirmModal setShow={setShow} text="Delete" onDelete={onDelete} />}
+      {show && <ConfirmModal setShow={setShow} text="Delete" onDelete={onDelete} theme={theme} />}
       <div className={styles.blog_container}>
         <div className={styles.blog_title}>
           <h2>{blog?.title}</h2>

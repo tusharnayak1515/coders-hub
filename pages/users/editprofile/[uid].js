@@ -116,6 +116,7 @@ const EditOtherProfile = () => {
           setShow={setConfirm}
           text="delete your account permanently"
           onDelete={onDeleteUser}
+          theme={theme}
         />
       )}
       {show && <PasswordModal setShow={setShow} />}

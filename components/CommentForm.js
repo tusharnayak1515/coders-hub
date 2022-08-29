@@ -100,7 +100,7 @@ const CommentForm = ({comment}) => {
 
   return (
     <div className={`${styles.commentForm} ${theme === "light" ? styles.light_comment_form : styles.dark_comment_form}`}>
-      {show && <ConfirmModal setShow={setShow} text="edit" onEdit={onEditHandler} />}
+      {show && <ConfirmModal setShow={setShow} text="edit" onEdit={onEditHandler} theme={theme} />}
       <div className={styles.comment_pair}>
         <label htmlFor="title">Title:</label>
         <input

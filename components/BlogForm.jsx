@@ -147,7 +147,7 @@ const BlogForm = ({ blog }) => {
 
   return (
     <div className={`${styles.blogForm} ${theme === "light" ? styles.light_blog_form : styles.dark_blog_form}`}>
-      {show && <ConfirmModal setShow={setShow} text="edit" onEdit={onEditHandler} />}
+      {show && <ConfirmModal setShow={setShow} text="edit" onEdit={onEditHandler} theme={theme} />}
       <div className={styles.pair}>
         <label htmlFor="title">Title:</label>
         <input
