@@ -61,9 +61,7 @@ export default ResetPassword;
 export const getServerSideProps = (context)=> {
     const {params} = context;
     const otp = params.oid;
-    console.log(otp);
     if(!otp) {
-      console.log("not found");
       return {
         notFound: true
       };
