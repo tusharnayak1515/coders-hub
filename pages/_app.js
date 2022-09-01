@@ -40,7 +40,7 @@ function MyApp({ Component, pageProps }) {
         {loading && <title>Coders Hub</title>}
         <meta
           name="keywords"
-          content="next, next.js, just-blogs, blogs"
+          content="next, next.js, coders-hub, blogs"
         />
         <link rel="icon" href="/favicon.png" />
       </Head>

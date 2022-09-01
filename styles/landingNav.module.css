@@ -1,0 +1,47 @@
+.landingNav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 12vh;
+    width: 100%;
+    /* padding: 0 15rem; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border-bottom: 0.1rem solid var(--light-border); */
+    /* background-color: red; */
+    background-color: transparent;
+}
+
+.landingNav .landing_menu_div {
+    height: 100%;
+    width: 70%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    /* background-color: orchid; */
+}
+
+.landingNav .landing_menu_div h3 {
+    cursor: pointer;
+}
+
+.landingNav .landing_menu_div .landing_login_btn {
+    margin-right: 1rem;
+    color: var(--dark-text);
+}
+
+.landingNav .landing_menu_div .landing_login_btn:hover {
+    color: hotpink;
+    transition: all 0.2s ease-in-out;
+}
+
+.landingNav .landing_menu_div .landing_register_btn {
+    color: var(--dark-text);
+}
+
+.landingNav .landing_menu_div .landing_register_btn:hover {
+    color: hotpink;
+    /* background-color: var(--dark-text); */
+    transition: all 0.2s ease-in-out;
+}

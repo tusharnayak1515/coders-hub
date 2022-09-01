@@ -28,6 +28,7 @@ const Login = () => {
     const emailRegex = /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/;
     if((emailRegex.test(email) === true) && (/\s/.test(password) === false && password.length > 0)) {
       dispatch(actionCreators.login(userDetails));
+      router.replace("/dashboard");
     }
     else {
       if(emailRegex.test(email) === false) {
@@ -62,7 +63,7 @@ const Login = () => {
 
   useEffect(() => {
     if (user) {
-      router.replace("/");
+      router.replace("/dashboard");
     }
   }, [user, router]);
 
