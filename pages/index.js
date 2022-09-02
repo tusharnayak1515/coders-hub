@@ -1,44 +1,80 @@
-import React from "react";
+import { useEffect } from "react";
 import Head from "next/head";
+import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
-const LandingNav = dynamic(() => import("../components/LandingNav"), {
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
+import * as cookie from "cookie";
+import { wrapper } from "../redux/store";
+import { actionCreators } from "../redux";
+const Blogs = dynamic(() => import("../components/Blogs"), {
   ssr: false,
 });
 
-import styles from "../styles/landingPage.module.css";
+import styles from "../styles/Home.module.css";
 
-const Home = () => {
+export default function Home({categories}) {
+  const router = useRouter();
+  const dispatch = useDispatch();
+  const { user, theme } = useSelector(state => state.userReducer,shallowEqual);
+
+  useEffect(() => {
+    if (!user) {
+      router.replace("/login");
+    } else {
+      dispatch(actionCreators.profile());
+      dispatch(actionCreators.getAllBlogs());
+    }
+  }, [user, router, dispatch]);
+
   return (
-    <div className={styles.landingPage}>
+    <div className={`${styles.container} ${theme === "light" ? styles.light_home : styles.dark_home}`}>
       <Head>
         <title>Coders-Hub</title>
         <meta name="keywords" content="next, next.js, coders-hub, blogs" />
       </Head>
 
-      <LandingNav />
-
-      <div className={styles.landing_banner}>
-        <h1 className={styles.landing_banner_head}>
-          We &lt;3 people who &lt;3 to code
-        </h1>
-        <h3 className={styles.intro_text}>
-          We provide a platform that empowers coding geeks and enables them to
-          find solutions that enable productivity, growth, and discovery.{" "}
-        </h3>
-      </div>
-
-      <div className={styles.landing_bottom_div}>
-        <h1>For developers, by developers</h1>
-        <hr style={{width: "5%", height: "0.6rem", backgroundColor: "purple"}} />
-        <p>
-          Coders Hub is an <span style={{color: "purple", fontWeight: "bold"}}>open community</span> for anyone who codes. We
-          help you get solutions to your coding queries, share knowledge and
-          help others find solutions to their queries and enhance your skills
-          together.
-        </p>
-      </div>
+      <main className={styles.main}>
+        {/* <div className={styles.categoriesDiv}>
+          {categories && categories.map((category,index)=> {
+            return <h4 key={index}>{category}</h4>
+          })}
+        </div> */}
+        <h1 className={styles.title}>Trending Blogs</h1>
+        {user && <Blogs />}
+      </main>
     </div>
   );
 };
 
-export default Home;
+export const getServerSideProps = wrapper.getServerSideProps(
+  (store) => async (context) => {
+    const mycookie = context?.req?.headers?.cookie || "";
+    const cookieObj = cookie.parse(mycookie);
+    if (cookieObj.jb_user_token) {
+      await store.dispatch(actionCreators.profile(cookieObj.jb_user_token));
+      await store.dispatch(actionCreators.getAllBlogs(cookieObj.jb_user_token));
+    }
+    const categories = [
+      "All",
+      "JavaScript",
+      "React.js",
+      "Node.js",
+      "Next.js",
+      "Python",
+      "Django",
+      "Flask",
+      "Java",
+      "Spring Boot",
+      "C++",
+      "C",
+      "MongoDB",
+      "MySQL",
+    ];
+
+    return {
+      props: {
+        categories: categories
+      }
+    }
+  }
+);

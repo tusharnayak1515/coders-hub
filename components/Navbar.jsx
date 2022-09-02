@@ -43,10 +43,6 @@ const Navbar = () => {
     dispatch(actionCreators.toggleTheme());
   };
 
-  if(router.pathname === "/") {
-    return null;
-  }
-
   return (
     <div className={`${styles.navbar} ${theme === "light" ? styles.light_nav : styles.dark_nav}`}>
       <div className={styles.logoDiv}>

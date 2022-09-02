@@ -39,7 +39,6 @@ const Register = () => {
       /\s/.test(password) === false
     ) {
       dispatch(actionCreators.register(userDetails));
-      router.replace("/dashboard");
     } else {
       if (name.length < 3 || name.length > 25) {
         toast.warn("Name must be minimum 3 and maximum 25 characters long!", {
@@ -85,7 +84,7 @@ const Register = () => {
 
   useEffect(() => {
     if (user) {
-      router.replace("/dashboard");
+      router.replace("/");
     }
   }, [user, router]);
 
