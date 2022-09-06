@@ -147,6 +147,11 @@ export const getServerSideProps = wrapper.getServerSideProps(
           token: cookieObj.jb_user_token,
         })
       );
+      if(!store.getState().blogReducer.blog) {
+        return {
+          notFound: true
+        }
+      }
       await store.dispatch(
         actionCreators.getAllComments({
           id: params.blogid,

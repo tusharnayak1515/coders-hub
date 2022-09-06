@@ -179,6 +179,11 @@ export const getServerSideProps = wrapper.getServerSideProps(
           id: params.uid,
         })
       );
+      if(!store.getState().userReducer.otherUser) {
+        return {
+          notFound: true
+        }
+      }
     }
   }
 );

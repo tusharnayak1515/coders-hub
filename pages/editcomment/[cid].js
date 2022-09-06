@@ -58,6 +58,12 @@ export const getServerSideProps = wrapper.getServerSideProps(
           token: cookieObj.jb_user_token,
         })
       );
+
+      if(!store.getState().commentReducer.comment) {
+        return {
+          notFound: true
+        }
+      }
     }
   }
 );

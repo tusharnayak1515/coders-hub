@@ -59,6 +59,12 @@ export const getServerSideProps = wrapper.getServerSideProps(
           token: cookieObj.jb_user_token,
         })
       );
+
+      if(!store.getState().blogReducer.blog) {
+        return {
+          notFound: true
+        }
+      }
     }
   }
 );
