@@ -1,0 +1,135 @@
+.notFoundPage {
+    height: 87vh;
+    width: 100%;
+    padding-bottom: 7rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #f9f9f9;
+    /* background-color: orange; */
+}
+
+.dark_notFoundPage {
+    background-color: var(--dark-bg);
+}
+
+.notFoundPage .notFound_div {
+    height: 50vmin;
+    width: 100%;
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* background-color: orange; */
+}
+
+.notFoundPage .notFound_div h1 {
+    color: black;
+    font-size: 7rem;
+}
+
+.dark_notFoundPage .notFound_div h1 {
+    color: white;
+}
+
+.notFoundPage .notFound_div h2 {
+    color: black;
+    font-size: 3rem;
+}
+
+.dark_notFoundPage .notFound_div h2 {
+    color: white;
+}
+
+.notFoundPage .notFound_back_btn {
+    padding: 1rem 1.5rem;
+    color: white;
+    font-size: 1.5rem;
+    border: 0.1rem solid red;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    background-color: red;
+}
+
+.notFoundPage .notFound_back_btn:hover {
+    color: red;
+    background-color: white;
+    transition: all 0.2s ease-in-out;
+}
+
+/* Media Queries */
+
+@media only screen and (max-width: 480px) {
+
+    .notFoundPage {
+        height: 100vh;
+    }
+
+    .notFoundPage .notFound_div {
+        margin-bottom: 1.5rem;
+        /* background-color: orange; */
+    }
+
+    .notFoundPage .notFound_div h1 {
+        font-size: 6rem;
+    }
+
+    .notFoundPage .notFound_div h2 {
+        font-size: 2rem;
+    }
+
+    .notFoundPage .notFound_back_btn {
+        padding: 0.7rem 1rem;
+        font-size: 1.3rem;
+    }
+}
+
+@media only screen and (min-width: 481px) and (max-width: 600px) {
+
+    .notFoundPage {
+        height: 100vh;
+    }
+
+    .notFoundPage .notFound_div {
+        margin-bottom: 1rem;
+    }
+
+    .notFoundPage .notFound_div h1 {
+        font-size: 6rem;
+    }
+
+    .notFoundPage .notFound_div h2 {
+        font-size: 2rem;
+    }
+
+    .notFoundPage .notFound_back_btn {
+        padding: 1rem 1.2rem;
+        font-size: 1.3rem;
+    }
+}
+
+@media only screen and (min-width: 601px) and (max-width: 900px) {
+
+    .notFoundPage {
+        height: 100vh;
+    }
+
+    .notFoundPage .notFound_div {
+        margin-bottom: 1rem;
+    }
+
+    .notFoundPage .notFound_div h1 {
+        font-size: 6.5rem;
+    }
+
+    .notFoundPage .notFound_div h2 {
+        font-size: 2.5rem;
+    }
+
+    .notFoundPage .notFound_back_btn {
+        padding: 1rem 1.2rem;
+        font-size: 1.3rem;
+    }
+}
