@@ -15,7 +15,7 @@ const handler = async (req, res)=> {
             let user = await User.findById(id);
             if(!user) {
                 success = false;
-                return res.status(404).json({success, error: "User not found!"});
+                return res.json({success, error: "User not found!"});
             }
 
             const allUserBlogs = await Blog.find({user: id});

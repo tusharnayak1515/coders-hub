@@ -16,7 +16,7 @@ const handler = async (req, res)=> {
             let user = await User.findById(userId);
             if(!user) {
                 success = false;
-                return res.status(404).json({success, error: "Admin not found!"});
+                return res.json({success, error: "Admin not found!"});
             }
 
             let searchedBlogs = await Blog.find({ title: new RegExp(blogName, "i") })

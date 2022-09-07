@@ -16,19 +16,19 @@ const handler = async (req, res)=> {
             let admin = await User.findById(adminId);
             if(!admin) {
                 success = false;
-                return res.status(404).json({success, error: "Admin not found!"});
+                return res.json({success, error: "Admin not found!"});
             }
 
             let blog = await Blog.findById(blogId);
             if(!blog) {
                 success = false;
-                return res.status(404).json({success, error: "Blog not found!"});
+                return res.json({success, error: "Blog not found!"});
             }
 
             let user = await User.findById(blog.user.toString());
             if(!user) {
                 success = false;
-                return res.status(404).json({success, error: "User not found!"});
+                return res.json({success, error: "User not found!"});
             }
 
             user = await User.findByIdAndUpdate(blog.user.toString(), {$pull: {blogs: blogId}}, {new: true})

@@ -56,7 +56,7 @@ export default async function handler(req, res) {
             let user = await User.findOne({email: email});
             if(user) {
                 success = false;
-                return res.status(409).json({success, error: "This email is already linked to another account!"});
+                return res.json({success, error: "This email is already linked to another account!"});
             }
             
             const salt = await bcrypt.genSalt(10);

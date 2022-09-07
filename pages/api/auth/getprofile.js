@@ -15,13 +15,13 @@ const handler = async (req, res)=> {
             let admin = await User.findById(adminId);
             if(!admin) {
                 success = false;
-                return res.status(404).json({success, error: "Admin not found!"});
+                return res.json({success, error: "Admin not found!"});
             }
 
             let otheruser = await User.findById(userId);
             if(!otheruser) {
                 success = false;
-                return res.status(404).json({success, error: "User not found!"});
+                return res.json({success, error: "User not found!"});
             }
 
             otheruser = await User.findById(userId)

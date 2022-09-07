@@ -14,7 +14,7 @@ const handler = async (req, res)=> {
             let admin = await User.findById(adminId);
             if(!admin) {
                 success = false;
-                return res.status(404).json({success, error: "Admin not found!"});
+                return res.json({success, error: "Admin not found!"});
             }
 
             const users = await User.find({_id: {$ne: adminId}})

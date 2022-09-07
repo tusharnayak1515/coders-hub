@@ -38,13 +38,13 @@ const handler = async (req, res)=> {
             let user = await User.findById(userId);
             if(!user) {
                 success = false;
-                return res.status(404).json({success, error: "User not found!"});
+                return res.json({success, error: "User not found!"});
             }
 
             let comment1 = await Comment.findById(id);
             if(!comment1) {
                 success = false;
-                return res.status(404).json({success, error: "Comment not found!"});
+                return res.json({success, error: "Comment not found!"});
             }
 
             const blogId = comment1.blog.toString();
@@ -52,12 +52,12 @@ const handler = async (req, res)=> {
             let blog = await Blog.findById(blogId);
             if(!blog) {
                 success = false;
-                return res.status(404).json({success, error: "Blog not found!"});
+                return res.json({success, error: "Blog not found!"});
             }
 
             if(user._id.toString() !== comment1.user.toString()) {
                 success = false;
-                return res.status(404).json({success, error: "You do not have permission to perform this action!"});
+                return res.json({success, error: "You do not have permission to perform this action!"});
             }
 
             comment1 = await Comment.findByIdAndUpdate(id, {title, comment}, {new: true});

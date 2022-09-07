@@ -76,7 +76,7 @@ const handler = async (req, res)=> {
 
             if(newpassword !== confirmpassword) {
                 success = false;
-                return res.status(401).json({success, error: "New password and confirm password do not match!"});
+                return res.json({success, error: "New password and confirm password do not match!"});
             }
 
             const salt = await bcrypt.genSalt(10);

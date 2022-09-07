@@ -16,13 +16,13 @@ const handler = async (req, res)=> {
             let user = await User.findById(userId);
             if(!user) {
                 success = false;
-                return res.status(404).json({success, error: "User not found!"});
+                return res.json({success, error: "User not found!"});
             }
 
             let comment = await Comment.findById(commentId);
             if(!comment) {
                 success = false;
-                return res.status(404).json({success, error: "Comment not found!"});
+                return res.json({success, error: "Comment not found!"});
             }
 
             const blogId = comment.blog.toString();
@@ -30,7 +30,7 @@ const handler = async (req, res)=> {
             let blog = await Blog.findById(blogId);
             if(!blog) {
                 success = false;
-                return res.status(404).json({success, error: "Blog not found!"});
+                return res.json({success, error: "Blog not found!"});
             }
 
             success = true;

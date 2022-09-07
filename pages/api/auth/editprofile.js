@@ -34,14 +34,14 @@ const handler = async (req, res)=> {
             let user = await User.findById(userId);
             if(!user) {
                 success = false;
-                return res.status(404).json({success, error: "User not found!"});
+                return res.json({success, error: "User not found!"});
             }
             
             user = await User.findOne({email: email});
             if(user) {
                 if(user._id.toString() !== userId) {
                     success = false;
-                    return res.status(409).json({success, error: "This email is already linked to another account!"});
+                    return res.json({success, error: "This email is already linked to another account!"});
                 }
             }
 

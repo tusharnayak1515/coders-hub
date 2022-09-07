@@ -38,13 +38,13 @@ const handler = async (req, res)=> {
             let admin = await User.findById(adminId);
             if(!admin) {
                 success = false;
-                return res.status(404).json({success, error: "Admin not found!"});
+                return res.json({success, error: "Admin not found!"});
             }
 
             let comment1 = await Comment.findById(id);
             if(!comment1) {
                 success = false;
-                return res.status(404).json({success, error: "Comment not found!"});
+                return res.json({success, error: "Comment not found!"});
             }
 
             const blogId = comment1.blog.toString();
@@ -52,7 +52,7 @@ const handler = async (req, res)=> {
             let blog = await Blog.findById(blogId);
             if(!blog) {
                 success = false;
-                return res.status(404).json({success, error: "Blog not found!"});
+                return res.json({success, error: "Blog not found!"});
             }
 
             comment1 = await Comment.findByIdAndUpdate(id, {title, comment}, {new: true});

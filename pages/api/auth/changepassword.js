@@ -85,23 +85,23 @@ const handler = async (req, res)=> {
             let user = await User.findById(userId);
             if(!user) {
                 success = false;
-                return res.status(404).json({success, error: "User not found!"});
+                return res.json({success, error: "User not found!"});
             }
 
             if(oldPassword === newPassword) {
                 success = false;
-                return res.status(401).json({success, error: "New password should be different from old password!"});
+                return res.json({success, error: "New password should be different from old password!"});
             }
 
             if(newPassword !== confirmPassword) {
                 success = false;
-                return res.status(401).json({success, error: "New password and confirm password do not match!"});
+                return res.json({success, error: "New password and confirm password do not match!"});
             }
             
             const passwordCompare = await bcrypt.compare(oldPassword, user.password);
             if(!passwordCompare) {
                 success = false;
-                return res.status(401).json({success, error: "Old password is incorrect!"});
+                return res.json({success, error: "Old password is incorrect!"});
             }
 
             const salt = await bcrypt.genSalt(10);
