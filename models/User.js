@@ -4,15 +4,15 @@ const {Schema} = mongoose;
 const UserSchema = new Schema({
     name: {
         type: String,
-        require: true
+        required: true
     },
     email: {
         type: String,
-        require: true
+        required: true
     },
     password: {
         type: String,
-        require: true
+        required: true
     },
     profilepic: {
         type: String,

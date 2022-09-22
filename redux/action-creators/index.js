@@ -377,16 +377,22 @@ export const editProfile = ({name,email,profilepic})=> async (dispatch)=> {
     });
 
     let dp = null;
-    if(profilepic !== "") {
-        const data = new FormData();
-        data.append("file", profilepic);
-        data.append("upload_preset", "coders_hub");
-        data.append("cloud_name", "alpha2625");
-        const response = await axios.post("https://api.cloudinary.com/v1_1/alpha2625/image/upload", data);
-        dp = response.data.secure_url;
+
+    if(typeof profilepic === "string" && profilepic !== "") {
+        dp = profilepic;
     }
     else {
-        dp = "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png";
+        if(profilepic !== "") {
+            const data = new FormData();
+            data.append("file", profilepic);
+            data.append("upload_preset", "coders_hub");
+            data.append("cloud_name", "alpha2625");
+            const response = await axios.post("https://api.cloudinary.com/v1_1/alpha2625/image/upload", data);
+            dp = response.data.secure_url;
+        }
+        else {
+            dp = "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png";
+        }
     }
 
     const url = process.env.NODE_ENV === "production" ? "https://coders-hub-rho.vercel.app" : "http://localhost:3000";

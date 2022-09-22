@@ -17,7 +17,7 @@ const masterReducer = (state,action)=> {
             ...state,
             userReducer: {
                 user: state.userReducer.user ? state.userReducer.user : action.payload.userReducer.user,
-                profile: action.payload.userReducer.profile ? action.payload.userReducer.profile : state.userReducer.profile,
+                profile: state.userReducer.profile ? state.userReducer.profile : action.payload.userReducer.profile,
                 users: [...new Set(action.payload.userReducer.users, state.userReducer.users)],
                 otherUser: action.payload.userReducer.otherUser ? action.payload.userReducer.otherUser : state.userReducer.otherUser,
                 isLoading: state.userReducer.isLoading,
