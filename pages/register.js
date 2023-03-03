@@ -8,11 +8,12 @@ import bannerImg from "../public/static/images/banner.svg";
 import { toast } from "react-toastify";
 
 import styles from "../styles/login_register.module.css";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 const Register = () => {
   const router = useRouter();
   const dispatch = useDispatch();
-  const { user } = useSelector((state) => state.userReducer, shallowEqual);
+  const { user, isLoading } = useSelector((state) => state.userReducer, shallowEqual);
   const [userDetails, setUserDetails] = useState({
     name: "",
     email: "",
@@ -97,6 +98,8 @@ const Register = () => {
           content="next, next.js, just-blogs, blogs, register"
         />
       </Head>
+
+      {isLoading && <LoadingSpinner />}
 
       <div className={styles.leftSide}>
         <div className={styles.formDiv}>

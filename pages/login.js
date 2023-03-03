@@ -9,11 +9,12 @@ import { toast } from "react-toastify";
 import bannerImg from "../public/static/images/banner.svg";
 
 import styles from "../styles/login_register.module.css";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 const Login = () => {
   const router = useRouter();
   const dispatch = useDispatch();
-  const { user } = useSelector((state) => state.userReducer, shallowEqual);
+  const { user, isLoading } = useSelector((state) => state.userReducer, shallowEqual);
   const [userDetails, setUserDetails] = useState({ email: "", password: "" });
 
   const onChangeHandler = (e) => {
@@ -75,6 +76,8 @@ const Login = () => {
           content="next, next.js, just-blogs, blogs, login"
         />
       </Head>
+
+      {isLoading && <LoadingSpinner />}
 
       <div className={styles.leftSide}>
         <div className={styles.formDiv}>
